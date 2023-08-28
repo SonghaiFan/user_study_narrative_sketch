@@ -1,0 +1,347 @@
+[
+  {
+    "userId": "DataViz",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "agg"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy1",
+        "type": "agg"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard3",
+        "type": "agg"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "ato"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy2",
+        "type": "ato"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard4",
+        "type": "ato"
+      }
+    ]
+  },
+  {
+    "userId": "MysticEcho",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "agg"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy1",
+        "type": "agg"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard4",
+        "type": "agg"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "ato"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy2",
+        "type": "ato"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard3",
+        "type": "ato"
+      }
+    ]
+  },
+  {
+    "userId": "LunaStar",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "agg"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy2",
+        "type": "agg"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard3",
+        "type": "agg"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "ato"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy1",
+        "type": "ato"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard4",
+        "type": "ato"
+      }
+    ]
+  },
+  {
+    "userId": "NightHawk",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "agg"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy2",
+        "type": "agg"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard4",
+        "type": "agg"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "ato"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy1",
+        "type": "ato"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard3",
+        "type": "ato"
+      }
+    ]
+  },
+  {
+    "userId": "EmberFlame",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "ato"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy1",
+        "type": "ato"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard3",
+        "type": "ato"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "agg"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy2",
+        "type": "agg"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard4",
+        "type": "agg"
+      }
+    ]
+  },
+  {
+    "userId": "OceanMist",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "ato"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy1",
+        "type": "ato"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard4",
+        "type": "ato"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "agg"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy2",
+        "type": "agg"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard3",
+        "type": "agg"
+      }
+    ]
+  },
+  {
+    "userId": "ThunderBolt",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "ato"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy2",
+        "type": "ato"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard3",
+        "type": "ato"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "agg"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy1",
+        "type": "agg"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard4",
+        "type": "agg"
+      }
+    ]
+  },
+  {
+    "userId": "MysticRiver",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "ato"
+      },
+      {
+        "taskId": 2,
+        "dataName": "easy2",
+        "type": "ato"
+      },
+      {
+        "taskId": 3,
+        "dataName": "hard4",
+        "type": "ato"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "agg"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy1",
+        "type": "agg"
+      },
+      {
+        "taskId": 6,
+        "dataName": "hard3",
+        "type": "agg"
+      }
+    ]
+  },
+  {
+    "userId": "Debug",
+    "userSchema": [
+      {
+        "taskId": 1,
+        "dataName": "train1",
+        "type": "agg"
+      },
+      {
+        "taskId": 2,
+        "dataName": "train1",
+        "type": "ato"
+      },
+      {
+        "taskId": 3,
+        "dataName": "train2",
+        "type": "agg"
+      },
+      {
+        "taskId": 4,
+        "dataName": "train2",
+        "type": "ato"
+      },
+      {
+        "taskId": 5,
+        "dataName": "easy1",
+        "type": "agg"
+      },
+      {
+        "taskId": 6,
+        "dataName": "easy1",
+        "type": "ato"
+      },
+      {
+        "taskId": 7,
+        "dataName": "easy2",
+        "type": "agg"
+      },
+      {
+        "taskId": 8,
+        "dataName": "easy2",
+        "type": "ato"
+      },
+      {
+        "taskId": 9,
+        "dataName": "hard3",
+        "type": "agg"
+      },
+      {
+        "taskId": 10,
+        "dataName": "hard3",
+        "type": "ato"
+      },
+      {
+        "taskId": 11,
+        "dataName": "hard4",
+        "type": "agg"
+      },
+      {
+        "taskId": 12,
+        "dataName": "hard4",
+        "type": "ato"
+      }
+    ]
+  }
+]
