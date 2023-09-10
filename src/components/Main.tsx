@@ -2,11 +2,10 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
-import ImageSelection from "./SelectionTask";
+import SelectionTask from "./SelectionTask";
 import MarkdownViewer from "../components/MarkdownViewer";
 
 const routes = [
-  // ... other routes
   {
     path: "/home",
     name: "Home",
@@ -29,6 +28,12 @@ const routes = [
       />
     ),
   },
+
+  {
+    path: "/task",
+    name: "Task",
+    render: () => <SelectionTask />,
+  },
   {
     path: "/more",
     name: "More",
@@ -39,11 +44,6 @@ const routes = [
         userId={userId}
       />
     ),
-  },
-  {
-    path: "/task",
-    name: "Task",
-    render: () => <ImageSelection />,
   },
 ];
 

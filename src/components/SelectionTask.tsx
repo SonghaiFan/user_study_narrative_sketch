@@ -2,23 +2,37 @@
 import React, { useState } from "react";
 import story from "../stories/story_World News_SimpleLinear_seed42.json";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
-const options = [
-  "Arch",
-  "Ladder",
-  "Linear",
-  "LongFork",
-  "SharpBranch",
-  "SharpMerge",
-  "ShortFork",
-  "WideBranch",
-  "WideMerge",
-];
-export const ImageSelection: React.FC = () => {
-  const [currentParagraph, setCurrentParagraph] = useState(1);
+import { ConfirmationModal } from "./ConfirmationModal";
+
+// import sketches images
+import ArchSketch from "../motifs/Arch.png";
+import LadderSketch from "../motifs/Ladder.png";
+import LinearSketch from "../motifs/Linear.png";
+import LongForkSketch from "../motifs/LongFork.png";
+import SharpBranchSketch from "../motifs/SharpBranch.png";
+import ShortForkSketch from "../motifs/ShortFork.png";
+import WideBranchSketch from "../motifs/WideBranch.png";
+import WideMergeSketch from "../motifs/WideMerge.png";
+import SharpMergeSketch from "../motifs/SharpMerge.png";
+
+const options = {
+  Linear: LinearSketch,
+  Arch: ArchSketch,
+  Ladder: LadderSketch,
+  LongFork: LongForkSketch,
+  SharpBranch: SharpBranchSketch,
+  SharpMerge: SharpMergeSketch,
+  ShortFork: ShortForkSketch,
+  WideBranch: WideBranchSketch,
+  WideMerge: WideMergeSketch,
+};
+
+export const SelectionTask: React.FC = () => {
+  const [currentStory, setCurrentStory] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  const askConfirmation = (imageNumber: number) => {
-    // Add any additional functionality if necessary
+  const askConfirmation = (key: string) => {
+    console.log(key);
     setShowModal(true);
   };
 
@@ -26,63 +40,56 @@ export const ImageSelection: React.FC = () => {
     setShowModal(false);
   };
 
-  const changeParagraph = () => {
+  const changeStory = () => {
     hideModal();
-    setCurrentParagraph((prev) => prev + 1);
+    setCurrentStory((prev) => prev + 1);
   };
 
   return (
-    <div className="flex flex-row flex-1 overflow-hidden">
-      {/* Left Panel */}
-      <div className="w-1/2 p-8 border overflow-auto">
-        <p
-          id="storyText"
-          className="text-xl"
-        >{`Paragraph text for ${currentParagraph}`}</p>
-
-        <ChaptersToMarkdown data={story} />
-      </div>
-
-      {/* Right Panel */}
-      <div className="w-1/2 p-8 border grid grid-cols-3 gap-4">
-        {options.map((option) => (
-          <div key={option} className="aspect-w-1 aspect-h-1">
-            <img
-              src="https://placehold.co/200x200"
-              className="aspect-content cursor-pointer"
-              onClick={() => askConfirmation(1)}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Modal */}
-      {showModal && (
-        <div
-          id="confirmationModal"
-          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40"
-        >
-          <div className="bg-white p-8 rounded-md">
-            <p>Are you sure you want to select this image?</p>
-            <div className="flex justify-end mt-4">
-              <button
-                className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
-                onClick={changeParagraph}
-              >
-                Confirm
-              </button>
-              <button
-                className="mx-2 px-4 py-2 bg-red-500 text-white rounded-md"
-                onClick={hideModal}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
+    <>
+      <p id="storyText" className="text-2xl font-bold">
+        {story[currentStory].section}
+        <span className="font-normal text-sm text-white">
+          {" "}
+          {story[currentStory].name}
+        </span>
+      </p>
+      <div className="flex flex-row  overflow-hidden">
+        {/* Left Panel */}
+        <div className="w-1/2 p-8 border overflow-auto">
+          <ChaptersToMarkdown data={story[currentStory]} />
         </div>
-      )}
-    </div>
+
+        {/* Right Panel */}
+        <div className="w-1/2 p-8 border grid xl:grid-cols-3 grid-cols-2 gap-8">
+          {Object.entries(options).map(([key, value]) => (
+            <div
+              key={key}
+              className="relative aspect-w-1 aspect-h-1 transform hover:scale-105 border hover:border-blue-500 hover:border-4 transition-transform duration-500 ease-in-out"
+            >
+              <img
+                src={value}
+                alt={key} // added an alt tag for accessibility
+                className="absolute inset-0 w-full h-full object-contain cursor-pointer"
+                onClick={() => askConfirmation(key)}
+              />
+              {/* value as caption */}
+              <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-center py-1">
+                {key}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Modal */}
+        <ConfirmationModal
+          isVisible={showModal}
+          onConfirm={changeStory}
+          onCancel={hideModal}
+        />
+      </div>
+    </>
   );
 };
 
-export default ImageSelection;
+export default SelectionTask;
