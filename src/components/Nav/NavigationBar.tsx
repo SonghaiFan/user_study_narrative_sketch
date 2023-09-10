@@ -20,7 +20,7 @@ const CenterIndicator: React.FC = () => {
         User study
       </h1>
 
-      <div className="relative w-20 h-8 bg-blue-500 rounded-full">
+      <div className="relative w-20 h-8 bg-blue-500 rounded-xl">
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
           <Timer />
         </div>

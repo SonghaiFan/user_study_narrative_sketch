@@ -1,5 +1,7 @@
 // ImageSelection.tsx
 import React, { useState } from "react";
+import story from "../stories/story_World News_SimpleLinear_seed42.json";
+import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 
 export const ImageSelection: React.FC = () => {
   const [currentParagraph, setCurrentParagraph] = useState(1);
@@ -27,6 +29,8 @@ export const ImageSelection: React.FC = () => {
           id="storyText"
           className="text-xl"
         >{`Paragraph text for ${currentParagraph}`}</p>
+
+        <ChaptersToMarkdown data={story} />
       </div>
 
       {/* Right Panel */}
@@ -70,3 +74,5 @@ export const ImageSelection: React.FC = () => {
     </div>
   );
 };
+
+export default ImageSelection;

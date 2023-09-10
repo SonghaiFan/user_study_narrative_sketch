@@ -2,13 +2,15 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
+import ImageSelection from "./SelectionTask";
 import MarkdownViewer from "../components/MarkdownViewer";
 
 const routes = [
+  // ... other routes
   {
     path: "/home",
     name: "Home",
-    render: (userId) => (
+    render: (userId: string | undefined) => (
       <MarkdownViewer
         filePath="src/slides/home.md"
         className="w-1/2 m-auto mt-5"
@@ -19,7 +21,7 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    render: (userId) => (
+    render: (userId: string | undefined) => (
       <MarkdownViewer
         filePath="src/slides/about.md"
         className="w-1/2 m-auto mt-5"
@@ -30,7 +32,7 @@ const routes = [
   {
     path: "/more",
     name: "More",
-    render: (userId) => (
+    render: (userId: string | undefined) => (
       <MarkdownViewer
         filePath="src/slides/more.md"
         className="w-1/2 m-auto mt-5"
@@ -41,13 +43,7 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    render: (userId) => (
-      <MarkdownViewer
-        filePath="src/slides/task.md"
-        className="w-1/2 m-auto mt-5"
-        userId={userId}
-      />
-    ),
+    render: () => <ImageSelection />,
   },
 ];
 
@@ -81,46 +77,13 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
         navigate={navigate}
       />
       <Routes>
-        <Route
-          path="/home"
-          element={
-            <MarkdownViewer
-              filePath="src/slides/home.md"
-              className="w-1/2 m-auto mt-5"
-              userId={userId}
-            />
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <MarkdownViewer
-              filePath="src/slides/about.md"
-              className="w-1/2 m-auto mt-5"
-              userId={userId}
-            />
-          }
-        />
-        <Route
-          path="/more"
-          element={
-            <MarkdownViewer
-              filePath="src/slides/more.md"
-              className="w-1/2 m-auto mt-5"
-              userId={userId}
-            />
-          }
-        />
-        <Route
-          path="/task"
-          element={
-            <MarkdownViewer
-              filePath="src/slides/task.md"
-              className="w-1/2 m-auto mt-5"
-              userId={userId}
-            />
-          }
-        />
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.render(userId)}
+          />
+        ))}
       </Routes>
     </>
   );
