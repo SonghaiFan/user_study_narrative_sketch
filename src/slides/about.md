@@ -16,17 +16,6 @@ The study has two primary phases:
 - [ ] Match with narrative structure
 - [ ] Choose best three
 
-2. **Narrative Mapping**:
-   - Interpret a news story.
-   - Describe its narrative in your words.
-   - Draw a narrative map on your own. 🎨🗺️
-
-**To-Do**:
-
-- [ ] Read instructions carefully.
-- [ ] Complete Narrative Selection.
-- [ ] Interpret and Draw in the Narrative Mapping phase.
-
 If you're new to narrative structures or mapping, no worries! Our platform will guide you. Remember, there's no **right** or **wrong** here. We cherish genuine reactions and insights.
 
 🚀 Ready to jump in? Delve into narratives and help shed light on the essence of news stories. Click **Start** and let the journey begin!

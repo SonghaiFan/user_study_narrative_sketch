@@ -6,11 +6,13 @@ import remarkGfm from "remark-gfm";
 interface MarkdownViewerProps {
   filePath: string;
   className?: string;
+  userId?: string;
 }
 
 const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
   filePath,
   className,
+  userId,
 }) => {
   const [markdown, setMarkdown] = useState("");
 
@@ -22,6 +24,7 @@ const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
 
   return (
     <div className={`markdown-body ${className}`}>
+      user ID: {userId}
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
     </div>
   );

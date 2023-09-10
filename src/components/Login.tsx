@@ -1,29 +1,49 @@
 import React, { useState, useEffect } from "react";
-import userSchemas from "../content/userSchema.json";
+import { db } from "../firebase"; // Assuming you also have Firestore set up in firebase.js
+import { getDoc, doc, setDoc } from "firebase/firestore";
+import { useNavigate, useLocation } from "react-router-dom"; // For navigation and URL parameter extraction
 
-const Login: React.FC<{ onLogin: (userId: string) => void }> = ({
-  onLogin,
-}) => {
-  const [userId, setUserId] = useState("");
-  const [userExists, setUserExists] = useState(false);
+const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
+  const [prolificId, setProlificId] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const user = userSchemas.find((user) => user.userId === userId);
-    setUserExists(!!user);
-  }, [userId]);
+    const urlParams = new URLSearchParams(location.search);
+    const idFromUrl = urlParams.get("PROLIFIC_PID");
+    if (idFromUrl) {
+      setProlificId(idFromUrl);
+    }
+  }, [location]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (userExists) {
-      onLogin(userId);
-    } else {
-      alert("User ID does not exist");
+    if (!prolificId) {
+      console.error("Prolific ID is not defined!");
+      return; // exit from the function or handle this case appropriately
+    }
+    // Check if the Prolific ID already exists in Firestore
+    try {
+      const userDoc = doc(db, "users", prolificId);
+      const userSnapshot = await getDoc(userDoc);
+
+      if (userSnapshot.exists()) {
+        navigate("/more");
+        onLogin(prolificId); // Ensure the state in App is updated
+      } else {
+        await setDoc(userDoc, { prolificId });
+        navigate("/home");
+        onLogin(prolificId);
+      }
+    } catch (error) {
+      console.log(error);
+      // Display an error message to the user
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
-      <header className="fixed top-0 left-0 right-0  text-white p-6 py-4">
+      <header className="fixed top-0 left-0 right-0 text-white p-6 py-4">
         <h1 className="text-xl font-semibold">User study</h1>
       </header>
       <div className="mt-20">
@@ -32,12 +52,13 @@ const Login: React.FC<{ onLogin: (userId: string) => void }> = ({
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
         >
           <label className="mb-4 text-gray-600">
-            User ID:
+            Prolific ID:
             <input
               type="text"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              value={prolificId}
+              onChange={(e) => setProlificId(e.target.value)}
               className="block w-64 px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              readOnly={location.search.includes("PROLIFIC_PID")} // making it readonly if URL has the param
             />
           </label>
           <button

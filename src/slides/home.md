@@ -1,5 +1,3 @@
 ---
-# **Welcome to Our User Study on Narrative Structures!**
-
-Thank you for participating. Your contribution will play a pivotal role in exploring the underlying narratives of news stories. 🌍✍
+**Welcome to Our User Study on Sketching Narrative Structures!**
 ---

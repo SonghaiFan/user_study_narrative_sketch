@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Timer from "./Timer";
+import Timer from "../Timer";
 
 interface Route {
   path: string;
