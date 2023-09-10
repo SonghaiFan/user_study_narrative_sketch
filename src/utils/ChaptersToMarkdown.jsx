@@ -1,51 +1,60 @@
 import React from "react";
 
-function highlightEntities(content, entities) {
-  let modifiedContent = content;
-
-  entities.forEach((entity) => {
-    // Make sure to replace all occurrences of the entity in the content.
-    const regex = new RegExp(entity, "g");
-    modifiedContent = modifiedContent.replace(regex, `\`${entity}\``);
-  });
-
-  return modifiedContent;
-}
-
 function ChaptersToMarkdown({ data }) {
+  const highlightEntities = (content, entities) => {
+    let highlightedContent = content;
+
+    entities.forEach((entity) => {
+      const regex = new RegExp(`(${entity})`, "g");
+      highlightedContent = highlightedContent.replace(
+        regex,
+        "<strong>$1</strong>"
+      );
+    });
+
+    return { __html: highlightedContent };
+  };
+
   return (
-    <div>
-      {data.chapters.map((chapter, index) => (
-        <div key={chapter.id}>
+    <div className="p-5 bg-gray-100 rounded">
+      {data.chapters.map((chapter) => (
+        <div
+          key={chapter.id}
+          className="mb-5 bg-white border rounded p-4 shadow-sm"
+        >
           {/* Chapter Title */}
-          <h2>
-            {index + 1}. {chapter.title}
-          </h2>
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            {chapter.title}
+          </h3>
 
           {/* Time Period */}
-          <p>
-            <strong>Time Period:</strong> {chapter.time_period.join(" - ")}
+          <p className="text-sm text-gray-500">
+            {chapter.time_period.join(" - ")}
           </p>
 
           {/* Themes */}
-          <p>
-            <strong>Themes:</strong> {chapter.themes.join(", ")}
-          </p>
+          <div className="mt-2">
+            {chapter.themes.map((theme, index) => (
+              <span
+                key={index}
+                className="inline-block bg-gray-200 text-gray-700 px-2 py-1 mr-2 mb-2 rounded-full text-xs font-medium"
+              >
+                {theme}
+              </span>
+            ))}
+          </div>
 
-          {/* Entities */}
-          <p>
-            <strong>Entities:</strong> {chapter.entity.join(", ")}
-          </p>
-
-          {/* Content with highlighted entities */}
+          {/* Content */}
           <p
-            dangerouslySetInnerHTML={{
-              __html: highlightEntities(chapter.content, chapter.entity),
-            }}
+            className="text-md text-gray-800 "
+            dangerouslySetInnerHTML={highlightEntities(
+              chapter.content,
+              chapter.entity
+            )}
           />
 
           {/* Add a separator for clarity */}
-          {index !== data.chapters.length - 1 && <hr />}
+          <hr className="my-2" />
         </div>
       ))}
     </div>

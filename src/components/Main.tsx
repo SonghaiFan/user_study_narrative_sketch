@@ -64,14 +64,14 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
     currentIndex < routes.length - 1 ? routes[currentIndex + 1].path : null;
 
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <NavigationBar
-        className="sticky z-50 bg-blue-500 p-6 py-4"
+        className="sticky z-50 bg-blue-500 p-6 py-4 shadow-sm"
         routes={routes}
         onLogout={onLogout}
       />
       <NavigationButtons
-        className="fixed z-50 w-full bottom-1/2 p-6 py-4"
+        className="fixed z-50 w-full bottom-1/2 p-6 py-4 hidden"
         previousPath={previousPath}
         nextPath={nextPath}
         navigate={navigate}
@@ -85,7 +85,7 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
           />
         ))}
       </Routes>
-    </>
+    </div>
   );
 };
 

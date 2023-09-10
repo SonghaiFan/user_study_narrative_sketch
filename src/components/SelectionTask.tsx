@@ -2,7 +2,17 @@
 import React, { useState } from "react";
 import story from "../stories/story_World News_SimpleLinear_seed42.json";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
-
+const options = [
+  "Arch",
+  "Ladder",
+  "Linear",
+  "LongFork",
+  "SharpBranch",
+  "SharpMerge",
+  "ShortFork",
+  "WideBranch",
+  "WideMerge",
+];
 export const ImageSelection: React.FC = () => {
   const [currentParagraph, setCurrentParagraph] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -22,9 +32,9 @@ export const ImageSelection: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="flex flex-row flex-1 overflow-hidden">
       {/* Left Panel */}
-      <div className="w-1/2 p-8">
+      <div className="w-1/2 p-8 border overflow-auto">
         <p
           id="storyText"
           className="text-xl"
@@ -34,16 +44,16 @@ export const ImageSelection: React.FC = () => {
       </div>
 
       {/* Right Panel */}
-      <div className="w-1/2 p-8 grid grid-cols-3 gap-4">
-        {/* For the sake of simplicity, just showing one image here */}
-        <div className="aspect-w-1 aspect-h-1">
-          <img
-            src="motifs/image1.jpg"
-            className="aspect-content cursor-pointer"
-            onClick={() => askConfirmation(1)}
-          />
-        </div>
-        {/* ... Add other images similarly ... */}
+      <div className="w-1/2 p-8 border grid grid-cols-3 gap-4">
+        {options.map((option) => (
+          <div key={option} className="aspect-w-1 aspect-h-1">
+            <img
+              src="https://placehold.co/200x200"
+              className="aspect-content cursor-pointer"
+              onClick={() => askConfirmation(1)}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Modal */}
