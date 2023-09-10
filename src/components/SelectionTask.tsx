@@ -1,5 +1,6 @@
 // ImageSelection.tsx
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import story from "../stories/story_World News_SimpleLinear_seed42.json";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
@@ -31,6 +32,16 @@ export const SelectionTask: React.FC = () => {
   const [currentStory, setCurrentStory] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
+  // React Router's hook for navigation.
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // If currentStory goes out of bounds, navigate to '/more'.
+    if (currentStory >= story.length) {
+      navigate("/more");
+    }
+  }, [currentStory, navigate]); // Watching for changes in currentStory.
+
   const askConfirmation = (key: string) => {
     console.log(key);
     setShowModal(true);
@@ -45,15 +56,18 @@ export const SelectionTask: React.FC = () => {
     setCurrentStory((prev) => prev + 1);
   };
 
+  if (currentStory >= story.length) {
+    return null; // or you can return a loading spinner, an error message, etc.
+  }
   return (
     <>
-      <p id="storyText" className="text-2xl font-bold">
-        {story[currentStory].section}
+      <div id="storyText" className="text-2xl font-bold pl-2">
+        {`${story[currentStory].section}: ${currentStory + 1}/${story.length}`}
         <span className="font-normal text-sm text-white">
           {" "}
           {story[currentStory].name}
         </span>
-      </p>
+      </div>
       <div className="flex flex-row  overflow-hidden">
         {/* Left Panel */}
         <div className="w-1/2 p-8 border overflow-auto">
@@ -61,7 +75,7 @@ export const SelectionTask: React.FC = () => {
         </div>
 
         {/* Right Panel */}
-        <div className="w-1/2 p-8 border grid xl:grid-cols-3 grid-cols-2 gap-8">
+        <div className="w-1/2 p-[150px] border grid xl:grid-cols-3 grid-cols-2 gap-8">
           {Object.entries(options).map(([key, value]) => (
             <div
               key={key}

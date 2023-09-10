@@ -15,13 +15,13 @@ interface NavigationProps {
 
 const CenterIndicator: React.FC = () => {
   return (
-    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 ">
+    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2  ">
       <h1 className="relative z-10 text-xl font-semibold text-white">
         User study
       </h1>
 
-      <div className="relative w-20 h-8 bg-blue-500 rounded-xl">
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="relative w-20 h-8 bg-blue-500 rounded-full">
+        <div className="absolute left-1/2 transform -top-1 z-20">
           <Timer />
         </div>
       </div>
@@ -69,7 +69,8 @@ const NavigationBar: React.FC<NavigationProps> = ({
         </ul>
 
         <button
-          className=" bg-blue-800 text-white px-2 py-1 rounded"
+          type="submit"
+          className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           onClick={onLogout}
         >
           Logout

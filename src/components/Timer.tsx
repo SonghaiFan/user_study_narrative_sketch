@@ -15,7 +15,7 @@ const Timer: React.FC = () => {
   const remainingSeconds = seconds % 60;
 
   return (
-    <div className="fixed top-2 left-1/2 transform -translate-x-1/2 p-2 text-white">
+    <div className="fixed left-1/2  -translate-x-1/2 p-2 text-white">
       <span className="text-lg ">
         {minutes}:
         {remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}
