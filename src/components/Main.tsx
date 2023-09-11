@@ -6,9 +6,8 @@ import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
 import SelectionTaskTrain from "./SelectionTaskTrain";
 import MarkdownViewer from "../components/MarkdownViewer";
-import story from "../stories/story_World News_SimpleLinear_seed42.json";
-
-const storyShuffled = shuffle(story);
+import story1 from "../stories/story_Culture_and_Entertainment_seed11.json";
+import story2 from "../stories/story_Politics_seed11.json";
 
 const routes = [
   {
@@ -36,12 +35,12 @@ const routes = [
   {
     path: "/trail",
     name: "Trail",
-    render: () => <SelectionTaskTrain stories={story} mode="train" />,
+    render: () => <SelectionTaskTrain stories={shuffle(story1)} mode="train" />,
   },
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask stories={storyShuffled} mode="task" />,
+    render: () => <SelectionTask stories={shuffle(story2)} mode="task" />,
   },
   {
     path: "/more",
