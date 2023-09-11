@@ -3,22 +3,19 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
 interface NavigationButtonProps {
   direction: "previous" | "next";
-  path: string | null;
-  navigate: (path: string) => void;
+  disabled?: boolean;
+  onClick: () => void;
 }
 
 const NavigationButton: React.FC<NavigationButtonProps> = ({
   direction,
-  path,
-  navigate,
+  disabled,
+  onClick,
 }) => {
-  const disabled = !path;
-  const navigateToPath = () => path && navigate(path);
-
   return (
     <button
       disabled={disabled}
-      onClick={navigateToPath}
+      onClick={onClick}
       className={`transition-all duration-200 ease-in-out ${
         disabled
           ? "text-gray-300 cursor-not-allowed"

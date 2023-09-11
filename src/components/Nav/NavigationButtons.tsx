@@ -18,10 +18,14 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
     <nav className={`flex justify-between items-center ${className}`}>
       <NavigationButton
         direction="previous"
-        path={previousPath}
-        navigate={navigate}
+        disabled={!previousPath}
+        onClick={() => previousPath && navigate(previousPath)}
       />
-      <NavigationButton direction="next" path={nextPath} navigate={navigate} />
+      <NavigationButton
+        direction="next"
+        disabled={!nextPath}
+        onClick={() => nextPath && navigate(nextPath)}
+      />
     </nav>
   );
 };

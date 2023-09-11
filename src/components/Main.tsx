@@ -1,10 +1,14 @@
 import React from "react";
+import shuffle from "lodash/shuffle";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
+import SelectionTaskTrain from "./SelectionTaskTrain";
 import MarkdownViewer from "../components/MarkdownViewer";
 import story from "../stories/story_World News_SimpleLinear_seed42.json";
+
+const storyShuffled = shuffle(story);
 
 const routes = [
   {
@@ -29,11 +33,15 @@ const routes = [
       />
     ),
   },
-
+  {
+    path: "/trail",
+    name: "Trail",
+    render: () => <SelectionTaskTrain stories={story} mode="train" />,
+  },
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask stories={story} />,
+    render: () => <SelectionTask stories={storyShuffled} mode="task" />,
   },
   {
     path: "/more",

@@ -3,7 +3,7 @@
 export type Chapter = {
     id: string;
     title: string;
-    time_period: [string, string];
+    time_period: string[];
     themes: string[];
     entity: string[];
     content: string;

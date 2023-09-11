@@ -35,7 +35,7 @@ const options = {
   WideMerge: WideMergeSketch,
 };
 
-export const SelectionTask: React.FC<SelectionTaskProps> = ({
+export const SelectionTaskTrain: React.FC<SelectionTaskProps> = ({
   stories,
   mode,
 }) => {
@@ -51,7 +51,7 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
-      navigate("/more");
+      navigate("/task");
     } else {
       setRightSelection(stories[currentStoryIndex].structure);
     }
@@ -137,4 +137,4 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
   );
 };
 
-export default SelectionTask;
+export default SelectionTaskTrain;
