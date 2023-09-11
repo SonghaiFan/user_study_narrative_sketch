@@ -1,36 +1,33 @@
 import React from "react";
 import shuffle from "lodash/shuffle";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
+// Components
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
 import SelectionTaskTrain from "./SelectionTaskTrain";
 import MarkdownViewer from "../components/MarkdownViewer";
+
+// Data
 import story1 from "../stories/story_Culture_and_Entertainment_seed11.json";
 import story2 from "../stories/story_Politics_seed11.json";
+import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
+
+const renderMarkdown = (markdown: string, userId?: string) => (
+  <MarkdownViewer
+    markdown={markdown}
+    className="w-1/2 m-auto mt-5"
+    userId={userId}
+  />
+);
 
 const routes = [
-  {
-    path: "/home",
-    name: "Home",
-    render: (userId: string | undefined) => (
-      <MarkdownViewer
-        filePath="slides/home.md"
-        className="w-1/2 m-auto mt-5"
-        userId={userId}
-      />
-    ),
-  },
+  { path: "/home", name: "Home", render: renderMarkdown.bind(null, home_md) },
   {
     path: "/about",
     name: "About",
-    render: (userId: string | undefined) => (
-      <MarkdownViewer
-        filePath="slides/about.md"
-        className="w-1/2 m-auto mt-5"
-        userId={userId}
-      />
-    ),
+    render: renderMarkdown.bind(null, about_md),
   },
   {
     path: "/trail",
@@ -42,17 +39,7 @@ const routes = [
     name: "Task",
     render: () => <SelectionTask stories={shuffle(story2)} mode="task" />,
   },
-  {
-    path: "/more",
-    name: "More",
-    render: (userId: string | undefined) => (
-      <MarkdownViewer
-        filePath="slides/more.md"
-        className="w-1/2 m-auto mt-5"
-        userId={userId}
-      />
-    ),
-  },
+  { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
 ];
 
 interface MainProps {
@@ -60,16 +47,18 @@ interface MainProps {
   onLogout: () => void;
 }
 
+const getNavigationPaths = (currentPath: string) => {
+  const currentIndex = routes.findIndex((route) => route.path === currentPath);
+  return {
+    previousPath: currentIndex > 0 ? routes[currentIndex - 1].path : null,
+    nextPath:
+      currentIndex < routes.length - 1 ? routes[currentIndex + 1].path : null,
+  };
+};
+
 const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const currentIndex = routes.findIndex(
-    (route) => route.path === location.pathname
-  );
-  const previousPath = currentIndex > 0 ? routes[currentIndex - 1].path : null;
-  const nextPath =
-    currentIndex < routes.length - 1 ? routes[currentIndex + 1].path : null;
+  const { previousPath, nextPath } = getNavigationPaths(location.pathname);
 
   return (
     <div className="flex flex-col h-screen">
@@ -82,7 +71,7 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
         className="fixed z-50 w-full bottom-1/2 p-6 py-4 hidden"
         previousPath={previousPath}
         nextPath={nextPath}
-        navigate={navigate}
+        navigate={useNavigate()}
       />
       <Routes>
         {routes.map((route) => (

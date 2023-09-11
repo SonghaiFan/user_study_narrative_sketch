@@ -1,3 +1,4 @@
+export const about_md = ```
 ---
 ## **Introduction:**
 
@@ -21,3 +22,16 @@ If you're new to narrative structures or mapping, no worries! Our platform will 
 
 🚀 Ready to jump in? Delve into narratives and help shed light on the essence of news stories. Click **Start** and let the journey begin!
 ---
+```;
+
+export const home_md = ```
+---
+**Welcome to Our User Study on Sketching Narrative Structures!**
+---
+```;
+
+export const more_md = ```
+---
+Thank you for participating. Your contribution will play a pivotal role in exploring the underlying narratives of news stories. 🌍✍
+---
+```;
