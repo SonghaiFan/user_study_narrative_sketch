@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Login from "./Login";
-import Main from "./Main";
+import Main from "./Route";
 
 const App: React.FC = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);

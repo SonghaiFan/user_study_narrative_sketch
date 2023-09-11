@@ -1,16 +1,17 @@
 import React from "react";
-// import shuffle from "lodash/shuffle";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-
+import _ from "lodash";
 // Components
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
 import SelectionTaskTrain from "./SelectionTaskTrain";
-import MarkdownViewer from "../components/MarkdownViewer";
+import MarkdownViewer from "./MarkdownViewer";
 
 // Data
-import story from "../stories/combined_stroy_seed11.json";
+import stories from "../stories/combined_stroy_seeds1.json";
+// randomply sample stories to 5 using lodash
+const stories_sample = _.sampleSize(stories, 5);
 import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
 
 const renderMarkdown = (markdown: string, userId?: string) => (
@@ -31,12 +32,12 @@ const routes = [
   {
     path: "/trail",
     name: "Trail",
-    render: () => <SelectionTaskTrain stories={story} mode="train" />,
+    render: () => <SelectionTaskTrain stories={stories_sample} mode="train" />,
   },
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask stories={story} mode="task" />,
+    render: () => <SelectionTask stories={stories_sample} mode="task" />,
   },
   { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
 ];
