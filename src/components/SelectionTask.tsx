@@ -1,7 +1,7 @@
 // ImageSelection.tsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import story from "../stories/story_World News_SimpleLinear_seed42.json";
+
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
 
@@ -16,70 +16,85 @@ import WideBranchSketch from "../motifs/WideBranch.png";
 import WideMergeSketch from "../motifs/WideMerge.png";
 import SharpMergeSketch from "../motifs/SharpMerge.png";
 
+import { Stories } from "../types";
+
+interface SelectionTaskProps {
+  stories: Stories;
+}
+
 const options = {
   Linear: LinearSketch,
   Arch: ArchSketch,
   Ladder: LadderSketch,
   LongFork: LongForkSketch,
   SharpBranch: SharpBranchSketch,
-  SharpMerge: SharpMergeSketch,
-  ShortFork: ShortForkSketch,
   WideBranch: WideBranchSketch,
+  ShortFork: ShortForkSketch,
+  SharpMerge: SharpMergeSketch,
   WideMerge: WideMergeSketch,
 };
 
-export const SelectionTask: React.FC = () => {
-  const [currentStory, setCurrentStory] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+export const SelectionTask: React.FC<SelectionTaskProps> = ({ stories }) => {
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [rightSelection, setRightSelection] = useState<string>(() => {
+    return stories && stories.length > 0 ? stories[0].structure : "";
+  });
 
   // React Router's hook for navigation.
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If currentStory goes out of bounds, navigate to '/more'.
-    if (currentStory >= story.length) {
+    if (currentStoryIndex >= stories.length) {
       navigate("/more");
+    } else {
+      setRightSelection(stories[currentStoryIndex].structure);
     }
-  }, [currentStory, navigate]); // Watching for changes in currentStory.
+  }, [currentStoryIndex, stories, navigate]);
 
   const askConfirmation = (key: string) => {
     console.log(key);
     setShowModal(true);
   };
 
+  const changeStory = () => {
+    setCurrentStoryIndex((prev) => prev + 1);
+    setShowModal(false);
+  };
+
   const hideModal = () => {
     setShowModal(false);
   };
 
-  const changeStory = () => {
-    hideModal();
-    setCurrentStory((prev) => prev + 1);
-  };
-
-  if (currentStory >= story.length) {
+  // Conditional Render Early Return
+  if (currentStoryIndex >= stories.length || !stories[currentStoryIndex]) {
     return null; // or you can return a loading spinner, an error message, etc.
   }
+
+  const currentStory = stories[currentStoryIndex];
   return (
     <>
       <div id="storyText" className="text-2xl font-bold pl-2">
-        {`${story[currentStory].section}: ${currentStory + 1}/${story.length}`}
+        {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
         <span className="font-normal text-sm text-white">
           {" "}
-          {story[currentStory].name}
+          {currentStory.name}
         </span>
       </div>
       <div className="flex flex-row  overflow-hidden">
         {/* Left Panel */}
         <div className="w-1/2 p-8 border overflow-auto">
-          <ChaptersToMarkdown data={story[currentStory]} />
+          <ChaptersToMarkdown data={currentStory} />
         </div>
 
         {/* Right Panel */}
-        <div className="w-1/2 p-[150px] border grid xl:grid-cols-3 grid-cols-2 gap-8">
+        <div className="w-1/2 p-10 xl:p-[150px] border grid xl:grid-cols-3 sm:grid-cols-2  gap-8">
           {Object.entries(options).map(([key, value]) => (
             <div
               key={key}
-              className="relative aspect-w-1 aspect-h-1 transform hover:scale-105 border hover:border-blue-500 hover:border-4 transition-transform duration-500 ease-in-out"
+              className={`relative aspect-w-1 aspect-h-1  border ${
+                rightSelection === key ? "border-red-500" : ""
+              } transform hover:scale-105 hover:border-blue-500 hover:border-4 transition-transform duration-500 ease-in-out`}
             >
               <img
                 src={value}

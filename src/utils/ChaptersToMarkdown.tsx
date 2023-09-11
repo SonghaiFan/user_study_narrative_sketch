@@ -1,11 +1,4 @@
-interface Chapter {
-  id: string;
-  title: string;
-  time_period: string[];
-  entity: string[];
-  themes: string[];
-  content: string;
-}
+import { Chapter } from "../types";
 
 interface ChaptersToMarkdownProps {
   data: {
@@ -51,7 +44,7 @@ const RenderTags: React.FC<RenderTagsProps> = ({
       {tags.map((tag, index) => (
         <span
           key={index}
-          className={`inline-block ${bgColor} ${textColor} px-2 py-1 mr-2 mb-2 rounded-full text-xs font-medium`}
+          className={`inline-block ${bgColor} ${textColor} px-2 py-1 mr-2 mb-2 rounded-xl text-xs font-medium`}
         >
           {tag}
         </span>

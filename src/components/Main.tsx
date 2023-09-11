@@ -4,6 +4,7 @@ import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
 import MarkdownViewer from "../components/MarkdownViewer";
+import story from "../stories/story_World News_SimpleLinear_seed42.json";
 
 const routes = [
   {
@@ -32,7 +33,7 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask />,
+    render: () => <SelectionTask stories={story} />,
   },
   {
     path: "/more",
