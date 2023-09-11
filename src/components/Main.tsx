@@ -10,8 +10,7 @@ import SelectionTaskTrain from "./SelectionTaskTrain";
 import MarkdownViewer from "../components/MarkdownViewer";
 
 // Data
-import story1 from "../stories/story_Culture_and_Entertainment_seed11.json";
-import story2 from "../stories/story_Politics_seed11.json";
+import story from "../stories/combined_stroy_seed11.json";
 import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
 
 const renderMarkdown = (markdown: string, userId?: string) => (
@@ -32,12 +31,12 @@ const routes = [
   {
     path: "/trail",
     name: "Trail",
-    render: () => <SelectionTaskTrain stories={shuffle(story1)} mode="train" />,
+    render: () => <SelectionTaskTrain stories={story} mode="train" />,
   },
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask stories={shuffle(story2)} mode="task" />,
+    render: () => <SelectionTask stories={story} mode="task" />,
   },
   { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
 ];

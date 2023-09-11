@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase"; // Assuming you also have Firestore set up in firebase.js
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { useNavigate, useLocation } from "react-router-dom"; // For navigation and URL parameter extraction
-import Monash_Logo from "../../src/assets/FIT-typographic-mono.png";
+import Monash_Logo from "../../src/assets/Moansh-white-logo.svg";
 
 const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
   const [prolificId, setProlificId] = useState("");
@@ -73,7 +73,7 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       <img
         src={Monash_Logo}
         alt="Monash University logo"
-        className="top-5 h-12 fixed"
+        className="top-5 h-[60px] fixed"
       />
     </div>
   );
