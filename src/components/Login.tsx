@@ -70,11 +70,11 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
           </button>
         </form>
       </div>
-      {/* <img
+      <img
         src={Monash_Logo}
         alt="Monash University logo"
         className="top-5 h-12 fixed"
-      /> */}
+      />
     </div>
   );
 };
