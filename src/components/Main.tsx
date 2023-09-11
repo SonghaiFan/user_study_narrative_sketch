@@ -9,17 +9,13 @@ import MarkdownViewer from "../components/MarkdownViewer";
 import story1 from "../stories/story_Culture_and_Entertainment_seed11.json";
 import story2 from "../stories/story_Politics_seed11.json";
 
-import homeSlide from "../slides/home.md";
-import aboutSlide from "../slides/about.md";
-import moreSlide from "../slides/more.md";
-
 const routes = [
   {
     path: "/home",
     name: "Home",
     render: (userId: string | undefined) => (
       <MarkdownViewer
-        filePath={homeSlide}
+        filePath="slides/home.md"
         className="w-1/2 m-auto mt-5"
         userId={userId}
       />
@@ -30,7 +26,7 @@ const routes = [
     name: "About",
     render: (userId: string | undefined) => (
       <MarkdownViewer
-        filePath={aboutSlide}
+        filePath="slides/about.md"
         className="w-1/2 m-auto mt-5"
         userId={userId}
       />
@@ -51,7 +47,7 @@ const routes = [
     name: "More",
     render: (userId: string | undefined) => (
       <MarkdownViewer
-        filePath={moreSlide}
+        filePath="slides/more.md"
         className="w-1/2 m-auto mt-5"
         userId={userId}
       />
