@@ -1,4 +1,3 @@
-// ImageSelection.tsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavigationButtonsTask from "./Nav/NavigationButtonsTask";
@@ -20,7 +19,7 @@ import { Stories } from "../types";
 
 interface SelectionTaskProps {
   stories: Stories;
-  mode: string;
+  mode: "train" | "task";
 }
 
 const options = {
@@ -35,10 +34,7 @@ const options = {
   WideMerge: WideMergeSketch,
 };
 
-export const SelectionTask: React.FC<SelectionTaskProps> = ({
-  stories,
-  mode,
-}) => {
+const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [rightSelection, setRightSelection] = useState<string>(() => {
@@ -46,16 +42,16 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
   });
   const [selection, setSelection] = useState<string | null>(null);
 
-  // React Router's hook for navigation.
   const navigate = useNavigate();
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
-      navigate("/more");
+      navigate(mode === "train" ? "/task" : "/more");
     } else {
       setRightSelection(stories[currentStoryIndex].structure);
     }
-  }, [currentStoryIndex, stories, navigate]);
+    // console.log(currentStory);
+  }, [currentStoryIndex, stories, navigate, mode]);
 
   const askConfirmation = (key: string) => {
     setSelection(key);
@@ -71,16 +67,15 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
     setShowModal(false);
   };
 
-  // Conditional Render Early Return
   if (currentStoryIndex >= stories.length || !stories[currentStoryIndex]) {
-    return null; // or you can return a loading spinner, an error message, etc.
+    return null;
   }
 
   const currentStory = stories[currentStoryIndex];
   return (
     <>
       <NavigationButtonsTask
-        className="fixed z-50 w-full bottom-1/2 p-6 py-4 "
+        className="fixed w-full bottom-5 p-6 py-4"
         currentStoryIndex={currentStoryIndex}
         setCurrentStoryIndex={setCurrentStoryIndex}
         maxStories={stories.length}
@@ -88,11 +83,10 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
       <div id="storyText" className="text-2xl font-bold pl-2">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
         <span className="font-normal text-sm text-white">
-          {" "}
           {currentStory.name}
         </span>
       </div>
-      <div className="flex flex-row  overflow-hidden">
+      <div className="flex flex-row overflow-hidden  ">
         {/* Left Panel */}
         <div className="w-1/2 p-8 border overflow-auto">
           <ChaptersToMarkdown data={currentStory} mode={mode} />
@@ -103,7 +97,7 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
           {Object.entries(options).map(([key, value]) => (
             <div
               key={key}
-              className={`relative aspect-w-1 aspect-h-1  border ${
+              className={`relative aspect-w-1 aspect-h-1 border ${
                 rightSelection === key && mode === "train"
                   ? "border-red-500"
                   : ""
@@ -111,11 +105,10 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
             >
               <img
                 src={value}
-                alt={key} // added an alt tag for accessibility
+                alt={key}
                 className="absolute inset-0 w-full h-full object-contain cursor-pointer"
                 onClick={() => askConfirmation(key)}
               />
-              {/* value as caption */}
               <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-center py-1">
                 {key}
               </div>
@@ -123,7 +116,6 @@ export const SelectionTask: React.FC<SelectionTaskProps> = ({
           ))}
         </div>
 
-        {/* Modal */}
         <ConfirmationModal
           isVisible={showModal}
           onConfirm={changeStory}

@@ -5,13 +5,12 @@ import _ from "lodash";
 import NavigationBar from "./Nav/NavigationBar";
 import NavigationButtons from "./Nav/NavigationButtons";
 import SelectionTask from "./SelectionTask";
-import SelectionTaskTrain from "./SelectionTaskTrain";
 import MarkdownViewer from "./MarkdownViewer";
 
 // Data
-import stories from "../stories/combined_stroy_seeds1.json";
-// randomply sample stories to 5 using lodash
-const stories_sample = _.sampleSize(stories, 5);
+import stories from "../stories/combined_stroy_seed11.json";
+// randomply sample stories to 9 using lodash
+const stories_sample = _.sampleSize(stories, 9);
 import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
 
 const renderMarkdown = (markdown: string, userId?: string) => (
@@ -32,7 +31,7 @@ const routes = [
   {
     path: "/trail",
     name: "Trail",
-    render: () => <SelectionTaskTrain stories={stories_sample} mode="train" />,
+    render: () => <SelectionTask stories={stories_sample} mode="train" />,
   },
   {
     path: "/task",
