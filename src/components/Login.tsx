@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../firebase"; // Assuming you also have Firestore set up in firebase.js
+import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
-import { useNavigate, useLocation } from "react-router-dom"; // For navigation and URL parameter extraction
+import { useNavigate } from "react-router-dom";
 import Monash_Logo from "../../src/assets/Moansh-white-logo.svg";
+import useProlificId from "./useProlificId"; // Import the custom hook
 
 const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
   const [prolificId, setProlificId] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
+
+  const idFromUrl = useProlificId(); // Use the hook
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const idFromUrl = urlParams.get("PROLIFIC_PID");
     if (idFromUrl) {
       setProlificId(idFromUrl);
     }
-  }, [location]);
+  }, [idFromUrl]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!prolificId) {
       console.error("Prolific ID is not defined!");
-      return; // exit from the function or handle this case appropriately
+      return;
     }
-    // Check if the Prolific ID already exists in Firestore
     try {
       const userDoc = doc(db, "users", prolificId);
       const userSnapshot = await getDoc(userDoc);
 
       if (userSnapshot.exists()) {
         navigate("/more");
-        onLogin(prolificId); // Ensure the state in App is updated
+        onLogin(prolificId);
       } else {
         await setDoc(userDoc, { prolificId });
         navigate("/home");
@@ -38,7 +37,6 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       }
     } catch (error) {
       console.log(error);
-      // Display an error message to the user
     }
   };
 
