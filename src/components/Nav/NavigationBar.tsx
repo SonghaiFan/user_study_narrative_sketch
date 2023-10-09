@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Timer from "../Timer";
 
@@ -34,24 +34,25 @@ const NavigationBar: React.FC<NavigationProps> = ({
   onLogout,
 }) => {
   const location = useLocation();
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsVisible(true);
-  };
+  // const handleMouseEnter = () => {
+  //   setIsVisible(true);
+  // };
 
-  const handleMouseLeave = () => {
-    setIsVisible(false);
-  };
+  // const handleMouseLeave = () => {
+  //   setIsVisible(false);
+  // };
 
   return (
-    <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    // <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div>
       <nav
         className={`flex justify-between items-center ${className}`}
-        style={{
-          transform: isVisible ? "translateY(0)" : "translateY(-80%)",
-          transition: "all 0.2s ease-in-out",
-        }}
+        // style={{
+        //   transform: isVisible ? "translateY(0)" : "translateY(-80%)",
+        //   transition: "all 0.2s ease-in-out",
+        // }}
       >
         <ul className="flex space-x-4">
           {routes.map((route) => (

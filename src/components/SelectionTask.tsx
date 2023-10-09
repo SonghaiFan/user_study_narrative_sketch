@@ -101,7 +101,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
                 rightSelection === key && mode === "train"
                   ? "border-red-500"
                   : ""
-              } transform hover:scale-105 hover:border-blue-500 hover:border-4 transition-transform duration-500 ease-in-out`}
+              } transform hover:scale-105 hover:border-blue-500 transition-transform duration-500 ease-in-out`}
             >
               <img
                 src={value}
