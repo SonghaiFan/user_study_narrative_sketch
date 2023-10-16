@@ -8,11 +8,10 @@ import SelectionTask from "./SelectionTask";
 import MarkdownViewer from "./MarkdownViewer";
 
 // Data
-// import stories from "../stories/combined_stroy_seed11.json";
-// import stories from "../stories/combined_stroy_seeds4.json";
 import stories from "../stories/combined_stories.json";
-// randomply sample stories to 9 using lodash
-const stories_sample = _.sampleSize(stories, 9);
+
+// const stories_sample = _.sampleSize(stories, 9);
+const stories_sample = stories;
 import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
 
 const renderMarkdown = (markdown: string, userId?: string) => (

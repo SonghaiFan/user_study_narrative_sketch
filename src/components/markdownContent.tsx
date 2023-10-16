@@ -51,29 +51,35 @@ Should you have any concerns or complaints about the conduct of the project, you
 export const about_md = `
 ---
 # TT-Graphs: An Introduction
-In our study, we introduce the concept of TT-graphs, or Theme-Time graphs, as a method of visually representing narrative structures. 
-Imagine a grid - like a chess board or a spreadsheet. In a TT-Graph, or Theme-Time graph, nodes are plotted on a grid. This grid is essentially a matrix, with each cell representing a node. The position of a node on the grid is determined by two coordinates: the x-coordinate and the y-coordinate.
+In our study, we introduce the concept of Theme-Time graphs (TT-graphs), as a method of visually representing narrative structures. Imagine a grid like a chess board or a spreadsheet. In a TT-Graph, nodes representing story chapters are plotted on a grid. The position of a node on the grid is determined by two coordinates: the x-coordinate and the y-coordinate.
 
-![Concept](src/assets/concept.png)
 
-The x-coordinate (horizontal axis) represents time. It's like a timeline that shows when things happen in the story. As you move from left to right along the x-axis, you're moving forward in time.
+![Concept](https://raw.githubusercontent.com/SonghaiFan/user_study_narrative_sketch/main/src/assets/concept.png)
+
+The x-coordinate (horizontal axis) represents time. It's like a timeline that shows when things happen in the story. As you move from left to right along the x-axis, you're moving forward in time. Thus, each column represents a distinct timeframe.
 
 The y-coordinate (vertical axis) represents different themes in the story. Each row on the y-axis corresponds to a different theme. So, if a node is in the third row, for example, that means it's part of the third theme.
 
-The color of each node is used to represent its theme. Each theme is assigned a different color. So, all the nodes that are part of the same theme will be the same color. This makes it easy to see at a glance which parts of the story are about which themes.
+The colour of each node also represents its theme. Each theme is assigned a different colour so that all the nodes that are part of the same theme will be the same colour. This makes it easy to see at a glance which parts of the story are about which themes.
 
-By looking at the positions and colors of the nodes, you can get a sense of how the story's themes evolve over time. This can help you understand the structure of the story and how different themes are interconnected.
+By looking at the positions and colours of the nodes, you can get a sense of how the story's themes evolve over time. This can help you understand the structure of the story and how different themes are interconnected.
+
+Links between nodes indicate that those chapters discuss common themes or entities (people, places, organisations) discussed. In the short stories we present in TT-graphs in this study, a path connects all chapters across timeframes.
+
 
 ## Characteristics
-- **One-way Paths**: The lines or paths (called edges) in TT-graphs can only go from left to right, like reading a book.
+- **One-way Paths**: The lines in TT-graphs can only go from left to right, like reading a book.
+
 - **Row Swapping**: Two TT-graphs are considered the same if you can get from one to the other by just swapping rows around.
-- **No Empty Timeframes Gap**: If a column (which represents a certain timeframe) doesn't have any nodes, then all the columns to its right should also be empty. For instance, if we think of the columns as "Past", "Present", and "Future", we can't have nodes in "Past" and "Future" without anything in the "Present".
+
+- **No Empty Timeframes Gap**: Columns (which represent certain timeframes) cannot have an empty column between them. For instance, if we think of the columns as "Past", "Present", and "Future", we can't have nodes in "Past" and "Future" without anything in the "Present".
+
 
 ## Narrative Motifs in TT-Graphs
 
 Narrative motifs in TT (Theme-Time) layout graphs are recurring patterns or structures that help to depict how themes evolve over time in a narrative. They are like the building blocks of a story, representing the simplest units of meaning within the narrative structure.
 
-![Concept](src/assets/motifs.png)
+![Motifs](https://raw.githubusercontent.com/SonghaiFan/user_study_narrative_sketch/main/src/assets/motifs.png)
 
 1. **Linear**: Three chapters follow a single theme in a sequential order.
 2. **Arch**: The narrative starts with one theme, shifts to another, then returns to the first theme.

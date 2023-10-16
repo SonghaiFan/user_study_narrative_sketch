@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 import NavigationButtonsTask from "./Nav/NavigationButtonsTask";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
@@ -58,7 +61,20 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     setShowModal(true);
   };
 
-  const changeStory = () => {
+  const handleConfirm = async () => {
+    // Create a document in Firestore to record the user's selection and task details
+    try {
+      const docRef = await addDoc(collection(db, "userSelections"), {
+        prolificId: "test", // Replace with the user's Prolific ID
+        mode: mode,
+        stories: stories,
+        rightSelection: rightSelection,
+        timestamp: new Date(),
+      });
+      console.log("User selection recorded with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error recording user selection: ", error);
+    }
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);
   };
@@ -118,7 +134,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
         <ConfirmationModal
           isVisible={showModal}
-          onConfirm={changeStory}
+          onConfirm={handleConfirm}
           onCancel={hideModal}
           mode={mode}
           trueAnswer={rightSelection}
