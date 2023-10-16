@@ -1,10 +1,14 @@
+import React from "react";
+
 interface ConfirmationModalProps {
   isVisible: boolean;
-  onConfirm: () => void;
+  onConfirm: (reason: string) => void;
   onCancel: () => void;
   mode: string;
   trueAnswer: string;
   selectedAnswer: string | null;
+  reason: string;
+  setReason: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -14,6 +18,8 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   mode,
   trueAnswer,
   selectedAnswer,
+  reason,
+  setReason,
 }) => {
   if (!isVisible) {
     return null;
@@ -21,16 +27,31 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   const isCorrectSelection = trueAnswer === selectedAnswer;
 
-  const getMessage = () => {
-    if (mode === "train") {
-      if (isCorrectSelection) {
-        return `Your selection is correct! It's ${trueAnswer}. Do you want to continue?`;
-      } else {
-        return "The selection is incorrect. Would you like to try again? ";
-      }
-    } else {
-      return "Are you sure you want to submit your answer?";
-    }
+  const TrainingMessage = () => (
+    <p className="text-lg">
+      {isCorrectSelection ? (
+        <>
+          Your selection is correct! It's{" "}
+          <span className="font-bold">{trueAnswer}</span>.
+        </>
+      ) : (
+        <>
+          The selection is{" "}
+          <span className="font-bold text-red-500">incorrect</span>.
+        </>
+      )}
+    </p>
+  );
+
+  const TaskMessage = () => (
+    <p className="text-lg">
+      Are you sure you want to submit your answer:{" "}
+      <span className="font-bold">{selectedAnswer}</span>?
+    </p>
+  );
+
+  const handleConfirm = () => {
+    onConfirm(reason); // Pass reason to the onConfirm prop function
   };
 
   return (
@@ -38,40 +59,47 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       id="confirmationModal"
       className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40"
     >
-      <div className="bg-white p-8 rounded-md">
-        <p>{getMessage()}</p>
+      <div className="bg-white p-8 rounded-md max-w-[40rem]">
+        {mode === "train" ? <TrainingMessage /> : <TaskMessage />}
+        {mode === "task" && (
+          <>
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Explain your reasoning..."
+              className="mt-2 w-full p-4 border rounded-md overflow-auto resize-none max-h-[200px]"
+            />
+            <p className="mt-4 text-sm text-gray-600 break-words">
+              You can only submit after explaining your reasoning. If you wish
+              to review the text and your selection, click the red button. Your
+              input text will be saved, and you can continue from where you left
+              after reviewing.
+            </p>
+          </>
+        )}
         <div className="flex justify-end mt-4">
-          {mode === "task" && (
-            <button
-              className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
-              onClick={onConfirm}
-            >
-              Confirm
-            </button>
-          )}
-          {mode === "train" && isCorrectSelection && (
-            <button
-              className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
-              onClick={onConfirm}
-            >
-              Confirm
-            </button>
-          )}
-
-          {mode === "train" && !isCorrectSelection && (
-            <button
-              className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
-              onClick={onCancel}
-            >
-              Try Again
-            </button>
-          )}
           {mode !== "train" && (
             <button
               className="mx-2 px-4 py-2 bg-red-500 text-white rounded-md"
               onClick={onCancel}
             >
-              Cancel
+              Not yet, Go back to Review Again
+            </button>
+          )}
+          {mode === "task" && reason && (
+            <button
+              className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
+              onClick={handleConfirm}
+            >
+              Confirm
+            </button>
+          )}
+          {mode === "train" && (
+            <button
+              className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
+              onClick={isCorrectSelection ? handleConfirm : onCancel}
+            >
+              {isCorrectSelection ? "Continue" : "Try Again"}
             </button>
           )}
         </div>

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "story_Muddle_Puddle_Retain_seed626.json",
+    "section": "Muddle_Puddle",
+    "structure": "Retain",
+    "seed": 626,
+    "chapters": [
+      {
+        "id": "A1",
+        "title": "Elon Musk Unveils SpaceX's Starship at International Astronautical Congress",
+        "time_period": ["2023-02-01", "2023-05-02"],
+        "themes": ["Space Exploration"],
+        "entity": [
+          "International Astronautical Congress",
+          "Elon Musk",
+          "Mars",
+          "Starship"
+        ],
+        "content": "Elon Musk, the CEO of SpaceX, has unveiled the Starship at the International Astronautical Congress. The spacecraft is designed to carry humans to Mars. Musk stated that SpaceX aims to make life multiplanetary, starting with Mars. The Starship is a key part of this plan."
+      },
+      {
+        "id": "A2",
+        "title": "SpaceX Starship: The Journey to Mars Begins",
+        "time_period": ["2023-05-02", "2023-08-01"],
+        "themes": ["Space Exploration"],
+        "entity": [
+          "Mars",
+          "Starship",
+          "SpaceX",
+          "International Astronautical Congress",
+          "Elon Musk"
+        ],
+        "content": "After the unveiling at the International Astronautical Congress, SpaceX's Starship is now set for its first mission to Mars. Elon Musk confirmed that the spacecraft is ready for the journey. He stated that this is a big step towards their goal of making life multiplanetary. The Starship's mission is to explore the possibility of human life on Mars. This is a new chapter in the history of space exploration."
+      }
+    ]
+  },
+  {
+    "name": "story_Muddle_Puddle_Shift_seed835.json",
+    "section": "Muddle_Puddle",
+    "structure": "Shift",
+    "seed": 835,
+    "chapters": [
+      {
+        "id": "A1",
+        "title": "Trump Teases 2024 Run, Stirring Media Frenzy",
+        "time_period": ["2023-02-01", "2023-03-17"],
+        "themes": ["Political Ambitions"],
+        "entity": [
+          "Donald Trump",
+          "Political Analysts",
+          "Public",
+          "Tweet Company"
+        ],
+        "content": "Donald Trump, using Tweet Company as his main communication tool, hinted at a possible return to politics. The former president shared a new 2024 campaign sign, sparking widespread speculation. Political analysts are now dissecting his second-term agenda, as he continues to address the public in campaign events. The media frenzy around Trump's potential run is palpable, with the public eagerly awaiting his next move."
+      },
+      {
+        "id": "B2",
+        "title": "Elon Musk Transforms Tweet Company into Superapp X",
+        "time_period": ["2023-07-19", "2023-10-05"],
+        "themes": ["Social Media Transformation"],
+        "entity": ["WeChat", "Brand Experts", "Users", "Tweet Company", "X"],
+        "content": "Elon Musk, having acquired a significant stake in the Tweet Company, has rebranded it as X. Musk's vision is to transform X into a superapp akin to China's WeChat. This drastic change has erased a recognizable brand overnight, causing a stir among users and brand experts. Despite the shock, Musk plans to introduce several new features to enhance user engagement and differentiate X from its predecessor. The public eagerly awaits the unveiling of these features, marking a new era in social media."
+      }
+    ]
+  }
+]

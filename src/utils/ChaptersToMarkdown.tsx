@@ -86,7 +86,7 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
               />
             </div>
             <p className="text-md text-gray-800">
-              {getHighlightedText(content, entity)}
+              {mode == "task" ? content : getHighlightedText(content, entity)}
             </p>
             <hr className="my-2" />
           </div>

@@ -2,13 +2,14 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import _ from "lodash";
 // Components
-import NavigationBar from "./Nav/NavigationBar";
-import NavigationButtons from "./Nav/NavigationButtons";
+import NavigationBar from "./navigation/NavigationBar";
+import NavigationButtons from "./navigation/NavigationButtons";
 import SelectionTask from "./SelectionTask";
 import MarkdownViewer from "./MarkdownViewer";
 
 // Data
 import stories from "../stories/combined_stories.json";
+import train_stories from "../stories/combined_stories_train.json";
 
 // const stories_sample = _.sampleSize(stories, 9);
 const stories_sample = stories;
@@ -28,6 +29,11 @@ const routes = [
     path: "/about",
     name: "About",
     render: renderMarkdown.bind(null, about_md),
+  },
+  {
+    path: "/train",
+    name: "Train",
+    render: () => <SelectionTask stories={train_stories} mode="train" />,
   },
   {
     path: "/trail",
@@ -68,7 +74,7 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
         onLogout={onLogout}
       />
       <NavigationButtons
-        className="fixed z-50 w-full bottom-1/2 p-6 py-4"
+        className="fixed z-50 w-full bottom-5 p-6 py-4"
         previousPath={previousPath}
         nextPath={nextPath}
         navigate={useNavigate()}

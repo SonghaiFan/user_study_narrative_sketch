@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
-import NavigationButtonsTask from "./Nav/NavigationButtonsTask";
+import NavigationButtonsTask from "./navigation/NavigationButtonsTask";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
 
@@ -44,6 +44,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     return stories && stories.length > 0 ? stories[0].structure : "";
   });
   const [selection, setSelection] = useState<string | null>(null);
+  const [reason, setReason] = useState("");
 
   const navigate = useNavigate();
 
@@ -63,18 +64,19 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
   const handleConfirm = async () => {
     // Create a document in Firestore to record the user's selection and task details
-    try {
-      const docRef = await addDoc(collection(db, "userSelections"), {
-        prolificId: "test", // Replace with the user's Prolific ID
-        mode: mode,
-        stories: stories,
-        rightSelection: rightSelection,
-        timestamp: new Date(),
-      });
-      console.log("User selection recorded with ID: ", docRef.id);
-    } catch (error) {
-      console.error("Error recording user selection: ", error);
-    }
+    // try {
+    //   const docRef = await addDoc(collection(db, "userSelections"), {
+    //     prolificId: "test", // Replace with the user's Prolific ID
+    //     mode: mode,
+    //     stories: stories,
+    //     rightSelection: rightSelection,
+    //     timestamp: new Date(),
+    //   });
+    //   console.log("User selection recorded with ID: ", docRef.id);
+    // } catch (error) {
+    //   console.error("Error recording user selection: ", error);
+    // }
+    setReason("");
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);
   };
@@ -90,19 +92,19 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const currentStory = stories[currentStoryIndex];
   return (
     <>
-      <NavigationButtonsTask
+      {/* <NavigationButtonsTask
         className="fixed w-full bottom-5 p-6 py-4"
         currentStoryIndex={currentStoryIndex}
         setCurrentStoryIndex={setCurrentStoryIndex}
         maxStories={stories.length}
-      ></NavigationButtonsTask>
+      ></NavigationButtonsTask> */}
       <div id="storyText" className="text-2xl font-bold pl-2">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
         <span className="font-normal text-sm text-white">
           {currentStory.name}
         </span>
       </div>
-      <div className="flex flex-row overflow-hidden  ">
+      <div className="flex flex-row overflow-hidden h-full  ">
         {/* Left Panel */}
         <div className="w-1/2 p-8 border overflow-auto">
           <ChaptersToMarkdown data={currentStory} mode={mode} />
@@ -125,7 +127,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
                 className="absolute inset-0 w-full h-full object-contain cursor-pointer"
                 onClick={() => askConfirmation(key)}
               />
-              <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-center py-1">
+              <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-xs text-center py-1">
                 {key}
               </div>
             </div>
@@ -139,6 +141,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
           mode={mode}
           trueAnswer={rightSelection}
           selectedAnswer={selection}
+          reason={reason}
+          setReason={setReason}
         />
       </div>
     </>
