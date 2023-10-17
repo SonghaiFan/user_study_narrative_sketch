@@ -6,8 +6,8 @@ import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 // import sketches images
-import Retain from "../motifs/Retain.png";
-import Shift from "../motifs/Shift.png";
+import Retain from "/public/motifs/Retain.png";
+import Shift from "/public/motifs/Shift.png";
 
 import { Stories } from "../types";
 

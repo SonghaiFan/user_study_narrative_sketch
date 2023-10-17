@@ -9,15 +9,16 @@ import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 // import sketches images
-import ArchSketch from "../motifs/Arch.png";
-import LadderSketch from "../motifs/Ladder.png";
-import LinearSketch from "../motifs/Linear.png";
-import LongForkSketch from "../motifs/LongFork.png";
-import SharpBranchSketch from "../motifs/SharpBranch.png";
-import ShortForkSketch from "../motifs/ShortFork.png";
-import WideBranchSketch from "../motifs/WideBranch.png";
-import WideMergeSketch from "../motifs/WideMerge.png";
-import SharpMergeSketch from "../motifs/SharpMerge.png";
+// public/motifs/Arch.png
+import ArchSketch from "/public/motifs/Arch.png";
+import LadderSketch from "/public/motifs/Ladder.png";
+import LinearSketch from "/public/motifs/Linear.png";
+import LongForkSketch from "/public/motifs/LongFork.png";
+import SharpBranchSketch from "/public/motifs/SharpBranch.png";
+import ShortForkSketch from "/public/motifs/ShortFork.png";
+import WideBranchSketch from "/public/motifs/WideBranch.png";
+import WideMergeSketch from "/public/motifs/WideMerge.png";
+import SharpMergeSketch from "/public/motifs/SharpMerge.png";
 
 import { Stories } from "../types";
 
