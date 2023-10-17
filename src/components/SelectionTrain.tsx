@@ -1,43 +1,26 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
 
 import NavigationButtonsTask from "./navigation/NavigationButtonsTask";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 // import sketches images
-import ArchSketch from "../motifs/Arch.png";
-import LadderSketch from "../motifs/Ladder.png";
-import LinearSketch from "../motifs/Linear.png";
-import LongForkSketch from "../motifs/LongFork.png";
-import SharpBranchSketch from "../motifs/SharpBranch.png";
-import ShortForkSketch from "../motifs/ShortFork.png";
-import WideBranchSketch from "../motifs/WideBranch.png";
-import WideMergeSketch from "../motifs/WideMerge.png";
-import SharpMergeSketch from "../motifs/SharpMerge.png";
+import Retain from "../motifs/Retain.png";
+import Shift from "../motifs/Shift.png";
 
 import { Stories } from "../types";
 
-interface SelectionTaskProps {
+interface SelectionTrainProps {
   stories: Stories;
-  mode: "train" | "task";
 }
 
-const options = {
-  Linear: LinearSketch,
-  Arch: ArchSketch,
-  Ladder: LadderSketch,
-  LongFork: LongForkSketch,
-  SharpBranch: SharpBranchSketch,
-  WideBranch: WideBranchSketch,
-  ShortFork: ShortForkSketch,
-  SharpMerge: SharpMergeSketch,
-  WideMerge: WideMergeSketch,
+const train_options = {
+  Retain: Retain,
+  Shift: Shift,
 };
 
-const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
+const SelectionTrain: React.FC<SelectionTrainProps> = ({ stories }) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [rightSelection, setRightSelection] = useState<string>(() => {
@@ -50,13 +33,11 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
-      navigate(mode === "train" ? "/task" : "/more");
+      navigate("/task");
     } else {
       setRightSelection(stories[currentStoryIndex].structure);
     }
-
-    // console.log(currentStory);
-  }, [currentStoryIndex, stories, navigate, mode]);
+  }, [currentStoryIndex, stories, navigate]);
 
   const askConfirmation = (key: string) => {
     setSelection(key);
@@ -64,19 +45,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   };
 
   const handleConfirm = async () => {
-    // Create a document in Firestore to record the user's selection and task details
-    // try {
-    //   const docRef = await addDoc(collection(db, "userSelections"), {
-    //     prolificId: "test", // Replace with the user's Prolific ID
-    //     mode: mode,
-    //     stories: stories,
-    //     rightSelection: rightSelection,
-    //     timestamp: new Date(),
-    //   });
-    //   console.log("User selection recorded with ID: ", docRef.id);
-    // } catch (error) {
-    //   console.error("Error recording user selection: ", error);
-    // }
     setReason("");
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);
@@ -109,18 +77,16 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       <div className="flex flex-row overflow-hidden h-full  ">
         {/* Left Panel */}
         <div className="w-1/2 p-8 border overflow-auto">
-          <ChaptersToMarkdown data={currentStory} mode={mode} />
+          <ChaptersToMarkdown data={currentStory} mode="train" />
         </div>
 
         {/* Right Panel */}
-        <div className="w-1/2 p-10 xl:p-[150px] border grid xl:grid-cols-3 sm:grid-cols-2  gap-8">
-          {Object.entries(options).map(([key, value]) => (
+        <div className="w-1/2 p-10 xl:p-[150px] border grid xl:grid-cols-2 sm:grid-cols-1 gap-8">
+          {Object.entries(train_options).map(([key, value]) => (
             <div
               key={key}
               className={`relative aspect-w-1 aspect-h-1 border ${
-                rightSelection === key && mode === "train"
-                  ? "border-red-500"
-                  : ""
+                rightSelection === key ? "" : ""
               } transform hover:scale-105 hover:border-blue-500 transition-transform duration-500 ease-in-out`}
             >
               <img
@@ -140,7 +106,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
           isVisible={showModal}
           onConfirm={handleConfirm}
           onCancel={hideModal}
-          mode={mode}
+          mode="train"
           trueAnswer={rightSelection}
           selectedAnswer={selection}
           reason={reason}
@@ -151,4 +117,4 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   );
 };
 
-export default SelectionTask;
+export default SelectionTrain;

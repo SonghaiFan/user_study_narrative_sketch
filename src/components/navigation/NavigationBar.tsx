@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import { useState, useEffect } from "react"; // Import useState
 import { Link, useLocation } from "react-router-dom";
 import Timer from "../Timer";
 
@@ -34,37 +34,40 @@ const NavigationBar: React.FC<NavigationProps> = ({
   onLogout,
 }) => {
   const location = useLocation();
-  // const [isVisible, setIsVisible] = useState(false);
+  const [visitedRoutes, setVisitedRoutes] = useState<string[]>([
+    location.pathname,
+  ]); // State to keep track of visited routes
 
-  // const handleMouseEnter = () => {
-  //   setIsVisible(true);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setIsVisible(false);
-  // };
+  // Update the visited routes whenever location changes
+  useEffect(() => {
+    setVisitedRoutes((prevVisited) => {
+      if (!prevVisited.includes(location.pathname)) {
+        return [...prevVisited, location.pathname];
+      }
+      return prevVisited;
+    });
+  }, [location.pathname]);
 
   return (
-    // <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
     <div>
-      <nav
-        className={`flex justify-between items-center ${className}`}
-        // style={{
-        //   transform: isVisible ? "translateY(0)" : "translateY(-80%)",
-        //   transition: "all 0.2s ease-in-out",
-        // }}
-      >
+      <nav className={`flex justify-between items-center ${className}`}>
         <ul className="flex space-x-4">
           {routes.map((route) => (
             <li key={route.path}>
-              <Link
-                to={route.path}
-                className={`text-white hover:text-gray-300 ${
-                  location.pathname === route.path ? "underline" : ""
-                }`}
-              >
-                {route.name}
-              </Link>
+              {visitedRoutes.includes(route.path) ? (
+                <Link
+                  to={route.path}
+                  className={`text-white hover:text-gray-300 ${
+                    location.pathname === route.path ? "underline" : ""
+                  }`}
+                >
+                  {route.name}
+                </Link>
+              ) : (
+                <span className="text-blue-800 cursor-not-allowed">
+                  {route.name}
+                </span>
+              )}
             </li>
           ))}
         </ul>

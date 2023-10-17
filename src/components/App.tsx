@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import useProlificId from "./useProlificId"; // Import the custom hook
-import UserStatusProvider from "./context/UserStatusContext";
+import UserStatusProvider from "./contexts/UserStatusContext";
 
 import Login from "./Login";
-import Main from "./Route";
+import Main from "./Main";
 
 const App: React.FC = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -52,7 +52,7 @@ const App: React.FC = () => {
             <Navigate to="/login" />
           ) : (
             <UserStatusProvider userId={userId}>
-              <Main userId={userId} onLogout={handleLogout} />
+              <Main onLogout={handleLogout} />
             </UserStatusProvider>
           )
         }

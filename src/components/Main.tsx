@@ -1,20 +1,20 @@
-import React from "react";
+// Importing necessary libraries and components
+import React, { useContext } from "react";
+import { UserStatusContext } from "./contexts/UserStatusContext";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import _ from "lodash";
-// Components
+// import _ from "lodash";
 import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtons from "./navigation/NavigationButtons";
 import SelectionTask from "./SelectionTask";
+import SelectionTrain from "./SelectionTrain";
 import MarkdownViewer from "./MarkdownViewer";
-
-// Data
 import stories from "../stories/combined_stories.json";
 import train_stories from "../stories/combined_stories_train.json";
+import { home_md, about_md, more_md } from "./markdownContent";
 
-// const stories_sample = _.sampleSize(stories, 9);
-const stories_sample = stories;
-import { home_md, about_md, more_md } from "./markdownContent"; // Assuming you separate the markdown content
+const stories_sample = stories; // assuming stories_sample is defined in this way
 
+// Function to render markdown content
 const renderMarkdown = (markdown: string, userId?: string) => (
   <MarkdownViewer
     markdown={markdown}
@@ -23,6 +23,7 @@ const renderMarkdown = (markdown: string, userId?: string) => (
   />
 );
 
+// Routes configuration
 const routes = [
   { path: "/home", name: "Home", render: renderMarkdown.bind(null, home_md) },
   {
@@ -33,23 +34,23 @@ const routes = [
   {
     path: "/train",
     name: "Train",
-    render: () => <SelectionTask stories={train_stories} mode="train" />,
+    render: () => <SelectionTrain stories={train_stories} />,
   },
-  {
-    path: "/trail",
-    name: "Trail",
-    render: () => <SelectionTask stories={stories_sample} mode="train" />,
-  },
+  // {
+  //   path: "/trail",
+  //   name: "Trail",
+  //   render: () => <SelectionTask stories={stories} mode="train" />,
+  // },
   {
     path: "/task",
     name: "Task",
     render: () => <SelectionTask stories={stories_sample} mode="task" />,
   },
-  { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
+  { path: "/end", name: "End", render: renderMarkdown.bind(null, more_md) },
 ];
 
+// Main component
 interface MainProps {
-  userId: string;
   onLogout: () => void;
 }
 
@@ -62,8 +63,14 @@ const getNavigationPaths = (currentPath: string) => {
   };
 };
 
-const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
+const Main: React.FC<MainProps> = ({ onLogout }) => {
+  const userStatusContext = useContext(UserStatusContext);
   const location = useLocation();
+
+  if (!userStatusContext) {
+    throw new Error("Main component must be used within a UserStatusProvider");
+  }
+
   const { previousPath, nextPath } = getNavigationPaths(location.pathname);
 
   return (
@@ -74,18 +81,15 @@ const Main: React.FC<MainProps> = ({ userId, onLogout }) => {
         onLogout={onLogout}
       />
       <NavigationButtons
-        className="fixed z-50 w-full bottom-5 p-6 py-4"
+        className="fixed z-50 w-full bottom-1/2 right-0 p-6 py-4"
         previousPath={previousPath}
+        currentPath={location.pathname}
         nextPath={nextPath}
         navigate={useNavigate()}
       />
       <Routes>
         {routes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={route.render(userId)}
-          />
+          <Route key={route.path} path={route.path} element={route.render()} />
         ))}
       </Routes>
     </div>

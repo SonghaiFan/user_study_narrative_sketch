@@ -11,11 +11,11 @@ interface MarkdownViewerProps {
 const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
   markdown,
   className,
-  userId,
+  // userId,
 }) => {
   return (
     <div className={`markdown-body ${className}`}>
-      user ID: {userId}
+      {/* user ID: {userId} */}
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
     </div>
   );

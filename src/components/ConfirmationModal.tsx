@@ -83,7 +83,7 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               className="mx-2 px-4 py-2 bg-red-500 text-white rounded-md"
               onClick={onCancel}
             >
-              Not yet, Go back to Review Again
+              No, Review Again Before Proceeding
             </button>
           )}
           {mode === "task" && reason && (
@@ -91,9 +91,10 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
               onClick={handleConfirm}
             >
-              Confirm
+              Yes, Proceed With Current Answer
             </button>
           )}
+
           {mode === "train" && (
             <button
               className="mx-2 px-4 py-2 bg-blue-500 text-white rounded-md"
