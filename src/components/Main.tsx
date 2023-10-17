@@ -46,7 +46,7 @@ const routes = [
     name: "Task",
     render: () => <SelectionTask stories={stories_sample} mode="task" />,
   },
-  { path: "/end", name: "End", render: renderMarkdown.bind(null, more_md) },
+  { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
 ];
 
 // Main component

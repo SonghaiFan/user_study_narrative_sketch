@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
+import { UserStatusContext } from "./contexts/UserStatusContext";
 import NavigationButtonsTask from "./navigation/NavigationButtonsTask";
 import ChaptersToMarkdown from "../utils/ChaptersToMarkdown";
 import { ConfirmationModal } from "./ConfirmationModal";
@@ -63,20 +64,25 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     setShowModal(true);
   };
 
+  const userStatusContext = useContext(UserStatusContext);
+  const userId = userStatusContext?.userId;
+
   const handleConfirm = async () => {
     // Create a document in Firestore to record the user's selection and task details
-    // try {
-    //   const docRef = await addDoc(collection(db, "userSelections"), {
-    //     prolificId: "test", // Replace with the user's Prolific ID
-    //     mode: mode,
-    //     stories: stories,
-    //     rightSelection: rightSelection,
-    //     timestamp: new Date(),
-    //   });
-    //   console.log("User selection recorded with ID: ", docRef.id);
-    // } catch (error) {
-    //   console.error("Error recording user selection: ", error);
-    // }
+    try {
+      const docRef = await addDoc(collection(db, "userSelections"), {
+        prolificId: userId,
+        mode: mode,
+        story: stories[currentStoryIndex].name,
+        rightSelection: rightSelection,
+        selection: selection,
+        reason: reason,
+        timestamp: new Date(),
+      });
+      console.log("User selection recorded with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error recording user selection: ", error);
+    }
     setReason("");
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);

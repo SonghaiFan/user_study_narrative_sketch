@@ -57,7 +57,7 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div
       id="confirmationModal"
-      className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40"
+      className="fixed z-50 top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40"
     >
       <div className="bg-white p-8 rounded-md max-w-[40rem]">
         {mode === "train" ? <TrainingMessage /> : <TaskMessage />}
