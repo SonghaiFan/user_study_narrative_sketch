@@ -2002,7 +2002,7 @@ Should you have any concerns or complaints about the conduct of the project, you
 In our study, we introduce the concept of Theme-Time graphs (TT-graphs), as a method of visually representing narrative structures. Imagine a grid like a chess board or a spreadsheet. In a TT-Graph, nodes representing story chapters are plotted on a grid. The position of a node on the grid is determined by two coordinates: the x-coordinate and the y-coordinate.
 
 
-![Concept](https://raw.githubusercontent.com/SonghaiFan/user_study_narrative_sketch/gh-pages/motifs.png)
+![Concept](https://raw.githubusercontent.com/SonghaiFan/user_study_narrative_sketch/gh-pages/concept.png)
 
 The x-coordinate (horizontal axis) represents time. It's like a timeline that shows when things happen in the story. As you move from left to right along the x-axis, you're moving forward in time. Thus, each column represents a distinct timeframe.
 
