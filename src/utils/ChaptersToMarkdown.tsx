@@ -1,4 +1,4 @@
-import { Chapter } from "../types";
+import { Chapter } from "../components/data/types";
 
 interface ChaptersToMarkdownProps {
   data: {

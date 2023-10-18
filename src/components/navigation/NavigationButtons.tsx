@@ -25,8 +25,6 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   const { status, setStatus } = userStatusContext;
 
   useEffect(() => {
-    // console.log("currentPath", currentPath);
-    // console.log("status", status);
     if (currentPath != "/task") {
       setStatus("task-not-started");
     }

@@ -1,15 +1,17 @@
+import Monash_Logo from "../../src/assets/Moansh-white-logo.svg";
+import { modeConfig } from "../modeConfig";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useProlificId from "../utils/useProlificId";
+
 import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
-import Monash_Logo from "../../src/assets/Moansh-white-logo.svg";
-import useProlificId from "./useProlificId"; // Import the custom hook
 
 const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
   const [prolificId, setProlificId] = useState("");
   const navigate = useNavigate();
 
-  const idFromUrl = useProlificId(); // Use the hook
+  const idFromUrl = useProlificId();
 
   useEffect(() => {
     if (idFromUrl) {
@@ -27,12 +29,14 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       const userDoc = doc(db, "users", prolificId);
       const userSnapshot = await getDoc(userDoc);
 
+      console.log(userSnapshot.data());
+
       if (userSnapshot.exists()) {
-        navigate("/more");
+        navigate(modeConfig["repeatVisit"].nextPath);
         onLogin(prolificId);
       } else {
         await setDoc(userDoc, { prolificId });
-        navigate("/home");
+        navigate(modeConfig["firstVisit"].nextPath);
         onLogin(prolificId);
       }
     } catch (error) {

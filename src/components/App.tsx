@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import useProlificId from "./useProlificId"; // Import the custom hook
+import useProlificId from "../utils/useProlificId"; // Import the custom hook
 import UserStatusProvider from "./contexts/UserStatusContext";
 
 import Login from "./Login";
-import Main from "./Main";
+import MyRoutes from "./MyRoutes";
 
 const App: React.FC = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const hasLoggedInUser = localStorage.getItem("userId") || false;
+  const [isLoggedIn, setLoggedIn] = useState(hasLoggedInUser);
   const [userId, setUserId] = useState("");
 
   const prolificId = useProlificId(); // Use the hook
@@ -52,7 +53,7 @@ const App: React.FC = () => {
             <Navigate to="/login" />
           ) : (
             <UserStatusProvider userId={userId}>
-              <Main onLogout={handleLogout} />
+              <MyRoutes onLogout={handleLogout} />
             </UserStatusProvider>
           )
         }

@@ -99,7 +99,7 @@ In our research, we use TT-graphs to explore the influence of textual and graphi
 ---
 `;
 
-export const more_md = `
+export const end_md = `
 ---
 Thank you for participating. Your contribution will play a pivotal role in exploring the underlying narratives of news stories. 🌍✍
 ---

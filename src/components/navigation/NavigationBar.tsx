@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"; // Import useState
 import { Link, useLocation } from "react-router-dom";
-import Timer from "../Timer";
+import Timer from "../common/Timer";
 
-interface Route {
+interface MyRoutes {
   path: string;
   name: string;
 }
 
 interface NavigationProps {
-  routes: Route[];
+  routes: MyRoutes[];
   className?: string;
   onLogout: () => void;
 }
@@ -28,6 +28,7 @@ const CenterIndicator: React.FC = () => {
     </div>
   );
 };
+
 const NavigationBar: React.FC<NavigationProps> = ({
   routes,
   className,
@@ -64,9 +65,14 @@ const NavigationBar: React.FC<NavigationProps> = ({
                   {route.name}
                 </Link>
               ) : (
-                <span className="text-blue-800 cursor-not-allowed">
+                <Link
+                  to={route.path}
+                  className={`text-white hover:text-gray-300 ${
+                    location.pathname === route.path ? "underline" : ""
+                  }`}
+                >
                   {route.name}
-                </span>
+                </Link>
               )}
             </li>
           ))}

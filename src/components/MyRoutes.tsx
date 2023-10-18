@@ -5,13 +5,12 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 // import _ from "lodash";
 import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtons from "./navigation/NavigationButtons";
-import SelectionTask from "./SelectionTask";
-import SelectionTrain from "./SelectionTrain";
-import MarkdownViewer from "./MarkdownViewer";
-import stories from "../stories/combined_stories.json";
-import train_stories from "../stories/combined_stories_train.json";
-import { home_md, about_md, more_md } from "./markdownContent";
-
+import SelectionTask from "./tasks/SelectionTask";
+import MarkdownViewer from "./common/MarkdownViewer";
+import MarkdownRenderer from "./common/MarkdownRenderer";
+import stories from "./data/stories/combined_stories.json";
+import train_stories from "./data/stories/combined_stories_train.json";
+import { home_md, about_md, end_md } from "./common/MarkdownContent";
 const stories_sample = stories; // assuming stories_sample is defined in this way
 
 // Function to render markdown content
@@ -25,32 +24,53 @@ const renderMarkdown = (markdown: string, userId?: string) => (
 
 // Routes configuration
 const routes = [
-  { path: "/home", name: "Home", render: renderMarkdown.bind(null, home_md) },
+  {
+    path: "/home",
+    name: "Home",
+    component: (
+      <MarkdownRenderer
+        path="/markdown/home.md"
+        className="w-1/2 m-auto mt-5"
+      />
+    ),
+  },
   {
     path: "/about",
     name: "About",
-    render: renderMarkdown.bind(null, about_md),
+    component: (
+      <MarkdownRenderer
+        path="/markdown/about.md"
+        className="w-1/2 m-auto mt-5"
+      />
+    ),
   },
   {
     path: "/train",
     name: "Train",
-    render: () => <SelectionTrain stories={train_stories} />,
+    // render: () => <SelectionTask stories={train_stories} mode="train" />,
+    component: <SelectionTask stories={train_stories} mode="train" />,
   },
   // {
   //   path: "/trail",
   //   name: "Trail",
-  //   render: () => <SelectionTask stories={stories} mode="train" />,
+  //   component: <SelectionTask stories={stories} mode="train" />,
   // },
   {
     path: "/task",
     name: "Task",
-    render: () => <SelectionTask stories={stories_sample} mode="task" />,
+    component: <SelectionTask stories={stories_sample} mode="task" />,
   },
-  { path: "/more", name: "More", render: renderMarkdown.bind(null, more_md) },
+  {
+    path: "/end",
+    name: "End",
+    component: (
+      <MarkdownRenderer path="/markdown/end.md" className="w-1/2 m-auto mt-5" />
+    ),
+  },
 ];
 
-// Main component
-interface MainProps {
+// MyRoutes component
+interface MyRoutesProps {
   onLogout: () => void;
 }
 
@@ -63,12 +83,14 @@ const getNavigationPaths = (currentPath: string) => {
   };
 };
 
-const Main: React.FC<MainProps> = ({ onLogout }) => {
+const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
   const userStatusContext = useContext(UserStatusContext);
   const location = useLocation();
 
   if (!userStatusContext) {
-    throw new Error("Main component must be used within a UserStatusProvider");
+    throw new Error(
+      "MyRoutes component must be used within a UserStatusProvider"
+    );
   }
 
   const { previousPath, nextPath } = getNavigationPaths(location.pathname);
@@ -89,11 +111,11 @@ const Main: React.FC<MainProps> = ({ onLogout }) => {
       />
       <Routes>
         {routes.map((route) => (
-          <Route key={route.path} path={route.path} element={route.render()} />
+          <Route key={route.path} path={route.path} element={route.component} />
         ))}
       </Routes>
     </div>
   );
 };
 
-export default Main;
+export default MyRoutes;
