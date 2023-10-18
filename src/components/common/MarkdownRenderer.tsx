@@ -30,9 +30,6 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
         console.error("Fetch error:", fetchError);
         setError(fetchError);
       });
-
-    console.log("path: ", path);
-    console.log("markdown: ", markdown);
   }, [path]); // Re-run the effect when 'path' changes
 
   if (error) {
