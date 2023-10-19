@@ -3,6 +3,7 @@ import { modeConfig } from "../modeConfig";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useProlificId from "../utils/useProlificId";
+import { ENABLE_DEBUG } from "../constants/debug";
 
 import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
@@ -21,6 +22,13 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (ENABLE_DEBUG) {
+      navigate(modeConfig["firstVisit"].nextPath);
+      onLogin("test");
+      return;
+    }
+
     if (!prolificId) {
       console.error("Prolific ID is not defined!");
       return;

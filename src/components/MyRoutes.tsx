@@ -1,56 +1,13 @@
 // Importing necessary libraries and components
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserStatusContext } from "./contexts/UserStatusContext";
+import { getStatusForPath } from "../utils/status";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-// import _ from "lodash";
-import NavigationBar from "./navigation/NavigationBar";
-import NavigationButtons from "./navigation/NavigationButtons";
-import SelectionTask from "./tasks/SelectionTask";
-import MarkdownRenderer from "./common/MarkdownRenderer";
-import stories from "./data/stories/combined_stories.json";
-import train_stories from "./data/stories/combined_stories_train.json";
-const stories_sample = stories; // assuming stories_sample is defined in this way
 
-// Routes configuration
-const routes = [
-  {
-    path: "/home",
-    name: "Home",
-    component: (
-      <MarkdownRenderer
-        path="/markdown/home.md"
-        className="md:w-1/2 m-auto mt-5 p-10"
-      />
-    ),
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: (
-      <MarkdownRenderer
-        path="/markdown/about.md"
-        className="md:w-1/2 m-auto mt-5 p-10"
-      />
-    ),
-  },
-  {
-    path: "/train",
-    name: "Train",
-    component: <SelectionTask stories={train_stories} mode="train" />,
-  },
-  {
-    path: "/task",
-    name: "Task",
-    component: <SelectionTask stories={stories_sample} mode="task" />,
-  },
-  {
-    path: "/end",
-    name: "End",
-    component: (
-      <MarkdownRenderer path="/markdown/end.md" className="w-1/2 m-auto mt-5" />
-    ),
-  },
-];
+import NavigationBar from "./navigation/NavigationBar";
+import Pagination from "../components/navigation/Pagination";
+import { ENABLE_DEBUG } from "../constants/debug";
+import { routes } from "./MyRoutesConfig";
 
 // MyRoutes component
 interface MyRoutesProps {
@@ -68,15 +25,32 @@ const getNavigationPaths = (currentPath: string) => {
 
 const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
   const userStatusContext = useContext(UserStatusContext);
-  const location = useLocation();
 
+  const navigate = useNavigate();
   if (!userStatusContext) {
     throw new Error(
       "MyRoutes component must be used within a UserStatusProvider"
     );
   }
+  const { status, setStatus } = userStatusContext;
+  const location = useLocation();
 
-  const { previousPath, nextPath } = getNavigationPaths(location.pathname);
+  const currentPath = location.pathname;
+
+  const { previousPath, nextPath } = getNavigationPaths(currentPath);
+  useEffect(() => {
+    const newStatus = getStatusForPath(currentPath);
+    setStatus(newStatus);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPath]);
+
+  const handlePrevious = () => {
+    if (previousPath) navigate(previousPath);
+  };
+
+  const handleNext = () => {
+    if (nextPath) navigate(nextPath);
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -85,12 +59,14 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
         routes={routes}
         onLogout={onLogout}
       />
-      <NavigationButtons
-        className="fixed z-50 w-full bottom-1/2 right-0 p-6 py-4"
-        previousPath={previousPath}
-        currentPath={location.pathname}
-        nextPath={nextPath}
-        navigate={useNavigate()}
+      <Pagination
+        className={`${
+          status != "task-not-started" ? "hidden" : ""
+        } fixed w-full bottom-1/2 right-0 p-6 py-4`}
+        handlePrevious={handlePrevious}
+        handleNext={handleNext}
+        hidePrevious={!ENABLE_DEBUG}
+        hideNext={!nextPath}
       />
       <Routes>
         {routes.map((route) => (

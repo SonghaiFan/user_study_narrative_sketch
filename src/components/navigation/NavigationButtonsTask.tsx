@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { UserStatusContext } from "../contexts/UserStatusContext";
-import NavigationButton from "./NavigationButton";
+import { ENABLE_DEBUG } from "../../constants/debug";
+import Pagination from "./Pagination";
+import { getStatusForTaskIndex } from "../../utils/status";
 
 interface NavigationButtonsProps {
   currentStoryIndex: number;
@@ -23,44 +25,31 @@ const NavigationButtonsTask: React.FC<NavigationButtonsProps> = ({
   const { status, setStatus } = userStatusContext;
 
   useEffect(() => {
-    if (currentStoryIndex === maxStories - 1) {
-      console.log("status", status);
-      setStatus("task-completed");
-    } else {
-      setStatus("task-in-progress");
-    }
+    const newStatus = getStatusForTaskIndex(currentStoryIndex, maxStories);
+    setStatus(newStatus);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStoryIndex, maxStories]);
 
-  const goToPreviousStory = () => {
+  const handlePrevious = () => {
     if (currentStoryIndex > 0) {
-      setCurrentStoryIndex((prev: number) => prev - 1);
+      setCurrentStoryIndex((prev) => prev - 1);
     }
   };
 
-  const goToNextStory = () => {
+  const handleNext = () => {
     if (currentStoryIndex < maxStories - 1) {
-      setCurrentStoryIndex((prev: number) => prev + 1);
+      setCurrentStoryIndex((prev) => prev + 1);
     }
   };
 
-  const reachedEnd = currentStoryIndex === maxStories - 1;
-
-  // ${status === "task-completed" ? "hidden " : "" }
   return (
-    <nav className={`hidden justify-end items-center  ${className}`}>
-      <NavigationButton
-        direction="previous"
-        disabled={currentStoryIndex === 0}
-        onClick={goToPreviousStory}
-        className="hidden"
-      />
-      <NavigationButton
-        direction="next"
-        disabled={reachedEnd}
-        onClick={goToNextStory}
-      />
-    </nav>
+    <Pagination
+      className={`${status == "task-complted" ? "hidden" : ""} ${className}`}
+      handlePrevious={handlePrevious}
+      handleNext={handleNext}
+      hidePrevious={!ENABLE_DEBUG || currentStoryIndex === 0}
+      hideNext={!ENABLE_DEBUG || currentStoryIndex === maxStories - 1}
+    />
   );
 };
 

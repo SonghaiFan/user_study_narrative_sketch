@@ -73,22 +73,28 @@ const NavigationBar: React.FC<NavigationProps> = ({
           <ul
             className={`${
               isMenuOpen ? "absolute top-10" : "hidden"
-            } mt-2 flex-row space-y-2 sm:space-y-0 sm:space-x-4 sm:flex bg-blue-500 rounded-lg sm:p-2 p-5`}
+            }  mt-2 sm:flex flex-row space-y-2 sm:space-y-0 sm:space-x-4 bg-blue-500 rounded-lg p-5 sm:p-2 `}
             id="menu"
           >
             {routes.map((route) => (
               <li key={route.path}>
-                {visitedRoutes.includes(route.path) || ENABLE_DEBUG ? (
+                {ENABLE_DEBUG ? (
                   <Link
                     to={route.path}
-                    className={`text-white hover:text-gray-300 ${
+                    className={`text-white p-2 rounded-lg hover:bg-blue-600 ${
                       location.pathname === route.path ? "underline" : ""
                     }`}
                   >
                     {route.name}
                   </Link>
                 ) : (
-                  <span className="text-gray-300">{route.name}</span>
+                  <span
+                    className={`text-white rounded-lg p-2 ${
+                      location.pathname === route.path ? "bg-blue-600" : ""
+                    }`}
+                  >
+                    {route.name}
+                  </span>
                 )}
               </li>
             ))}

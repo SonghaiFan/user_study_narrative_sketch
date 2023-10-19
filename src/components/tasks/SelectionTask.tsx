@@ -46,7 +46,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const handleConfirm = async () => {
     // Create a document in Firestore to record the user's selection and task details
 
-    if (ENABLE_DEBUG) {
+    if (!ENABLE_DEBUG && mode === "task") {
       await logData(
         userId,
         mode,
@@ -92,9 +92,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
       <div id="storyText" className="text-xl font-bold pl-2">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
-        {/* <span className="font-normal text-sm text-white">
-          {currentStory.name}
-        </span> */}
       </div>
       <div className="flex flex-col md:flex-row overflow-hidden h-full">
         {/* Chapters Panel */}
