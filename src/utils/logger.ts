@@ -2,7 +2,7 @@ import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { Story } from "../components/data/types";
 
-export const logData = async function (
+export const logSelectionData = async function (
   userId: string | undefined,
   mode: string,
   currentStory: Story,

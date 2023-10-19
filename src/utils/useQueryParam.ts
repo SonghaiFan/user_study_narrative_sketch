@@ -1,9 +1,7 @@
 import { useLocation } from "react-router-dom";
 
-function useProlificId() {
+export default function useQueryParam(paramName: string) {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
-  return urlParams.get("PROLIFIC_PID");
+  return urlParams.get(paramName);
 }
-
-export default useProlificId;

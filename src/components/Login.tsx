@@ -1,22 +1,17 @@
-import { modeConfig } from "../modeConfig";
+import { modeConfig } from "../utils/modeConfig";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useQueryParam from "../utils/useQueryParam";
 import { ENABLE_DEBUG } from "../constants/debug";
 import Landing from "./common/Landing";
 import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 
-function useProlificId() {
-  const location = useLocation();
-  const urlParams = new URLSearchParams(location.search);
-  return urlParams.get("PROLIFIC_PID");
-}
-
 const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
   const [prolificId, setProlificId] = useState("");
   const navigate = useNavigate();
 
-  const idFromUrl = useProlificId();
+  const idFromUrl = useQueryParam("prolificId");
 
   useEffect(() => {
     if (idFromUrl) {

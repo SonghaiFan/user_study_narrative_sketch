@@ -1,8 +1,5 @@
 // Importing necessary libraries and components
-import React, { useContext, useEffect } from "react";
-import { UserStatusContext } from "../contexts/UserStatusContext";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-
 import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtonsWrapper from "./navigation/NavigationButtonsWrapper";
 import { ENABLE_DEBUG } from "../constants/debug";
@@ -23,15 +20,8 @@ const getNavigationPaths = (currentPath: string) => {
 };
 
 const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
-  const userStatusContext = useContext(UserStatusContext);
-
   const navigate = useNavigate();
-  if (!userStatusContext) {
-    throw new Error(
-      "MyRoutes component must be used within a UserStatusProvider"
-    );
-  }
-  const { setStatus } = userStatusContext;
+
   const location = useLocation();
 
   const currentPath = location.pathname;
@@ -46,16 +36,11 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
     if (nextPath) navigate(nextPath);
   };
 
-  useEffect(() => {
-    const newStatus = {
-      path: currentPath,
-      progress: "enter",
-    };
-    setStatus(newStatus);
-    console.log("Setting status to", newStatus);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPath]);
+  const isNavigationHidden =
+    !ENABLE_DEBUG &&
+    (currentPath == "/task" ||
+      currentPath == "/train" ||
+      currentPath == "/end");
 
   return (
     <div className="flex flex-col h-screen">
@@ -65,10 +50,12 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
         onLogout={onLogout}
       />
       <NavigationButtonsWrapper
-        className={`fixed w-full bottom-1/2 right-0 p-6 py-4`}
+        className={`${
+          isNavigationHidden ? "hidden" : ""
+        } fixed w-full bottom-1/2 right-0 p-6 py-4`}
         handlePrevious={handlePrevious}
         handleNext={handleNext}
-        hidePrevious={!ENABLE_DEBUG}
+        hidePrevious={!previousPath}
         hideNext={!nextPath}
       />
       <Routes>

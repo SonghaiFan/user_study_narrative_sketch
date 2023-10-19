@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import useProlificId from "../utils/useProlificId";
+import useQueryParam from "../utils/useQueryParam";
 import UserStatusProvider from "../contexts/UserStatusContext";
 
 import Login from "./Login";
@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const [isLoggedIn, setLoggedIn] = useState(hasLoggedInUser);
   const [userId, setUserId] = useState("");
 
-  const prolificId = useProlificId(); // Use the hook
+  const prolificId = useQueryParam("prolificId");
 
   const storeUserId = (id: string) => {
     localStorage.setItem("userId", id);

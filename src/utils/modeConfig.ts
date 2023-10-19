@@ -3,7 +3,6 @@
 interface ModeConfigProps {
   [key: string]: {
     nextPath: string;
-    // ...other properties...
   };
 }
 
@@ -19,5 +18,5 @@ export const modeConfig: ModeConfigProps = {
   },
   repeatVisit: {
     nextPath: "/end",
-  }
+  },
 };
