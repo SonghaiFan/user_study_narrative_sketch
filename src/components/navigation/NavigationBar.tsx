@@ -36,19 +36,6 @@ const NavigationBar: React.FC<NavigationProps> = ({
 }) => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [visitedRoutes, setVisitedRoutes] = useState<string[]>([
-    location.pathname,
-  ]); // State to keep track of visited routes
-
-  // Update the visited routes whenever location changes
-  useEffect(() => {
-    setVisitedRoutes((prevVisited) => {
-      if (!prevVisited.includes(location.pathname)) {
-        return [...prevVisited, location.pathname];
-      }
-      return prevVisited;
-    });
-  }, [location.pathname]);
 
   // each time the window size changed, setIsMenuOpen to false
   useEffect(() => {

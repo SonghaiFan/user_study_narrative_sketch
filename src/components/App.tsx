@@ -47,6 +47,12 @@ const App: React.FC = () => {
         }
       />
       <Route
+        path="/"
+        element={
+          !isLoggedIn ? <Navigate to="/login" /> : <Navigate to="/end" />
+        }
+      />
+      <Route
         path="/*"
         element={
           !isLoggedIn ? (

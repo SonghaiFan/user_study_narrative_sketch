@@ -33,6 +33,7 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       console.error("Prolific ID is not defined!");
       return;
     }
+
     try {
       const userDoc = doc(db, "users", prolificId);
       const userSnapshot = await getDoc(userDoc);
