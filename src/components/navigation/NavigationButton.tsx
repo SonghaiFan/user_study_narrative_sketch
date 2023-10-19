@@ -18,11 +18,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`${className} transition-all duration-200 ease-in-out ${
-        disabled
-          ? "text-gray-300 cursor-not-allowed"
-          : "text-gray-400 hover:text-gray-500"
-      } }`}
+      className={`${className} transition-all duration-200 ease-in-out pointer-events-auto text-gray-400 hover:text-gray-500`}
     >
       {direction === "previous" ? (
         <FaArrowCircleLeft className="text-2xl" />

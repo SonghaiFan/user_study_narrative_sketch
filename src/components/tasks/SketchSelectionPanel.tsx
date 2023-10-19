@@ -1,28 +1,28 @@
-// import { useState, useEffect } from "react";
-// import { useMeasure } from "react-use";
+import { ENABLE_DEBUG } from "../../constants/debug";
 interface StorySelectionPanelProps {
+  mode?: "train" | "task";
   options: { [key: string]: string };
   rightSelection: string;
-  mode: "train" | "task";
   onSlection: (key: string) => void;
 }
 const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   options,
   rightSelection,
-  mode,
   onSlection,
 }) => {
   const numberOfOptions = Object.keys(options).length;
   return (
     <div
-      className={`w-full h-full p-10 border grid ${
-        numberOfOptions === 2 ? "grid-cols-2" : "grid-cols-3"
+      className={`w-full h-full p-10 px-20 border grid ${
+        numberOfOptions === 2 ? "sm:grid-cols-2" : "grid-cols-3"
       } gap-8`}
     >
       {Object.entries(options).map(([key, value]) => (
         <div
           key={key}
-          className={`relative aspect-w-1 aspect-h-1 border transform hover:scale-105 hover:border-blue-500 transition-transform duration-500 ease-in-out`}
+          className={`relative aspect-w-1 aspect-h-1 border ${
+            ENABLE_DEBUG && rightSelection === key ? "border-red-500" : ""
+          } transform hover:scale-105 hover:border-blue-500 transition-transform duration-500 ease-in-out`}
         >
           <img
             src={value}

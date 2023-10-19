@@ -16,18 +16,20 @@ const Pagination: React.FC<PaginationProps> = ({
   className,
 }) => {
   return (
-    <nav className={`z-40 flex justify-between items-center ${className}`}>
+    <nav
+      className={`z-40 flex justify-between items-center pointer-events-none ${className}`}
+    >
       <NavigationButton
         direction="previous"
         disabled={hidePrevious}
         onClick={handlePrevious}
-        className={hidePrevious ? "opacity-0 pointer-events-none" : ""}
+        className={hidePrevious ? "opacity-0" : ""}
       />
       <NavigationButton
         direction="next"
         disabled={hideNext}
         onClick={handleNext}
-        className={hideNext ? "opacity-0 pointer-events-none" : ""}
+        className={hideNext ? "opacity-0" : ""}
       />
     </nav>
   );

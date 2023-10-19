@@ -84,7 +84,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   return (
     <>
       <NavigationButtonsTask
-        className="fixed w-full bottom-1/2 right-0 p-6 py-4"
+        className="fixed w-full bottom-1/3 right-0 p-6 py-4"
         currentStoryIndex={currentStoryIndex}
         setCurrentStoryIndex={setCurrentStoryIndex}
         maxStories={stories.length}
