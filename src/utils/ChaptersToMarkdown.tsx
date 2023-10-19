@@ -70,7 +70,17 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
             >
               {title}
             </h3>
-            <p className="text-sm text-gray-500">{time_period.join(" - ")}</p>
+            <p className="text-sm text-gray-500">
+              {time_period
+                .map((date) =>
+                  new Date(date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })
+                )
+                .join(" to ")}
+            </p>
             <div
               className={`mt-2 font-bold ${mode == "task" ? "hidden" : ""} `}
             >

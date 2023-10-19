@@ -55,8 +55,8 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
-      <header className="fixed top-0 left-0 right-0 text-white p-6 py-4">
-        <h1 className="text-xl font-semibold">User study</h1>
+      <header className="fixed sm:top-0 sm:left-0 top-20 text-white p-6 py-4">
+        <h1 className="sm:text-xl text-3xl font-semibold">User study</h1>
       </header>
       <div className="mt-20">
         <form
@@ -84,7 +84,7 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       <img
         src={Monash_Logo}
         alt="Monash University logo"
-        className="top-5 h-[60px] fixed"
+        className="top-5 h-10 fixed "
       />
     </div>
   );
