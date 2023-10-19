@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import useProlificId from "../utils/useProlificId"; // Import the custom hook
-import UserStatusProvider from "./contexts/UserStatusContext";
+import useProlificId from "../utils/useProlificId";
+import UserStatusProvider from "../contexts/UserStatusContext";
 
 import Login from "./Login";
 import MyRoutes from "./MyRoutes";

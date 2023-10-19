@@ -1,11 +1,10 @@
 // Importing necessary libraries and components
 import React, { useContext, useEffect } from "react";
-import { UserStatusContext } from "./contexts/UserStatusContext";
-import { getStatusForPath } from "../utils/status";
+import { UserStatusContext } from "../contexts/UserStatusContext";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import NavigationBar from "./navigation/NavigationBar";
-import Pagination from "../components/navigation/Pagination";
+import NavigationButtonsWrapper from "./navigation/NavigationButtonsWrapper";
 import { ENABLE_DEBUG } from "../constants/debug";
 import { routes } from "./MyRoutesConfig";
 
@@ -32,17 +31,12 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
       "MyRoutes component must be used within a UserStatusProvider"
     );
   }
-  const { status, setStatus } = userStatusContext;
+  const { setStatus } = userStatusContext;
   const location = useLocation();
 
   const currentPath = location.pathname;
 
   const { previousPath, nextPath } = getNavigationPaths(currentPath);
-  useEffect(() => {
-    const newStatus = getStatusForPath(currentPath);
-    setStatus(newStatus);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPath]);
 
   const handlePrevious = () => {
     if (previousPath) navigate(previousPath);
@@ -52,6 +46,17 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
     if (nextPath) navigate(nextPath);
   };
 
+  useEffect(() => {
+    const newStatus = {
+      path: currentPath,
+      progress: "enter",
+    };
+    setStatus(newStatus);
+    console.log("Setting status to", newStatus);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPath]);
+
   return (
     <div className="flex flex-col h-screen">
       <NavigationBar
@@ -59,10 +64,8 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
         routes={routes}
         onLogout={onLogout}
       />
-      <Pagination
-        className={`${
-          status != "task-not-started" ? "hidden" : ""
-        } fixed w-full bottom-1/2 right-0 p-6 py-4`}
+      <NavigationButtonsWrapper
+        className={`fixed w-full bottom-1/2 right-0 p-6 py-4`}
         handlePrevious={handlePrevious}
         handleNext={handleNext}
         hidePrevious={!ENABLE_DEBUG}

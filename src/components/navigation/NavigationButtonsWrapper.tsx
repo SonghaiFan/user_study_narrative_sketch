@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import NavigationButton from "./NavigationButton";
-interface PaginationProps {
+interface NavigationButtonsWrapperProps {
   handleNext: () => void;
   handlePrevious: () => void;
   hideNext?: boolean;
@@ -8,7 +8,7 @@ interface PaginationProps {
   className?: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const NavigationButtonsWrapper: React.FC<NavigationButtonsWrapperProps> = ({
   handleNext,
   handlePrevious,
   hideNext = false,
@@ -35,4 +35,4 @@ const Pagination: React.FC<PaginationProps> = ({
   );
 };
 
-export default Pagination;
+export default NavigationButtonsWrapper;

@@ -3,12 +3,12 @@ interface StorySelectionPanelProps {
   mode?: "train" | "task";
   options: { [key: string]: string };
   rightSelection: string;
-  onSlection: (key: string) => void;
+  onSelection: (key: string) => void;
 }
 const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   options,
   rightSelection,
-  onSlection,
+  onSelection,
 }) => {
   const numberOfOptions = Object.keys(options).length;
   return (
@@ -28,7 +28,7 @@ const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
             src={value}
             alt={key}
             className="absolute inset-0 w-full h-full object-contain cursor-pointer"
-            onClick={() => onSlection(key)}
+            onClick={() => onSelection(key)}
           />
           <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-xs text-center py-1">
             {key}

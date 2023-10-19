@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { modeConfig } from "../../modeConfig";
 import { getTaskConfig } from "./SelectionTaskConfig";
-import { UserStatusContext } from "../contexts/UserStatusContext";
+import { UserStatusContext } from "../../contexts/UserStatusContext";
 import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
 import { ConfirmationModal } from "../common/ConfirmationModal";
@@ -16,10 +16,9 @@ interface SelectionTaskProps {
   stories: Stories;
   mode: "train" | "task";
 }
-
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const navigate = useNavigate();
-  const userStatusContext = useContext(UserStatusContext);
+  const userStatus = useContext(UserStatusContext);
 
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -29,7 +28,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const [selection, setSelection] = useState<string | null>(null);
   const [reason, setReason] = useState<string>("");
 
-  const userId = userStatusContext?.userId;
   const currentModeConfig = modeConfig[mode];
   const currentStory = stories[currentStoryIndex];
   const isSelectionCorrect = rightSelection === selection;
@@ -37,11 +35,25 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
       navigate(currentModeConfig.nextPath); // Use value from config
-    } else {
-      setRightSelection(currentStory.structure);
     }
+
+    if (currentStoryIndex == stories.length - 1) {
+      setStatus({ ...status, progress: "finished" });
+    } else {
+      setStatus({ ...status, progress: "progressing" });
+    }
+
+    setRightSelection(currentStory.structure);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStoryIndex, stories, navigate, mode]);
+  }, [currentStoryIndex]);
+
+  if (!userStatus) {
+    // UserStatusContext is undefined, do not render this component
+    return null;
+  }
+
+  const { userId, status, setStatus } = userStatus;
 
   const handleConfirm = async () => {
     // Create a document in Firestore to record the user's selection and task details
@@ -69,7 +81,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     selection,
   });
 
-  const onSlection = (key: string) => {
+  const onSelection = (key: string) => {
     setSelection(key);
     setShowModal(true);
   };
@@ -84,7 +96,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   return (
     <>
       <NavigationButtonsTask
-        className="fixed w-full bottom-1/3 right-0 p-6 py-4"
+        className="fixed w-full bottom-5 right-0 p-6 py-4"
         currentStoryIndex={currentStoryIndex}
         setCurrentStoryIndex={setCurrentStoryIndex}
         maxStories={stories.length}
@@ -108,7 +120,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
             options={taskConfig[mode].options}
             rightSelection={rightSelection}
             mode={mode}
-            onSlection={onSlection}
+            onSelection={onSelection}
           />
         </div>
 
