@@ -1,1 +1,1 @@
-export const ENABLE_LOGGING = false;
+export const ENABLE_DEBUG = false;

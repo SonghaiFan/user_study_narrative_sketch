@@ -51,15 +51,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         )}
         <div className="flex justify-end mt-4">
           <button
-            className={`mx-2 px-4 py-2 bg-red-500 text-white rounded-md ${
-              disableCancelButton ? "hidden" : ""
-            }`}
-            onClick={onCancel}
-            disabled={disableCancelButton}
-          >
-            {cancelButtonText}
-          </button>
-          <button
             className={`mx-2 px-4 py-2 bg-blue-500 text-white rounded-md  ${
               disableConfirmButton ? "hidden" : ""
             }`}
@@ -67,6 +58,15 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             disabled={disableConfirmButton}
           >
             {confirmButtonText}
+          </button>
+          <button
+            className={`mx-2 px-4 py-2 bg-red-500 text-white rounded-md ${
+              disableCancelButton ? "hidden" : ""
+            }`}
+            onClick={onCancel}
+            disabled={disableCancelButton}
+          >
+            {cancelButtonText}
           </button>
         </div>
       </div>

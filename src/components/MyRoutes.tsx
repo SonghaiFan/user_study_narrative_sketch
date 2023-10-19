@@ -6,21 +6,10 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtons from "./navigation/NavigationButtons";
 import SelectionTask from "./tasks/SelectionTask";
-import MarkdownViewer from "./common/MarkdownViewer";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 import stories from "./data/stories/combined_stories.json";
 import train_stories from "./data/stories/combined_stories_train.json";
-import { home_md, about_md, end_md } from "./common/MarkdownContent";
 const stories_sample = stories; // assuming stories_sample is defined in this way
-
-// Function to render markdown content
-const renderMarkdown = (markdown: string, userId?: string) => (
-  <MarkdownViewer
-    markdown={markdown}
-    className="w-1/2 m-auto mt-5"
-    userId={userId}
-  />
-);
 
 // Routes configuration
 const routes = [
@@ -30,7 +19,7 @@ const routes = [
     component: (
       <MarkdownRenderer
         path="/markdown/home.md"
-        className="w-1/2 m-auto mt-5"
+        className="md:w-1/2 m-auto mt-5 p-10"
       />
     ),
   },
@@ -40,21 +29,15 @@ const routes = [
     component: (
       <MarkdownRenderer
         path="/markdown/about.md"
-        className="w-1/2 m-auto mt-5"
+        className="md:w-1/2 m-auto mt-5 p-10"
       />
     ),
   },
   {
     path: "/train",
     name: "Train",
-    // render: () => <SelectionTask stories={train_stories} mode="train" />,
     component: <SelectionTask stories={train_stories} mode="train" />,
   },
-  // {
-  //   path: "/trail",
-  //   name: "Trail",
-  //   component: <SelectionTask stories={stories} mode="train" />,
-  // },
   {
     path: "/task",
     name: "Task",

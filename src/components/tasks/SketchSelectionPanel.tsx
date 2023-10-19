@@ -1,18 +1,24 @@
+// import { useState, useEffect } from "react";
+// import { useMeasure } from "react-use";
 interface StorySelectionPanelProps {
   options: { [key: string]: string };
   rightSelection: string;
   mode: "train" | "task";
   onSlection: (key: string) => void;
 }
-
 const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   options,
   rightSelection,
   mode,
   onSlection,
 }) => {
+  const numberOfOptions = Object.keys(options).length;
   return (
-    <div className="w-1/2 p-10 xl:p-[150px] border grid xl:grid-cols-3 sm:grid-cols-2  gap-8">
+    <div
+      className={`w-full h-full p-10 border grid ${
+        numberOfOptions === 2 ? "grid-cols-2" : "grid-cols-3"
+      } gap-8`}
+    >
       {Object.entries(options).map(([key, value]) => (
         <div
           key={key}

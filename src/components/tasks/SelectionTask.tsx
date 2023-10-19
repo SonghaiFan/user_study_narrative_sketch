@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { modeConfig } from "../../modeConfig";
 import { getTaskConfig } from "./SelectionTaskConfig";
 import { UserStatusContext } from "../contexts/UserStatusContext";
 import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
 import { ConfirmationModal } from "../common/ConfirmationModal";
-import { logData } from "../../utils/Logger";
+import { logData } from "../../utils/logger";
 import ChaptersToMarkdown from "../../utils/chaptersToMarkdown";
 import { Stories } from "../data/types";
 
-import { ENABLE_LOGGING } from "../../constants/debug";
+import { ENABLE_DEBUG } from "../../constants/debug";
 
 interface SelectionTaskProps {
   stories: Stories;
@@ -47,7 +46,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const handleConfirm = async () => {
     // Create a document in Firestore to record the user's selection and task details
 
-    if (ENABLE_LOGGING) {
+    if (ENABLE_DEBUG) {
       await logData(
         userId,
         mode,
@@ -91,25 +90,30 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      <div id="storyText" className="text-2xl font-bold pl-2">
+      <div id="storyText" className="text-xl font-bold pl-2">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
-        <span className="font-normal text-sm text-white">
+        {/* <span className="font-normal text-sm text-white">
           {currentStory.name}
-        </span>
+        </span> */}
       </div>
-      <div className="flex flex-row overflow-hidden h-full">
-        {/* Left Panel */}
-        <div className="w-1/2 p-8 border overflow-auto">
+      <div className="flex flex-col md:flex-row overflow-hidden h-full">
+        {/* Chapters Panel */}
+        <div className="w-full md:w-1/2 h-1/2 md:h-auto p-8 border overflow-auto">
           <ChaptersToMarkdown data={currentStory} mode={mode} />
         </div>
 
-        {/* Right Panel */}
-        <SketchSelectionPanel
-          options={taskConfig[mode].options}
-          rightSelection={rightSelection}
-          mode={mode}
-          onSlection={onSlection}
-        />
+        {/* Sketch Selection Panel */}
+        <div
+          id="sketch-selection-panel"
+          className="w-full md:w-1/2 h-1/2 md:h-auto border"
+        >
+          <SketchSelectionPanel
+            options={taskConfig[mode].options}
+            rightSelection={rightSelection}
+            mode={mode}
+            onSlection={onSlection}
+          />
+        </div>
 
         <ConfirmationModal
           isVisible={showModal}

@@ -1,6 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import NavigationButton from "./NavigationButton";
+import { useContext, useEffect } from "react";
 import { UserStatusContext } from "../contexts/UserStatusContext";
+import Pagination from "./Pagination";
+import { getStatusForPath } from "../../utils/status";
+
 interface NavigationButtonsProps {
   previousPath: string | null;
   currentPath: string;
@@ -25,35 +27,27 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   const { status, setStatus } = userStatusContext;
 
   useEffect(() => {
-    if (currentPath != "/task") {
-      setStatus("task-not-started");
-    }
-    console.log("status", status);
-
+    const newStatus = getStatusForPath(currentPath);
+    setStatus(newStatus);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nextPath]);
+  }, [currentPath]);
+
+  const handlePrevious = () => {
+    if (previousPath) navigate(previousPath);
+  };
+
+  const handleNext = () => {
+    if (nextPath) navigate(nextPath);
+  };
 
   return (
-    <nav
-      className={`${
-        status === "task-not-started" || status === "task-completed"
-          ? ""
-          : "hidden "
-      } flex justify-end items-center ${className}`}
-    >
-      <NavigationButton
-        direction="previous"
-        disabled={!previousPath}
-        onClick={() => previousPath && navigate(previousPath)}
-        className="hidden"
-      />
-      <NavigationButton
-        direction="next"
-        disabled={!nextPath}
-        onClick={() => nextPath && navigate(nextPath)}
-        className={!nextPath ? "opacity-0 pointer-events-none" : ""}
-      />
-    </nav>
+    <Pagination
+      className={`${status != "task-not-started" ? "hidden" : ""} ${className}`}
+      handlePrevious={handlePrevious}
+      handleNext={handleNext}
+      hidePrevious={true} //!previousPath
+      hideNext={!nextPath}
+    />
   );
 };
 

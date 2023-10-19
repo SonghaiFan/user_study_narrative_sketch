@@ -24,8 +24,8 @@
     "react-katex": "^3.0.1",
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.11.2",
-    "remark-gfm": "^3.0.1",
-    "remark-math": "^6.0.0"
+    "react-use": "^17.4.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.198",
