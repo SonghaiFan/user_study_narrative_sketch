@@ -64,13 +64,13 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
         ({ id, title, time_period, entity, themes, content }) => (
           <div key={id} className="mb-5 bg-white border rounded p-4 shadow-sm">
             <h3
-              className={`text-lg leading-6 font-medium text-gray-900 ${
+              className={`sm:text-lg leading-6 font-medium text-gray-900 ${
                 mode == "task" ? "hidden" : ""
               } `}
             >
               {title}
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500">
               {time_period
                 .map((date) =>
                   new Date(date).toLocaleDateString("en-US", {
@@ -95,7 +95,7 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
                 textColor="text-gray-700"
               />
             </div>
-            <p className="text-md text-gray-800">
+            <p className="text-xs sm:text-base text-gray-800">
               {mode == "task" ? content : getHighlightedText(content, entity)}
             </p>
             <hr className="my-2" />

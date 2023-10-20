@@ -13,9 +13,9 @@ const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   const numberOfOptions = Object.keys(options).length;
   return (
     <div
-      className={`w-full h-full p-10  grid ${
+      className={`w-full h-full p-2 lg:p-20 grid ${
         numberOfOptions === 2 ? "sm:grid-cols-2" : "grid-cols-3"
-      } gap-8`}
+      } gap-2 sm:gap-8`}
     >
       {Object.entries(options).map(([key, value]) => (
         <div
