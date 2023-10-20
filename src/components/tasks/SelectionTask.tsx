@@ -89,19 +89,19 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      <div id="storyText" className="text-xl font-bold pl-2">
+      <div id="storyText" className="text-xl font-bold pl-2 ">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
       </div>
-      <div className="flex flex-col md:flex-row overflow-hidden h-full px-20">
+      <div className="flex flex-col lg:flex-row overflow-hidden h-full px-20 border">
         {/* Chapters Panel */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-auto p-8  overflow-auto">
+        <div className="w-full lg:w-1/2 h-1/2 lg:h-auto p-8  overflow-auto border ">
           <ChaptersToMarkdown data={currentStory} mode={mode} />
         </div>
 
         {/* Sketch Selection Panel */}
         <div
           id="sketch-selection-panel"
-          className="w-full md:w-1/2 h-1/2 md:h-auto"
+          className="w-full lg:w-1/2 h-1/2 lg:h-auto border"
         >
           <SketchSelectionPanel
             options={taskConfig[mode].options}
