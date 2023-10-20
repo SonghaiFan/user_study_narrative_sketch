@@ -16,7 +16,7 @@ export const routes = [
     name: "Home",
     component: (
       <MarkdownRenderer
-        path="/user_study_narrative_sketch/text/home.md"
+        path="/user_study_narrative_sketch/markdown/home.md"
         className="md:w-1/2 m-auto mt-5 p-10"
       />
     ),
@@ -26,7 +26,7 @@ export const routes = [
     name: "About",
     component: (
       <MarkdownRenderer
-        path="/user_study_narrative_sketch/text/about.md"
+        path="/user_study_narrative_sketch/markdown/about.md"
         className="md:w-1/2 m-auto mt-5 p-10"
       />
     ),
@@ -46,7 +46,7 @@ export const routes = [
     name: "End",
     component: (
       <MarkdownRenderer
-        path="/user_study_narrative_sketch/text/end.md"
+        path="/user_study_narrative_sketch/markdown/end.md"
         className="w-1/2 m-auto mt-5"
       />
     ),
