@@ -17,7 +17,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/home.md"
-        className="md:w-1/2 m-auto mt-5 p-10"
+        className="md:w-1/2 m-auto mt-5 p-10 px-20"
       />
     ),
   },
@@ -27,7 +27,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/about.md"
-        className="md:w-1/2 m-auto mt-5 p-10"
+        className="md:w-1/2 m-auto mt-5 p-10 px-20"
       />
     ),
   },
@@ -47,7 +47,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/end.md"
-        className="w-1/2 m-auto mt-5"
+        className="md:w-1/2 m-auto mt-5 p-10 px-20"
       />
     ),
   },

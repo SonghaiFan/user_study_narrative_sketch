@@ -13,7 +13,7 @@ const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   const numberOfOptions = Object.keys(options).length;
   return (
     <div
-      className={`w-full h-full p-10 px-20 border grid ${
+      className={`w-full h-full p-10  grid ${
         numberOfOptions === 2 ? "sm:grid-cols-2" : "grid-cols-3"
       } gap-8`}
     >

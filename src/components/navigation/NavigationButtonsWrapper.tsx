@@ -20,7 +20,7 @@ const NavigationButtonsWrapper: React.FC<NavigationButtonsWrapperProps> = ({
       className={`z-40 flex justify-between items-center pointer-events-none ${className}`}
     >
       <NavigationButton
-        direction="previous"
+        direction="prev"
         disabled={hidePrevious}
         onClick={handlePrevious}
         className={hidePrevious ? "opacity-0" : ""}

@@ -6,7 +6,7 @@ import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
 import { ConfirmationModal } from "../common/ConfirmationModal";
 import { logSelectionData } from "../../utils/logger";
-import ChaptersToMarkdown from "../common/chaptersToMarkdown";
+import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
 import { UserStatusContext } from "../../contexts/UserStatusContext";
 import { ENABLE_DEBUG } from "../../constants/debug";
@@ -92,16 +92,16 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       <div id="storyText" className="text-xl font-bold pl-2">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
       </div>
-      <div className="flex flex-col md:flex-row overflow-hidden h-full">
+      <div className="flex flex-col md:flex-row overflow-hidden h-full px-20">
         {/* Chapters Panel */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-auto p-8 border overflow-auto">
+        <div className="w-full md:w-1/2 h-1/2 md:h-auto p-8  overflow-auto">
           <ChaptersToMarkdown data={currentStory} mode={mode} />
         </div>
 
         {/* Sketch Selection Panel */}
         <div
           id="sketch-selection-panel"
-          className="w-full md:w-1/2 h-1/2 md:h-auto border"
+          className="w-full md:w-1/2 h-1/2 md:h-auto"
         >
           <SketchSelectionPanel
             options={taskConfig[mode].options}
