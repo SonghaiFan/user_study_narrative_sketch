@@ -44,10 +44,6 @@ You have been invited to participate in this research because your experience an
 
 The confidentiality of your data is a priority. Any personally identifiable information will not be shared with anyone not involved in this project. All data collected will be stored securely and will be retained for five years after the completion of the study.
 
-## Payment
-
-As a token of gratitude, we offer a payment of €15 per hour upon completion of the study. The payment will be processed manually and transferred to your Prolific.co account.
-
 ## Complaints
 
 Should you have any concerns or complaints about the conduct of the project, you are welcome to contact the Executive Officer, Monash University Human Research Ethics (MUHREC) at muhrec@monash.edu or +61 3 9905 2052.
