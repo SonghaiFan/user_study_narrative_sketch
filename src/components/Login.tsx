@@ -29,7 +29,7 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
     }
 
     if (!prolificId) {
-      console.error("Prolific ID is not defined!");
+      alert("Please enter your Prolific ID");
       return;
     }
 
