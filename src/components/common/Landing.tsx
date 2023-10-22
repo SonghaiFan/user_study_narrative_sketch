@@ -14,7 +14,7 @@ export default function Landing({
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
       <header className="fixed sm:top-0 sm:left-0 top-20 text-white p-6 py-4">
-        <h1 className="sm:text-xl text-3xl font-semibold">User study</h1>
+        <h1 className="sm:text-xl text-3xl font-semibold">d User Study</h1>
       </header>
       <div className="mt-20">
         <form
@@ -22,7 +22,7 @@ export default function Landing({
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
         >
           <label className="mb-4 text-gray-600">
-            Prolific ID:
+            User ID:
             <input
               type="text"
               value={prolificId}
