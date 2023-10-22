@@ -31,11 +31,11 @@ export const routes = [
       />
     ),
   },
-  {
-    path: "/train",
-    name: "Train",
-    component: <SelectionTask stories={train_stories_shuffle} mode="train" />,
-  },
+  // {
+  //   path: "/train",
+  //   name: "Train",
+  //   component: <SelectionTask stories={train_stories_shuffle} mode="train" />,
+  // },
   {
     path: "/task",
     name: "Task",
