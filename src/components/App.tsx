@@ -41,6 +41,12 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route
+        path="/login"
+        element={
+          isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />
+        }
+      />
+      <Route
         path="/"
         element={
           !isLoggedIn ? <Navigate to="/login" /> : <Navigate to="/end" />
@@ -56,12 +62,6 @@ const App: React.FC = () => {
               <MyRoutes onLogout={handleLogout} />
             </UserStatusProvider>
           )
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />
         }
       />
     </Routes>
