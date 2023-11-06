@@ -19,10 +19,10 @@ Please read through this explanatory statement before deciding whether to partic
 
 **Co-Investigators:**
 
-- Dr. Ying Yang (ying.yang@monash.edu),
-- Professor Tim Dwyer (tim.dwyer@monash.edu),
-- Professor Helen Purchase (helen.purchase@monash.edu)
+- Dr. Ying Yang (ying.yang@monash.edu)
 - Assoc Professor Simon Angus (simon.angus@monash.edu)
+- Professor Helen Purchase (helen.purchase@monash.edu)
+- Professor Tim Dwyer (tim.dwyer@monash.edu)
 
 ## What Does the Research Involve?
 
