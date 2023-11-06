@@ -1,4 +1,4 @@
-import { trainOptions, taskOptions } from "../../constants/motifs";
+import { taskOptions } from "../../constants/motifs";
 
 interface TaskConfigProps {
   isSelectionCorrect: boolean;
@@ -46,13 +46,21 @@ export const getTaskConfig = ({
   const TaskMessage = getTaskMessage(selection);
 
   return {
+    trail: {
+      confirmButtonText: "Proceed to Next",
+      disableConfirmButton: !isSelectionCorrect,
+      cancelButtonText: "Try Again",
+      disableCancelButton: isSelectionCorrect,
+      message: TrainingMessage,
+      options: taskOptions,
+    },
     train: {
       confirmButtonText: "Proceed to Next",
       disableConfirmButton: !isSelectionCorrect,
       cancelButtonText: "Try Again",
       disableCancelButton: isSelectionCorrect,
       message: TrainingMessage,
-      options: trainOptions,
+      options: taskOptions,
     },
     task: {
       confirmButtonText: "Yes, Proceed With Current Answer",

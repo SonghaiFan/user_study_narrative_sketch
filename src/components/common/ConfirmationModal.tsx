@@ -51,8 +51,10 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         )}
         <div className="flex justify-end mt-4">
           <button
-            className={`mx-2 px-4 py-2 bg-blue-500 text-white rounded-md  ${
-              disableConfirmButton ? "hidden" : ""
+            className={`mx-2 px-4 py-2 text-white rounded-md ${
+              disableConfirmButton
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-500"
             }`}
             onClick={onConfirm}
             disabled={disableConfirmButton}

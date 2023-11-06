@@ -3,7 +3,7 @@ import _ from "lodash";
 import SelectionTask from "./tasks/SelectionTask";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 
-import train_stories from "./data/stories/combined_stories_train.json";
+import train_stories from "./data/stories/combined_stroy_test.json";
 import stories from "./data/stories/combined_stories.json";
 
 // use loadsash to shuffle the stories
@@ -31,11 +31,11 @@ export const routes = [
       />
     ),
   },
-  // {
-  //   path: "/train",
-  //   name: "Train",
-  //   component: <SelectionTask stories={train_stories_shuffle} mode="train" />,
-  // },
+  {
+    path: "/train",
+    name: "Train",
+    component: <SelectionTask stories={train_stories_shuffle} mode="train" />,
+  },
   {
     path: "/task",
     name: "Task",

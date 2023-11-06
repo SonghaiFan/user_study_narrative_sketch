@@ -13,7 +13,7 @@ import { ENABLE_DEBUG } from "../../constants/debug";
 
 interface SelectionTaskProps {
   stories: Stories;
-  mode: "train" | "task";
+  mode: "trail" | "train" | "task";
 }
 
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
@@ -27,6 +27,9 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   );
   const [selection, setSelection] = useState<string | null>(null);
   const [reason, setReason] = useState<string>("");
+
+  const [isConfirmButtonDisabled, setIsConfirmButtonDisabled] =
+    useState<boolean>(false);
 
   const userId = userStatusContext?.userId;
   const currentModeConfig = modeConfig[mode];
@@ -43,6 +46,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   }, [currentStoryIndex]);
 
   const handleConfirm = async () => {
+    setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
     // Create a document in Firestore to record the user's selection and task details
 
     if (!ENABLE_DEBUG && mode === "task") {
@@ -56,9 +60,14 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       );
     }
 
+    if (ENABLE_DEBUG && mode === "task") {
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+
     setReason("");
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);
+    setIsConfirmButtonDisabled(false); // Re-enable the button after operation is complete
   };
 
   const taskConfig = getTaskConfig({
@@ -118,7 +127,9 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
           showTextarea={mode === "task"}
           confirmButtonText={taskConfig[mode].confirmButtonText}
           cancelButtonText={taskConfig[mode].cancelButtonText}
-          disableConfirmButton={taskConfig[mode].disableConfirmButton}
+          disableConfirmButton={
+            isConfirmButtonDisabled || taskConfig[mode].disableConfirmButton
+          }
           disableCancelButton={taskConfig[mode].disableCancelButton}
           inputText={reason}
           setInputText={setReason}
