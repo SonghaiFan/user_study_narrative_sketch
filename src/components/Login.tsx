@@ -37,8 +37,6 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       const userDoc = doc(db, "users", prolificId);
       const userSnapshot = await getDoc(userDoc);
 
-      console.log(userSnapshot.data());
-
       if (userSnapshot.exists()) {
         navigate(modeConfig["repeatVisit"].nextPath);
         onLogin(prolificId);
