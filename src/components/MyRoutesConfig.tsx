@@ -3,7 +3,7 @@ import _ from "lodash";
 import SelectionTask from "./tasks/SelectionTask";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 
-import train_stories from "./data/stories/combined_stroy_test.json";
+import train_stories from "./data/stories/combined_stories_train.json";
 import stories from "./data/stories/combined_stories.json";
 
 // use loadsash to shuffle the stories

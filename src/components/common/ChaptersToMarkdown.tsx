@@ -4,7 +4,7 @@ interface ChaptersToMarkdownProps {
   data: {
     chapters: Chapter[];
   };
-  mode: string;
+  showHint?: boolean;
 }
 
 function getHighlightedText(text: string, highlights: string[]): JSX.Element {
@@ -56,16 +56,16 @@ const RenderTags: React.FC<RenderTagsProps> = ({
 
 const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
   data,
-  mode,
+  showHint = false,
 }) => {
   return (
-    <div className="p-5 xl:w-2/3 m-auto bg-gray-100 rounded">
+    <div className="p-5 2xl:w-2/3 m-auto bg-gray-100 rounded">
       {data.chapters.map(
         ({ id, title, time_period, entity, themes, content }) => (
           <div key={id} className="mb-5 bg-white border rounded p-4 shadow-sm">
             <h3
               className={`sm:text-lg leading-6 font-medium text-gray-900 ${
-                mode == "task" ? "hidden" : ""
+                showHint ? "" : "hidden"
               } `}
             >
               {title}
@@ -81,9 +81,7 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
                 )
                 .join(" to ")}
             </p>
-            <div
-              className={`mt-2 font-bold ${mode == "task" ? "hidden" : ""} `}
-            >
+            <div className={`mt-2 font-bold ${showHint ? "" : "hidden"} `}>
               <RenderTags
                 tags={entity}
                 bgColor="bg-gray-200"
@@ -96,7 +94,7 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
               />
             </div>
             <p className="text-xs sm:text-base text-gray-800">
-              {mode == "task" ? content : getHighlightedText(content, entity)}
+              {showHint ? getHighlightedText(content, entity) : content}
             </p>
             <hr className="my-2" />
           </div>

@@ -10,6 +10,7 @@ import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
 import { UserStatusContext } from "../../contexts/UserStatusContext";
 import { ENABLE_DEBUG } from "../../constants/debug";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 interface SelectionTaskProps {
   stories: Stories;
@@ -19,6 +20,8 @@ interface SelectionTaskProps {
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const navigate = useNavigate();
   const userStatusContext = useContext(UserStatusContext);
+
+  const [showHint, setShowHint] = useState<boolean>(false);
 
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -98,13 +101,26 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      <div id="storyText" className="text-xl font-bold pl-2 ">
+      {mode !== "task" && (
+        <div className="fixed top-32 sm:top-24 p-6 py-4">
+          <button
+            className="p-2 text-white rounded-md bg-blue-500 flex items-center justify-center"
+            onClick={() => {
+              setShowHint(!showHint);
+            }}
+          >
+            {showHint ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </div>
+      )}
+
+      <div id="storyText" className="text-xl font-bold pl-2 text-center ">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
       </div>
       <div className="flex flex-col lg:flex-row overflow-hidden h-full px-0 sm:px-20 border">
         {/* Chapters Panel */}
         <div className="w-full lg:w-1/2 h-1/2 lg:h-auto p-8  overflow-auto border ">
-          <ChaptersToMarkdown data={currentStory} mode={mode} />
+          <ChaptersToMarkdown data={currentStory} showHint={showHint} />
         </div>
 
         {/* Sketch Selection Panel */}
