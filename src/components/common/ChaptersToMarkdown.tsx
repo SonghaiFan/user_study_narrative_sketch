@@ -31,21 +31,16 @@ function getHighlightedText(text: string, highlights: string[]): JSX.Element {
 
 interface RenderTagsProps {
   tags: string[];
-  bgColor: string;
-  textColor: string;
+  className: string;
 }
 
-const RenderTags: React.FC<RenderTagsProps> = ({
-  tags,
-  bgColor,
-  textColor,
-}) => {
+const RenderTags: React.FC<RenderTagsProps> = ({ tags, className }) => {
   return (
     <>
       {tags.map((tag, index) => (
         <span
           key={index}
-          className={`inline-block ${bgColor} ${textColor} px-2 py-1 mr-2 mb-2 rounded-xl text-xs font-medium`}
+          className={`${className} inline-block px-2 py-1 mr-2 mb-2 text-xs sm:text-sm font-medium `}
         >
           {tag}
         </span>
@@ -83,14 +78,12 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
             </p>
             <div className={`mt-2 font-bold ${showHint ? "" : "hidden"} `}>
               <RenderTags
-                tags={entity}
-                bgColor="bg-gray-200"
-                textColor="text-gray-700"
+                tags={themes}
+                className="bg-gray-700 text-gray-200 rounded"
               />
               <RenderTags
-                tags={themes}
-                bgColor="bg-gray-300"
-                textColor="text-gray-700"
+                tags={entity}
+                className="bg-gray-200 text-gray-700 rounded-xl"
               />
             </div>
             <p className="text-xs sm:text-base text-gray-800">

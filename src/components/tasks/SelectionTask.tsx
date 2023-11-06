@@ -45,6 +45,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     } else {
       setRightSelection(currentStory.structure);
     }
+
+    setShowHint(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStoryIndex]);
 
