@@ -14,7 +14,7 @@ Your task is to
 
 During the training phase, you can click on the small eye 👁️ to open the **hint**.
 
-The hint will provide you with a title, key words (`theme` and `entity`) to help you understand the narrative. Whether it is correct or not doesn't really matter.
+The hint will provide you with a title, key words (`theme` and `entity`) to help you understand the narrative.
 
 The training phase asks you to **choose our defined narrative structure** in order to understand the **TT-graphs**.
 

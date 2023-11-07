@@ -1,11 +1,11 @@
 import { db } from "../firebase";
 import { collection, doc, addDoc, getDoc } from "firebase/firestore";
-import { Story } from "../components/data/types";
 
 export const logSelectionData = async function (
   userId: string | undefined,
   mode: string,
-  currentStory: Story,
+  currentIndex: number,
+  currentStoryName: string,
   rightSelection: string,
   selection: string | null,
   reason: string
@@ -14,7 +14,8 @@ export const logSelectionData = async function (
     const docRef = await addDoc(collection(db, "userSelections"), {
       prolificId: userId,
       mode: mode,
-      story: currentStory.name,
+      currentIndex: currentIndex,
+      story: currentStoryName,
       rightSelection: rightSelection,
       selection: selection,
       reason: reason,
@@ -23,6 +24,26 @@ export const logSelectionData = async function (
     console.log("User selection recorded with ID: ", docRef.id);
   } catch (error) {
     console.error("Error recording user selection: ", error);
+  }
+};
+
+export const logTimeData = async function (
+  userId: string | undefined,
+  mode: string,
+  story: string,
+  index: number
+) {
+  try {
+    const docRef = await addDoc(collection(db, "userTime"), {
+      prolificId: userId,
+      mode: mode,
+      story: story,
+      index: index,
+      timestamp: new Date(),
+    });
+    console.log("User time recorded with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error recording user time: ", error);
   }
 };
 

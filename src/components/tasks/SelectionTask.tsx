@@ -5,7 +5,7 @@ import { getTaskConfig } from "./SelectionTaskConfig";
 import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
 import { ConfirmationModal } from "../common/ConfirmationModal";
-import { logSelectionData } from "../../utils/logger";
+import { logSelectionData, logTimeData } from "../../utils/logger";
 import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
 import { UserStatusContext } from "../../contexts/UserStatusContext";
@@ -37,16 +37,24 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const userId = userStatusContext?.userId;
   const currentModeConfig = modeConfig[mode];
   const currentStory = stories[currentStoryIndex];
+  const currentStoryName = currentStory?.name;
   const isSelectionCorrect = rightSelection === selection;
 
   useEffect(() => {
+    const recordTimeData = async () => {
+      // Call your logTimeData function here
+      await logTimeData(userId, mode, currentStoryName, currentStoryIndex);
+    };
+
     if (currentStoryIndex >= stories.length) {
       navigate(currentModeConfig.nextPath); // Use value from config
     } else {
       setRightSelection(currentStory.structure);
+      recordTimeData();
     }
 
     setShowHint(false);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStoryIndex]);
 
@@ -54,18 +62,19 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
     // Create a document in Firestore to record the user's selection and task details
 
-    if (!ENABLE_DEBUG && mode === "task") {
+    if (!ENABLE_DEBUG) {
       await logSelectionData(
         userId,
         mode,
-        currentStory,
+        currentStoryIndex,
+        currentStoryName,
         rightSelection,
         selection,
         reason
       );
     }
 
-    if (ENABLE_DEBUG && mode === "task") {
+    if (ENABLE_DEBUG) {
       await new Promise((r) => setTimeout(r, 1000));
     }
 
