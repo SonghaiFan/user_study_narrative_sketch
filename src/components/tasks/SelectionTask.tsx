@@ -112,7 +112,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      {mode !== "task" && (
+      {(mode !== "task" || ENABLE_DEBUG) && (
         <div className="fixed top-32 sm:top-24 p-6 py-4">
           <button
             className="p-2 text-white rounded-md bg-blue-500 flex items-center justify-center"
