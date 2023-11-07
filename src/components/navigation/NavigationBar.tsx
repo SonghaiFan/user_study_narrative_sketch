@@ -19,7 +19,7 @@ const CenterIndicator: React.FC = () => {
     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white">
       <h1 className="relative z-10 text-xl font-semibold ">User study</h1>
 
-      <div className="flex items-center justify-between align-items-center left-1/2 z-20 bg-blue-600  rounded-full p-1">
+      <div className="flex items-center justify-between align-items-center left-1/2 z-20 bg-blue-600 rounded-full p-1">
         <MdTimer size={20} />
         <Timer />
       </div>
@@ -40,7 +40,7 @@ const NavigationBar: React.FC<NavigationProps> = ({
         className={`flex flex-row justify-between items-center ${className}`}
       >
         <ul
-          className={`flex bg-blue-500 rounded-lg p-2 mt-12 sm:mt-0 sm:px-0`}
+          className={`flex bg-blue-500 rounded-lg p-2 mt-12 lg:mt-0 lg:px-0`}
           id="menu"
         >
           {routes.map((route) => (

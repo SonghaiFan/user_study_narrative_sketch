@@ -14,7 +14,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 interface SelectionTaskProps {
   stories: Stories;
-  mode: "trail" | "train" | "task";
+  mode: "trail" | "training" | "task";
 }
 
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {

@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* img center */
-img {
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px #ddd;
-  border-radius: 5px;
+img:not(#monash-logo) {
+  @apply mx-auto shadow-md rounded;
 }

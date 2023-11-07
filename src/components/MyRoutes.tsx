@@ -39,7 +39,7 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
   const isNavigationHidden =
     !ENABLE_DEBUG &&
     (currentPath == "/task" ||
-      currentPath == "/train" ||
+      currentPath == "/training" ||
       currentPath == "/end");
 
   return (

@@ -40,6 +40,7 @@ export default function Landing({
         </form>
       </div>
       <img
+        id="monash-logo"
         src={Monash_Logo}
         alt="Monash University logo"
         className="top-5 h-10 fixed "

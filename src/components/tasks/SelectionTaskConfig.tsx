@@ -54,7 +54,7 @@ export const getTaskConfig = ({
       message: TrainingMessage,
       options: taskOptions,
     },
-    train: {
+    training: {
       confirmButtonText: "Proceed to Next",
       disableConfirmButton: !isSelectionCorrect,
       cancelButtonText: "Try Again",

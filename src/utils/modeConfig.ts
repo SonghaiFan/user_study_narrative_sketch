@@ -7,7 +7,7 @@ interface ModeConfigProps {
 }
 
 export const modeConfig: ModeConfigProps = {
-  train: {
+  training: {
     nextPath: "/task",
   },
   task: {

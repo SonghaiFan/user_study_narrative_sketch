@@ -1,4 +1,4 @@
-# Task in Research 🔍
+# About Task in Research 🔍
 
 In our research, we use **TT-graphs** to explore the influence of textual and graphic narrative structures on the understanding and interpretation of news stories. **TT-graphs** serve as a valuable tool for visually communicating narratives and facilitating comparative studies of **textual** and **graphic** structures.
 
@@ -10,7 +10,7 @@ Your task is to
 
 > **select the narrative structure** you think is closest to the corresponding **TT-graph** on the left.
 
-## Train
+## Training
 
 During the training phase, you can click on the small eye 👁️ to open the **hint**.
 

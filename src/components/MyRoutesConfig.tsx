@@ -21,7 +21,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/home.md"
-        className="lg:w-1/2 m-auto mt-5 p-10 px-2 sm:px-20"
+        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
       />
     ),
   },
@@ -31,7 +31,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/intro.md"
-        className="lg:w-1/2 m-auto mt-5 p-10 px-2 sm:px-20"
+        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
       />
     ),
   },
@@ -51,15 +51,19 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/about.md"
-        className="lg:w-1/2  m-auto mt-5 p-10 px-2 sm:px-20"
+        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
       />
     ),
   },
   {
-    path: "/train",
-    name: "Train",
+    path: "/training",
+    name: "Training",
     component: (
-      <SelectionTask key="train" stories={train_stories_shuffle} mode="train" />
+      <SelectionTask
+        key="training"
+        stories={train_stories_shuffle}
+        mode="training"
+      />
     ),
   },
   {
@@ -75,7 +79,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/end.md"
-        className="md:w-1/2 m-auto mt-5 p-10 px-20"
+        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-20"
       />
     ),
   },
