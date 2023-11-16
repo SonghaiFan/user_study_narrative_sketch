@@ -63,7 +63,7 @@ export default function Landing({ handleSubmit }: LandingProps) {
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
         >
           <label className="mb-4 text-gray-600">
-            User ID:
+            Prolific ID:
             <input
               type="text"
               value={inputUserId}
