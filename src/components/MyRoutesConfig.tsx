@@ -37,7 +37,7 @@ export const routes = [
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/motifs.md"
-        className="lg:w-1/2 w-full m-auto mt-5 p-10 px-2 sm:px-20"
+        className="xl:w-1/2 w-full m-auto mt-5 p-10 px-2 sm:px-20"
       />
     ),
   },

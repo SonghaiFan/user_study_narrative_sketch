@@ -7,15 +7,20 @@ import Landing from "./common/Landing";
 import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 
-const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
-  const [prolificId, setProlificId] = useState("");
+interface LoginProps {
+  onLogin: (id: string) => void;
+  prolificId: string;
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin, prolificId }) => {
+  const [localProlificId, setLocalProlificId] = useState(prolificId);
   const navigate = useNavigate();
 
-  const idFromUrl = useQueryParam("prolificId");
+  const idFromUrl = useQueryParam("PROLIFIC_PID");
 
   useEffect(() => {
     if (idFromUrl) {
-      setProlificId(idFromUrl);
+      setLocalProlificId(idFromUrl);
     }
   }, [idFromUrl]);
 
@@ -28,22 +33,22 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
       return;
     }
 
-    if (!prolificId) {
+    if (!localProlificId) {
       alert("Please enter your Prolific ID");
       return;
     }
 
     try {
-      const userDoc = doc(db, "users", prolificId);
+      const userDoc = doc(db, "users", localProlificId);
       const userSnapshot = await getDoc(userDoc);
 
       if (userSnapshot.exists()) {
         navigate(modeConfig["repeatVisit"].nextPath);
-        onLogin(prolificId);
+        onLogin(localProlificId);
       } else {
-        await setDoc(userDoc, { prolificId });
+        await setDoc(userDoc, { localProlificId });
         navigate(modeConfig["firstVisit"].nextPath);
-        onLogin(prolificId);
+        onLogin(localProlificId);
       }
     } catch (error) {
       console.log(error);
@@ -52,8 +57,8 @@ const Login: React.FC<{ onLogin: (id: string) => void }> = ({ onLogin }) => {
 
   return (
     <Landing
-      prolificId={prolificId}
-      setProlificId={setProlificId}
+      prolificId={localProlificId}
+      setProlificId={setLocalProlificId}
       handleSubmit={handleSubmit}
     ></Landing>
   );

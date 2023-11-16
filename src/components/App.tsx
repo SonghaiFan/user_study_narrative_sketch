@@ -1,7 +1,6 @@
 // src/components/App.tsx
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import useQueryParam from "../utils/useQueryParam";
 import UserStatusProvider from "../contexts/UserStatusContext";
 
 import Login from "./Login";
@@ -12,7 +11,13 @@ const App: React.FC = () => {
   const [isLoggedIn, setLoggedIn] = useState(hasLoggedInUser);
   const [userId, setUserId] = useState("");
 
-  const prolificId = useQueryParam("prolificId");
+  // get all url params
+  const urlParams = new URLSearchParams(window.location.search);
+  console.log("All URL Params:", urlParams);
+
+  // get PROLIFIC_PID from url
+  const prolificId = urlParams.get("PROLIFIC_PID");
+  console.log("Prolific ID from URL:", prolificId);
 
   const storeUserId = (id: string) => {
     localStorage.setItem("userId", id);
@@ -21,7 +26,6 @@ const App: React.FC = () => {
   useEffect(() => {
     if (prolificId) {
       setUserId(prolificId);
-      setLoggedIn(true);
       storeUserId(prolificId);
     }
   }, [prolificId]);
@@ -44,7 +48,11 @@ const App: React.FC = () => {
       <Route
         path="/login"
         element={
-          isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />
+          isLoggedIn ? (
+            <Navigate to="/home" />
+          ) : (
+            <Login onLogin={handleLogin} prolificId={prolificId} />
+          )
         }
       />
       <Route

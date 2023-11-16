@@ -128,16 +128,16 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       <div id="storyText" className="text-xl font-bold pl-2 text-center ">
         {`${currentStory.section}: ${currentStoryIndex + 1}/${stories.length}`}
       </div>
-      <div className="flex flex-col lg:flex-row overflow-hidden h-full px-0 sm:px-20 border">
+      <div className="flex flex-col xl:flex-row overflow-hidden h-full px-0 sm:px-20 border">
         {/* Chapters Panel */}
-        <div className="w-full lg:w-1/2 h-1/2 lg:h-auto p-8  overflow-auto border ">
+        <div className="w-full xl:w-1/2 h-1/2 xl:h-auto p-8  overflow-auto border ">
           <ChaptersToMarkdown data={currentStory} showHint={showHint} />
         </div>
 
         {/* Sketch Selection Panel */}
         <div
           id="sketch-selection-panel"
-          className="w-full lg:w-1/2 h-1/2 lg:h-auto border"
+          className="w-full xl:w-1/2 h-1/2 xl:h-auto border"
         >
           <SketchSelectionPanel
             options={taskConfig[mode].options}
