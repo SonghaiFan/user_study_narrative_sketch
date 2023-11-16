@@ -69,7 +69,7 @@ const NavigationBar: React.FC<NavigationProps> = ({
 
         <button
           type="submit"
-          className="p-2 mt-12 lg:mt-0 lg:px-0 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600  "
+          className="p-2 mt-12 lg:mt-0 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600  "
           onClick={onLogout}
         >
           Logout

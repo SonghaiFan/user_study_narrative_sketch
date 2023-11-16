@@ -1,11 +1,11 @@
 // Importing necessary libraries and components
+import { useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtonsWrapper from "./navigation/NavigationButtonsWrapper";
 import { ENABLE_DEBUG } from "../constants/debug";
 import { routes } from "./MyRoutesConfig";
 import { logRoutePathNavigation } from "../utils/firebaseUtils";
-import { useEffect } from "react";
 import { useUserStatus } from "../hooks/useUserStatus";
 
 // MyRoutes component
