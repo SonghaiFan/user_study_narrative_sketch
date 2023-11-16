@@ -5,7 +5,7 @@ import { getTaskConfig } from "./SelectionTaskConfig";
 import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
 import { ConfirmationModal } from "../common/ConfirmationModal";
-import { logSelectionData, logTimeData } from "../../utils/logger";
+import { logUserSelectionData } from "../../utils/firebaseUtils";
 import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
 import { useUserStatus } from "../../hooks/useUserStatus";
@@ -41,16 +41,10 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const isSelectionCorrect = rightSelection === selection;
 
   useEffect(() => {
-    const recordTimeData = async () => {
-      // Call your logTimeData function here
-      await logTimeData(userId, mode, currentStoryName, currentStoryIndex);
-    };
-
     if (currentStoryIndex >= stories.length) {
       navigate(currentModeConfig.nextPath); // Use value from config
     } else {
       setRightSelection(currentStory.structure);
-      recordTimeData();
     }
 
     setShowHint(false);
@@ -61,28 +55,62 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const handleConfirm = async () => {
     setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
 
+    const decision = "confirm";
+
     // Create a document in Firestore to record the user's selection and task details
     if (!ENABLE_DEBUG) {
-      await logSelectionData(
+      await logUserSelectionData(
         userId,
         mode,
         currentStoryIndex,
         currentStoryName,
         rightSelection,
         selection,
-        reason
+        reason,
+        decision
       );
     }
 
     // Fake delay to simulate server response
     if (ENABLE_DEBUG) {
       await new Promise((r) => setTimeout(r, 1000));
+      console.log(
+        `User ${userId} selected ${selection} for ${currentStoryName} and clicked confirm`
+      );
     }
 
     setReason("");
     setCurrentStoryIndex((prev) => prev + 1);
     setShowModal(false);
     setIsConfirmButtonDisabled(false); // Re-enable the button after operation is complete
+  };
+
+  const handleCancel = async () => {
+    const decision = "cancel";
+
+    // Create a document in Firestore to record the user's selection and task details
+    if (!ENABLE_DEBUG) {
+      await logUserSelectionData(
+        userId,
+        mode,
+        currentStoryIndex,
+        currentStoryName,
+        rightSelection,
+        selection,
+        reason,
+        decision
+      );
+    }
+
+    // Fake delay to simulate server response
+    if (ENABLE_DEBUG) {
+      await new Promise((r) => setTimeout(r, 1000));
+      console.log(
+        `User ${userId} selected ${selection} for ${currentStoryName} and clicked cancel`
+      );
+    }
+
+    setShowModal(false);
   };
 
   const taskConfig = getTaskConfig({
@@ -151,7 +179,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         <ConfirmationModal
           isVisible={showModal}
           onConfirm={handleConfirm}
-          onCancel={() => setShowModal(false)}
+          onCancel={handleCancel}
           showTextarea={mode === "task"}
           confirmButtonText={taskConfig[mode].confirmButtonText}
           cancelButtonText={taskConfig[mode].cancelButtonText}

@@ -4,6 +4,9 @@ import NavigationBar from "./navigation/NavigationBar";
 import NavigationButtonsWrapper from "./navigation/NavigationButtonsWrapper";
 import { ENABLE_DEBUG } from "../constants/debug";
 import { routes } from "./MyRoutesConfig";
+import { logRoutePathNavigation } from "../utils/firebaseUtils";
+import { useEffect } from "react";
+import { useUserStatus } from "../hooks/useUserStatus";
 
 // MyRoutes component
 interface MyRoutesProps {
@@ -20,6 +23,8 @@ const getNavigationPaths = (currentPath: string) => {
 };
 
 const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
+  const { status } = useUserStatus();
+  const userId = status.userId;
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -41,6 +46,12 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
     (currentPath == "/task" ||
       currentPath == "/training" ||
       currentPath == "/end");
+
+  // each time the route path changes, log the path
+  useEffect(() => {
+    !ENABLE_DEBUG && logRoutePathNavigation(userId, currentPath);
+    ENABLE_DEBUG && console.log("Log route path navigation to ", currentPath);
+  }, [currentPath, userId]);
 
   return (
     <div className="flex flex-col h-screen">

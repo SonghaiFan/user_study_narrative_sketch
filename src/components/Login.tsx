@@ -4,8 +4,7 @@ import { modeConfig } from "../utils/modeConfig";
 import { ENABLE_DEBUG } from "../constants/debug";
 import Landing from "./common/Landing";
 import { useUserStatus } from "../hooks/useUserStatus";
-import { db } from "../firebase";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import { createUser, checkUserExists } from "../utils/firebaseUtils";
 
 interface LoginProps {
   onLogin: (id: string) => void;
@@ -47,14 +46,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }
 
     try {
-      const userDoc = doc(db, "users", userId);
-      const userSnapshot = await getDoc(userDoc);
+      const userExists = await checkUserExists(userId);
 
-      if (userSnapshot.exists()) {
+      if (userExists) {
         navigate(modeConfig["repeatVisit"].nextPath);
         onLogin(userId);
       } else {
-        await setDoc(userDoc, { userId });
+        await createUser(userId);
         navigate(modeConfig["firstVisit"].nextPath);
         onLogin(userId);
       }
