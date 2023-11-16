@@ -88,7 +88,7 @@ export default function Landing({ handleSubmit }: LandingProps) {
                 className="px-4 py-2 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 onClick={handleConsentClick}
               >
-                Read Consent Form
+                Click to Read Consent Form
               </button>
             )}
           </div>
@@ -105,7 +105,12 @@ export default function Landing({ handleSubmit }: LandingProps) {
           >
             Login
           </button>
+          <p className="text-sm text-gray-600 mt-4">
+            Please do not refresh the page until you finish the task, otherwise
+            you will lose your progress.
+          </p>
         </form>
+        {/* text: please user wide screen and do not refresh the page until you finish the task, otherwise you will lose your pregress */}
       </div>
       {showConsent && (
         <ConsentForm
