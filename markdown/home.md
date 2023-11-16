@@ -1,5 +1,3 @@
-# **Welcome to Our User Study on Sketching Narrative Structures!**
-
 # Consent Form
 
 ## Invitation to Participate in the Study
