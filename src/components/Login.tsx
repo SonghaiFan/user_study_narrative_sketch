@@ -11,6 +11,9 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const prolificId = new URLSearchParams(window.location.search).get(
+    "PROLIFIC_PID"
+  );
   const { status, setStatus } = useUserStatus();
   const navigate = useNavigate();
 
@@ -24,6 +27,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         isConsented: true,
       }));
     }
+
+    if (prolificId) {
+      setStatus((prevStatus) => ({
+        ...prevStatus,
+        userId: prolificId,
+      }));
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
