@@ -1,3 +1,13 @@
+# Background: Exploring Human Perception of Narratives in the Digital Deluge 🤔📚
+
+In today's digital landscape, we're often swimming in a sea of information, leading to that common "TL;DR" moment. 🌊📖
+
+Enter the realm of language models, our tech-savvy guides! 🤖 They're adept at simplifying complex text. But, news stories summary aren't just about fewer words; they're about preserving the essence of the narrative. 🎨📚
+
+Our curiosity sparks here: How do humans perceive these narratives from text? Can visual graphs aid in this understanding? 🧠📈 We're on a quest to not just lean on algorithms but to weave in the human perspective. 🤝💡
+
+Let's combine human intuition with technology's efficiency to navigate the vast narrative landscape. Are you ready to explore how graphs might illuminate our understanding of text-based stories? Let's embark on this exciting exploration! 🚀🌟
+
 # TT-Graphs: An Introduction
 
 In our study, we introduce the concept of **Theme-Time graphs (TT-graphs)**, as a method of visually representing narrative structures. Imagine a grid like a chessboard or a spreadsheet. In a TT-Graph, nodes representing story chapters are plotted on a grid. The position of a node on the grid is determined by two coordinates: the `x-coordinate` and the `y-coordinate`.
