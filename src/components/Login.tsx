@@ -1,7 +1,6 @@
 import { modeConfig } from "../utils/modeConfig";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useQueryParam from "../utils/useQueryParam";
 import { ENABLE_DEBUG } from "../constants/debug";
 import Landing from "./common/Landing";
 import { db } from "../firebase";
@@ -15,14 +14,6 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onLogin, prolificId }) => {
   const [localProlificId, setLocalProlificId] = useState(prolificId);
   const navigate = useNavigate();
-
-  const idFromUrl = useQueryParam("PROLIFIC_PID");
-
-  useEffect(() => {
-    if (idFromUrl) {
-      setLocalProlificId(idFromUrl);
-    }
-  }, [idFromUrl]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
