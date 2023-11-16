@@ -51,7 +51,7 @@ const App: React.FC = () => {
           isLoggedIn ? (
             <Navigate to="/home" />
           ) : (
-            <Login onLogin={handleLogin} prolificId={prolificId} />
+            <Login onLogin={handleLogin} prolificId={userId} />
           )
         }
       />
