@@ -12,18 +12,8 @@ export const stories_shuffle = _.shuffle(stories);
 
 export const routes = [
   {
-    path: "/home",
-    name: "Home",
-    component: (
-      <MarkdownRenderer
-        path="/user_study_narrative_sketch/markdown/home.md"
-        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
-      />
-    ),
-  },
-  {
     path: "/intro",
-    name: "Intro",
+    name: "Introduction",
     component: (
       <MarkdownRenderer
         path="/user_study_narrative_sketch/markdown/intro.md"

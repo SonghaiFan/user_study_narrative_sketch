@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { modeConfig } from "../../utils/modeConfig";
 import { getTaskConfig } from "./SelectionTaskConfig";
@@ -8,7 +8,7 @@ import { ConfirmationModal } from "../common/ConfirmationModal";
 import { logSelectionData, logTimeData } from "../../utils/logger";
 import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
-import { UserStatusContext } from "../../contexts/UserStatusContext";
+import { useUserStatus } from "../../hooks/useUserStatus";
 import { ENABLE_DEBUG } from "../../constants/debug";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ interface SelectionTaskProps {
 
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const navigate = useNavigate();
-  const userStatusContext = useContext(UserStatusContext);
+  const { status } = useUserStatus();
 
   const [showHint, setShowHint] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const [isConfirmButtonDisabled, setIsConfirmButtonDisabled] =
     useState<boolean>(false);
 
-  const userId = userStatusContext?.userId;
+  const userId = status.userId;
   const currentModeConfig = modeConfig[mode];
   const currentStory = stories[currentStoryIndex];
   const currentStoryName = currentStory?.name;
@@ -60,8 +60,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
   const handleConfirm = async () => {
     setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
-    // Create a document in Firestore to record the user's selection and task details
 
+    // Create a document in Firestore to record the user's selection and task details
     if (!ENABLE_DEBUG) {
       await logSelectionData(
         userId,
@@ -74,6 +74,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       );
     }
 
+    // Fake delay to simulate server response
     if (ENABLE_DEBUG) {
       await new Promise((r) => setTimeout(r, 1000));
     }

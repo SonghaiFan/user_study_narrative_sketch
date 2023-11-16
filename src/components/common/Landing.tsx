@@ -1,22 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Monash_Logo from "../../assets/Moansh-white-logo.svg";
 import ConsentForm from "./ConsentForm";
 import MarkdownRenderer from "./MarkdownRenderer";
 import { FaCheck } from "react-icons/fa";
-
+import { useUserStatus } from "../../hooks/useUserStatus";
+import { Status } from "../../contexts/UserStatusContext";
 interface LandingProps {
-  prolificId: string;
-  setProlificId: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export default function Landing({
-  prolificId,
-  setProlificId,
-  handleSubmit,
-}: LandingProps) {
+export default function Landing({ handleSubmit }: LandingProps) {
   const [showConsent, setShowConsent] = useState(false);
-  const [consentSigned, setConsentSigned] = useState(false);
+  const { status, setStatus } = useUserStatus();
+  const [inputUserId, setInputUserId] = useState(status.userId || "");
+
+  useEffect(() => {
+    if (status.userId) {
+      setInputUserId(status.userId);
+    }
+  }, [status.userId]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputUserId(e.target.value);
+    // Update the global userId in UserStatusContext
+    setStatus((prevStatus) => ({ ...prevStatus, userId: e.target.value }));
+  };
 
   const handleConsentClick = () => {
     setShowConsent(true);
@@ -24,14 +32,19 @@ export default function Landing({
 
   const handleConsentSubmit = () => {
     setShowConsent(false);
-    setConsentSigned(true);
+    setStatus((prevStatus: Status) => ({
+      ...prevStatus,
+      isConsented: true,
+    }));
   };
 
   const handleConsentCancel = () => {
     setShowConsent(false);
   };
 
-  const isLoginDisabled = !consentSigned;
+  const isIdFromURL = location.search.includes("PROLIFIC_PID");
+
+  const isLoginDisabled = !status.isConsented;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
@@ -53,18 +66,18 @@ export default function Landing({
             User ID:
             <input
               type="text"
-              value={prolificId}
-              onChange={(e) => setProlificId(e.target.value)}
+              value={inputUserId}
+              onChange={handleInputChange}
               className="block w-64 px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              readOnly={location.search.includes("PROLIFIC_PID")} // making it readonly if URL has the param
+              readOnly={isIdFromURL} // making it readonly if URL has the param
             />
           </label>
 
           <div className="my-4">
-            {consentSigned ? (
+            {status.isConsented ? (
               <button
                 type="button"
-                className="px-4 py-2 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center"
+                className="px-4 py-2 font-semibold text-white bg-green-500 rounded-md flex items-center"
               >
                 <FaCheck className="mr-2" />
                 Consent Form Confirmed
@@ -98,10 +111,10 @@ export default function Landing({
         <ConsentForm
           handleSubmit={handleConsentSubmit}
           handleCancel={handleConsentCancel}
-          isSubmitted={consentSigned}
+          isSubmitted={status.isConsented}
         >
           <MarkdownRenderer
-            path="/user_study_narrative_sketch/markdown/home.md"
+            path="/user_study_narrative_sketch/markdown/consent.md"
             className="p-10 px-2 sm:px-20"
           />
         </ConsentForm>

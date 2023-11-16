@@ -14,7 +14,7 @@ export const modeConfig: ModeConfigProps = {
     nextPath: "/end",
   },
   firstVisit: {
-    nextPath: "/home",
+    nextPath: "/intro",
   },
   repeatVisit: {
     nextPath: "/end",

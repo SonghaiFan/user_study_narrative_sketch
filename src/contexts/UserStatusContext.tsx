@@ -1,12 +1,14 @@
-import React, { createContext, useState, FC } from "react";
+// src/contexts/UserStatusContext.tsx
+import React, { createContext, useState, useEffect, FC } from "react";
 
-interface Status {
-  path: string;
-  progress: string;
+export interface Status {
+  userId: string;
+  isLoggedIn: boolean;
+  isConsented: boolean;
+  isFinished: boolean;
 }
 
-interface UserStatusContextProps {
-  userId: string;
+export interface UserStatusContextProps {
   status: Status;
   setStatus: React.Dispatch<React.SetStateAction<Status>>;
 }
@@ -16,20 +18,24 @@ export const UserStatusContext = createContext<
 >(undefined);
 
 interface UserStatusProviderProps {
-  userId: string;
   children: React.ReactNode;
 }
 
-const UserStatusProvider: FC<UserStatusProviderProps> = ({
-  userId,
-  children,
-}) => {
+const UserStatusProvider: FC<UserStatusProviderProps> = ({ children }) => {
   const [status, setStatus] = useState<Status>({
-    path: "home",
-    progress: "enter",
+    userId: "",
+    isLoggedIn: false,
+    isConsented: false,
+    isFinished: false,
   });
+
+  useEffect(() => {
+    console.log("UserStatusProvider: ", status);
+    localStorage.setItem("userStatus", JSON.stringify(status));
+  }, [status]);
+
   return (
-    <UserStatusContext.Provider value={{ userId, status, setStatus }}>
+    <UserStatusContext.Provider value={{ status, setStatus }}>
       {children}
     </UserStatusContext.Provider>
   );

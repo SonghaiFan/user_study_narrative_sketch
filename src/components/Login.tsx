@@ -1,58 +1,69 @@
-import { modeConfig } from "../utils/modeConfig";
-import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { modeConfig } from "../utils/modeConfig";
 import { ENABLE_DEBUG } from "../constants/debug";
 import Landing from "./common/Landing";
+import { useUserStatus } from "../hooks/useUserStatus";
 import { db } from "../firebase";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 
 interface LoginProps {
   onLogin: (id: string) => void;
-  prolificId: string;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin, prolificId }) => {
-  const [localProlificId, setLocalProlificId] = useState(prolificId);
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const { status, setStatus } = useUserStatus();
   const navigate = useNavigate();
+
+  // if it is debug mode, set userId to "debug" once the component is mounted
+  useEffect(() => {
+    if (ENABLE_DEBUG) {
+      console.log("Debug mode is enabled");
+      setStatus((prevStatus) => ({
+        ...prevStatus,
+        userId: "debug",
+        isConsented: true,
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const userId = status.userId;
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    // Handle debug mode
     if (ENABLE_DEBUG) {
       navigate(modeConfig["firstVisit"].nextPath);
-      onLogin("test");
+      onLogin(userId);
       return;
     }
 
-    if (!localProlificId) {
+    // Check for Prolific ID input
+    if (!userId) {
       alert("Please enter your Prolific ID");
       return;
     }
 
     try {
-      const userDoc = doc(db, "users", localProlificId);
+      const userDoc = doc(db, "users", userId);
       const userSnapshot = await getDoc(userDoc);
 
       if (userSnapshot.exists()) {
         navigate(modeConfig["repeatVisit"].nextPath);
-        onLogin(localProlificId);
+        onLogin(userId);
       } else {
-        await setDoc(userDoc, { localProlificId });
+        await setDoc(userDoc, { userId });
         navigate(modeConfig["firstVisit"].nextPath);
-        onLogin(localProlificId);
+        onLogin(userId);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  return (
-    <Landing
-      prolificId={localProlificId}
-      setProlificId={setLocalProlificId}
-      handleSubmit={handleSubmit}
-    ></Landing>
-  );
+  return <Landing handleSubmit={handleSubmit}></Landing>;
 };
 
 export default Login;
