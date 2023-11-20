@@ -2,7 +2,7 @@ import { taskOptions } from "../../constants/motifs";
 
 interface TaskConfigProps {
   isSelectionCorrect: boolean;
-  reason: string;
+  isSubmitConfirmed: boolean;
   rightSelection: string;
   selection: string | null;
 }
@@ -26,16 +26,28 @@ export const getTrainingMessage = (
   </p>
 );
 
-export const getTaskMessage = (selection: string | null) => (
+export const getTaskMessage = (
+  isSubmitConfirmed: boolean,
+  selection: string | null
+) => (
   <p className="text-lg">
-    Are you sure you want to submit your answer:{" "}
-    <span className="font-bold">{selection}</span>?
+    {isSubmitConfirmed ? (
+      <>
+        Please explain why you select{" "}
+        <span className="font-bold">{selection}</span>?
+      </>
+    ) : (
+      <>
+        Are you sure you want to submit your answer:{" "}
+        <span className="font-bold">{selection}</span>?
+      </>
+    )}
   </p>
 );
 
 export const getTaskConfig = ({
   isSelectionCorrect,
-  reason,
+  isSubmitConfirmed,
   rightSelection,
   selection,
 }: TaskConfigProps) => {
@@ -43,7 +55,7 @@ export const getTaskConfig = ({
     isSelectionCorrect,
     rightSelection
   );
-  const TaskMessage = getTaskMessage(selection);
+  const TaskMessage = getTaskMessage(isSubmitConfirmed, selection);
 
   return {
     trail: {
@@ -63,10 +75,12 @@ export const getTaskConfig = ({
       options: taskOptions,
     },
     task: {
-      confirmButtonText: "Yes, Proceed With Current Answer",
-      disableConfirmButton: !reason,
+      confirmButtonText: isSubmitConfirmed
+        ? "Submit reasoning and proceed"
+        : "Yes, Proceed With Current Answer",
+      disableConfirmButton: true,
       cancelButtonText: "No, Review Again Before Proceeding",
-      disableCancelButton: false,
+      disableCancelButton: isSubmitConfirmed,
       message: TaskMessage,
       options: taskOptions,
     },
