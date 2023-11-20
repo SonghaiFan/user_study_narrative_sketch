@@ -9,7 +9,8 @@ export const logUserSelectionData = async (
   rightSelection: string,
   selection: string | null,
   reason: string,
-  confidence: number | null
+  confidence: number | null,
+  note: string | null
 ) => {
   const selectionData = {
     mode,
@@ -20,6 +21,7 @@ export const logUserSelectionData = async (
     reason,
     confidence,
     timestamp: serverTimestamp(),
+    note,
   };
 
   const dbRef = push(ref(db, `${userId}/userSelections`));

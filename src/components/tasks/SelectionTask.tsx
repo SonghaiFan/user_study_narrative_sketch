@@ -64,7 +64,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         selection,
         reason,
-        confidence
+        confidence,
+        "end of selection"
       );
     }
 
@@ -88,7 +89,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         selection,
         reason,
-        confidence
+        confidence,
+        "confirm"
       );
     }
 
@@ -118,7 +120,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         selection,
         reason,
-        confidence
+        confidence,
+        "cancel"
       );
     }
 
@@ -155,7 +158,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         key,
         reason,
-        confidence
+        confidence,
+        "select"
       );
     }
 
