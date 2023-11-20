@@ -13,7 +13,6 @@ interface ConfirmationPanelProps {
   setInputText: (text: string) => void; // function to set the text
   inputRate: number | null; // rate to be displayed in the modal
   setInputRate: (rate: number | null) => void; // function to set the rate
-  captionText: string; // text for the caption
 }
 
 export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
@@ -29,7 +28,6 @@ export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
   setInputText,
   inputRate,
   setInputRate,
-  captionText,
 }) => {
   const confidenceLevels = [
     { level: 1, label: "Very Low" },
@@ -60,8 +58,6 @@ export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
             placeholder="Explain your reasoning..."
             className="mt-2 w-full p-4 border rounded-md overflow-auto resize-none max-h-[200px]"
           />
-          <p className="text-sm text-gray-600 mt-2">{captionText}</p>
-          {/* five stage slider to rate confidence level */}
 
           <div className="mt-4">
             <span className="text-sm text-gray-600 block mb-2">

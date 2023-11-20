@@ -13,7 +13,6 @@ interface ConfirmationModalProps {
   disableCancelButton: boolean; // to control the state of the cancel button
   inputText: string; // text to be displayed in the modal
   setInputText: (text: string) => void; // function to set the text
-  captionText: string; // text for the caption
 }
 
 export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -28,7 +27,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   disableCancelButton,
   inputText,
   setInputText,
-  captionText,
 }) => {
   if (!isVisible) {
     return null;
@@ -57,7 +55,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                 placeholder="Explain your reasoning..."
                 className="mt-2 w-full p-4 border rounded-md overflow-auto resize-none max-h-[200px]"
               />
-              <p className="text-sm text-gray-600 mt-2">{captionText}</p>
             </>
           )}
           <div className="flex justify-end mt-4">

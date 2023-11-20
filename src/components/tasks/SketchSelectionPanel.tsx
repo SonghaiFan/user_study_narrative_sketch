@@ -1,6 +1,6 @@
 import { ENABLE_DEBUG } from "../../constants/debug";
 interface StorySelectionPanelProps {
-  mode?: "trail" | "training" | "task";
+  mode?: "training" | "task";
   options: { [key: string]: string };
   rightSelection: string;
   onSelection: (key: string) => void;

@@ -4,7 +4,6 @@ import { modeConfig } from "../../utils/modeConfig";
 import { getTaskConfig } from "./SelectionTaskConfig";
 import SketchSelectionPanel from "./SketchSelectionPanel";
 import NavigationButtonsTask from "../navigation/NavigationButtonsTask";
-// import { ConfirmationModal } from "../common/ConfirmationModal";
 import { ConfirmationPanel } from "../common/ConfirmationPanel";
 import { logUserSelectionData } from "../../utils/firebaseUtils";
 import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
@@ -15,14 +14,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 interface SelectionTaskProps {
   stories: Stories;
-  mode: "trail" | "training" | "task";
+  mode: "training" | "task";
 }
 
 const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const navigate = useNavigate();
   const { status } = useUserStatus();
-
-  const [showHint, setShowHint] = useState<boolean>(false);
 
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [showBottomPanel, setShowBottomPanel] = useState<boolean>(false);
@@ -42,6 +39,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const currentStoryName = currentStory?.name;
   const isSelectionCorrect = rightSelection === selection;
   const isFeedbackProvided = reason !== "" && confidence !== null;
+  const showHint = mode === "training" && isSelectionCorrect;
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
@@ -50,7 +48,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       setRightSelection(currentStory.structure);
     }
 
-    setShowHint(false);
     setIsSubmitConfirmed(false);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -135,9 +132,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     setShowBottomPanel(true);
   };
 
-  const captionText =
-    "Please provide an explanation for your reasoning before submitting. If the dialogue box obstructs any content you wish to revisit, feel free to drag it around.";
-
   if (currentStoryIndex >= stories.length || !currentStory) {
     return null;
   }
@@ -150,19 +144,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         setCurrentStoryIndex={setCurrentStoryIndex}
         maxStories={stories.length}
       ></NavigationButtonsTask>
-
-      {(mode !== "task" || ENABLE_DEBUG) && (
-        <div className="fixed top-32 sm:top-30 p-6 py-4">
-          <button
-            className="p-2 text-white rounded-md bg-blue-500 flex items-center justify-center"
-            onClick={() => {
-              setShowHint(!showHint);
-            }}
-          >
-            {showHint ? <FaEyeSlash /> : <FaEye />}
-          </button>
-        </div>
-      )}
 
       <div className="text-sm font-bold pl-2 text-center">
         {Array.from({ length: stories.length }, (_, i) =>
@@ -195,7 +176,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
             />
           </div>
         </div>
-        {/* Confirmation Modal */}
 
         {/* Confirmation Panel */}
         {showBottomPanel && (
@@ -220,7 +200,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
               setInputText={setReason}
               inputRate={confidence}
               setInputRate={setConfidence}
-              captionText={captionText}
             >
               {taskConfig[mode].message}
             </ConfirmationPanel>

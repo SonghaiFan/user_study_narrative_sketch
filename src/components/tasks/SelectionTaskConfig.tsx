@@ -1,4 +1,4 @@
-import { taskOptions } from "../../constants/motifs";
+import { threeNodesOptions } from "../../constants/motifs";
 
 interface TaskConfigProps {
   isSelectionCorrect: boolean;
@@ -30,21 +30,32 @@ export const getTrainingMessage = (
 export const getTaskMessage = (
   isSubmitConfirmed: boolean,
   selection: string | null
-) => (
-  <p className="text-lg">
-    {isSubmitConfirmed ? (
-      <>
-        Please explain why you select{" "}
-        <span className="font-bold">{selection}</span>?
-      </>
-    ) : (
-      <>
-        Are you sure you want to submit your answer:{" "}
-        <span className="font-bold">{selection}</span>?
-      </>
-    )}
-  </p>
-);
+) => {
+  const selectionText = selection ? `"${selection}"` : "your selection";
+
+  return isSubmitConfirmed ? (
+    <>
+      {" "}
+      <p className="text-lg">
+        Please explain your reasoning for selecting{" "}
+        <span className="font-bold">{selectionText}</span>.
+      </p>
+      <p className="text-sm text-gray-600 mt-2">
+        Please provide an explanation for your reasoning before submitting.
+      </p>
+    </>
+  ) : (
+    <>
+      <p className="text-lg">
+        Are you sure you want to confirm your answer:{" "}
+        <span className="font-bold">{selectionText}</span>?
+      </p>
+      <p className="text-sm text-gray-600 mt-2">
+        Once confirmed, you will not be able to change your answer.
+      </p>
+    </>
+  );
+};
 
 export const getTaskConfig = ({
   isSelectionCorrect,
@@ -60,21 +71,13 @@ export const getTaskConfig = ({
   const TaskMessage = getTaskMessage(isSubmitConfirmed, selection);
 
   return {
-    trail: {
-      confirmButtonText: "Proceed to Next",
-      disableConfirmButton: !isSelectionCorrect,
-      cancelButtonText: "Try Again",
-      disableCancelButton: isSelectionCorrect,
-      message: TrainingMessage,
-      options: taskOptions,
-    },
     training: {
       confirmButtonText: "Proceed to Next",
       disableConfirmButton: !isSelectionCorrect,
       cancelButtonText: "Try Again",
       disableCancelButton: isSelectionCorrect,
       message: TrainingMessage,
-      options: taskOptions,
+      options: threeNodesOptions,
     },
     task: {
       confirmButtonText: isSubmitConfirmed
@@ -84,7 +87,7 @@ export const getTaskConfig = ({
       cancelButtonText: "No, Review Again Before Proceeding",
       disableCancelButton: isSubmitConfirmed,
       message: TaskMessage,
-      options: taskOptions,
+      options: threeNodesOptions,
     },
   };
 };

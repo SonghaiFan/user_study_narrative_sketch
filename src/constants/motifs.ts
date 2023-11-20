@@ -7,10 +7,8 @@ import ShortForkSketch from "/images/motifs/ShortFork.png";
 import WideBranchSketch from "/images/motifs/WideBranch.png";
 import WideMergeSketch from "/images/motifs/WideMerge.png";
 import SharpMergeSketch from "/images/motifs/SharpMerge.png";
-import RetainSketch from "/images/motifs/Retain.png";
-import ShiftSketch from "/images/motifs/Shift.png";
 
-const taskOptions = {
+const threeNodesOptions = {
   Linear: LinearSketch,
   Arch: ArchSketch,
   Ladder: LadderSketch,
@@ -22,9 +20,4 @@ const taskOptions = {
   WideMerge: WideMergeSketch,
 };
 
-const trainOptions = {
-  Retain: RetainSketch,
-  Shift: ShiftSketch,
-};
-
-export { taskOptions, trainOptions };
+export { threeNodesOptions };
