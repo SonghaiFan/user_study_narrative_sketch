@@ -1,5 +1,3 @@
-import React from "react";
-
 interface FeedbackFormProps {
   showFeedback: boolean;
   inputText: string;

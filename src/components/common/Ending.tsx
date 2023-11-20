@@ -83,7 +83,12 @@ const Ending: React.FC = () => {
             />
             <button
               onClick={handleFeedbackSubmit}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md"
+              className={`px-4 py-2 font-semibold text-white rounded-md ${
+                feedback !== ""
+                  ? "bg-blue-500 hover:bg-blue-600 focus:ring-blue-500"
+                  : "bg-gray-400 cursor-not-allowed"
+              }`}
+              disabled={feedback === ""}
             >
               Submit Feedback
             </button>
@@ -128,7 +133,7 @@ const Ending: React.FC = () => {
             />
             <button
               onClick={handleEmailSubmit}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md flex items-center justify-center"
+              className="px-4 py-2 font-semibold text-white bg-green-500rounded-md flex items-center justify-center"
             >
               <FiMail className="mr-2" /> Submit Email
             </button>
