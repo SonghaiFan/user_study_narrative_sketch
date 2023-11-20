@@ -1,4 +1,5 @@
 import { threeNodesOptions } from "../../constants/motifs";
+import train_stories from "../data/stories/combined_stories_train.json";
 
 interface TaskConfigProps {
   isSelectionCorrect: boolean;
@@ -8,24 +9,43 @@ interface TaskConfigProps {
   selection: string | null;
 }
 
+function getDescription(structure: string) {
+  const story = train_stories.find((s) => s.structure === structure);
+  return story?.description;
+}
+
 export const getTrainingMessage = (
   isSelectionCorrect: boolean,
   rightSelection: string
-) => (
-  <p className="text-lg">
-    {isSelectionCorrect ? (
-      <>
+) =>
+  isSelectionCorrect ? (
+    <>
+      <p className="text-lg">
         Your selection is correct! It's{" "}
         <span className="font-bold">{rightSelection}</span>.
-      </>
-    ) : (
-      <>
-        The selection is{" "}
-        <span className="font-bold text-red-500">incorrect</span>.
-      </>
-    )}
-  </p>
-);
+      </p>
+      <p className="text-sm text-gray-600 mt-2">
+        Check the rich text version that provides titles and keywords (
+        <span className="inline-block px-2 py-1 m-2 text-xs sm:text-sm font-medium bg-gray-700 text-gray-200 rounded">
+          themes
+        </span>
+        and
+        <span className="inline-block px-2 py-1 m-2 text-xs sm:text-sm font-medium bg-gray-200 text-gray-700 rounded-xl">
+          entities
+        </span>
+        ) to help you understand how the narrative in the TT graph works.
+      </p>
+      <p className="text-sm text-gray-600 mt-2">
+        <span className="font-bold">Explanation:</span>{" "}
+        {getDescription(rightSelection)}
+      </p>
+    </>
+  ) : (
+    <p className="text-lg">
+      The selection is{" "}
+      <span className="font-bold text-red-500">incorrect.</span>
+    </p>
+  );
 
 export const getTaskMessage = (
   isSubmitConfirmed: boolean,
@@ -35,13 +55,12 @@ export const getTaskMessage = (
 
   return isSubmitConfirmed ? (
     <>
-      {" "}
       <p className="text-lg">
-        Please explain your reasoning for selecting{" "}
-        <span className="font-bold">{selectionText}</span>.
+        Why you choose <span className="font-bold">{selectionText}</span>?
       </p>
       <p className="text-sm text-gray-600 mt-2">
-        Please provide an explanation for your reasoning before submitting.
+        You can only proceed to the next story after you have provided your
+        feedback for both reasoning and confidence level.
       </p>
     </>
   ) : (

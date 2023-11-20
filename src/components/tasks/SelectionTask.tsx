@@ -10,7 +10,6 @@ import ChaptersToMarkdown from "../common/ChaptersToMarkdown";
 import { Stories } from "../data/types";
 import { useUserStatus } from "../../hooks/useUserStatus";
 import { ENABLE_DEBUG } from "../../constants/debug";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 interface SelectionTaskProps {
   stories: Stories;
@@ -145,7 +144,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      <div className="text-sm font-bold pl-2 text-center">
+      <div className="text-sm pl-2 text-center text-gray-600">
         {Array.from({ length: stories.length }, (_, i) =>
           i <= currentStoryIndex ? "●" : "○"
         ).join(" ")}

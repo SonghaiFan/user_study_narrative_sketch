@@ -60,26 +60,16 @@
         "title": "Economic Boom in Clean Energy Startups",
         "time_period": ["2023-02-01", "2023-04-02"],
         "themes": ["Economic Boom"],
-        "entity": [
-          "GreenInvest",
-          "EcoTech",
-          "Mayor Laura Gibson",
-          "Market Street"
-        ],
-        "content": "Mayor Laura Gibson announced today the surge in the city's economy. The reason? Major investments in clean energy startups. GreenInvest and EcoTech, both located on Market Street, have received significant funding. This has led to job growth and a stronger economy. Mayor Gibson stated, 'Clean energy is not only good for the environment. It's great for our economy too.'"
+        "entity": ["GreenInvest", "EcoTech", "Simmons", "Market Street"],
+        "content": "Simmons announced today the surge in the city's economy. The reason? Major investments in clean energy startups. GreenInvest and EcoTech, both located on Market Street, have received significant funding. This has led to job growth and a stronger economy. Simmons stated, 'Clean energy is not only good for the environment. It's great for our economy too.'"
       },
       {
         "id": "B2",
         "title": "Market Street Startups Fuel Economic Boom",
         "time_period": ["2023-04-02", "2023-06-01"],
         "themes": ["Economic Boom"],
-        "entity": [
-          "GreenInvest",
-          "EcoTech",
-          "Mayor Laura Gibson",
-          "Market Street"
-        ],
-        "content": "The economic boom continues as GreenInvest and EcoTech, both based on Market Street, report record growth. The surge is attributed to their clean energy initiatives. Investments in these startups have created new jobs and strengthened the city's economy. Mayor Laura Gibson praised the companies, stating 'These startups are proving that clean energy is not just beneficial for the environment, but also for our economy.'"
+        "entity": ["GreenInvest", "EcoTech", "Simmons", "Market Street"],
+        "content": "The economic boom continues as GreenInvest and EcoTech, both based on Market Street, report record growth. The surge is attributed to their clean energy initiatives. Investments in these startups have created new jobs and strengthened the city's economy. Simmons praised the companies, stating 'These startups are proving that clean energy is not just beneficial for the environment, but also for our economy.'"
       }
     ]
   },
@@ -94,16 +84,16 @@
         "title": "TechPulse Sparks Economic Boom in Downtown District",
         "time_period": ["2023-10-01", "2023-11-16"],
         "themes": ["Economic Boom"],
-        "entity": ["Downtown District", "TechPulse", "Mayor Laura"],
-        "content": "In a surprising turn of events, the Downtown District is experiencing an economic boom. This surge is mainly due to the technological advancements introduced by TechPulse. Mayor Laura has praised the tech company's efforts, stating that their innovations have played a key role in the city's economic growth."
+        "entity": ["Downtown District", "TechPulse", "Simmons"],
+        "content": "In a surprising turn of events, the Downtown District is experiencing an economic boom. This surge is mainly due to the technological advancements introduced by TechPulse. Simmons has praised the tech company's efforts, stating that their innovations have played a key role in the city's economic growth."
       },
       {
         "id": "A2",
         "title": "TechPulse Fuels Economic Growth in Downtown District",
         "time_period": ["2023-11-16", "2024-01-01"],
         "themes": ["Economic Boom"],
-        "entity": ["Downtown District", "TechPulse", "Mayor Laura"],
-        "content": "TechPulse continues to drive the economic boom in the Downtown District. The tech company's latest innovations have boosted local businesses, leading to job growth and increased spending. Mayor Laura has applauded TechPulse for their role in the city's economic surge, stating that the company's technological advancements are a key factor in this growth. As we enter the new year, the Downtown District looks forward to more prosperity, largely thanks to TechPulse's contributions."
+        "entity": ["Downtown District", "TechPulse", "Simmons"],
+        "content": "TechPulse continues to drive the economic boom in the Downtown District. The tech company's latest innovations have boosted local businesses, leading to job growth and increased spending. Simmons has applauded TechPulse for their role in the city's economic surge, stating that the company's technological advancements are a key factor in this growth. As we enter the new year, the Downtown District looks forward to more prosperity, largely thanks to TechPulse's contributions."
       },
       {
         "id": "B2",
@@ -113,10 +103,10 @@
         "entity": [
           "Culturama",
           "Downtown District",
-          "Mayor Laura",
+          "Simmons",
           "Elaine, the Artist"
         ],
-        "content": "Parallel to the economic growth, the Downtown District is now witnessing a cultural rebirth. Art installations are popping up on every corner, and music fests are drawing crowds. Mayor Laura credits the historical society, Culturama, for this cultural resurgence. In her words, 'Culturama has breathed life into our city's heart.' Elaine, a local artist, has become a symbol of this renaissance. Her vibrant murals are now a part of the city's identity. As the city prospers economically, it's also reclaiming its cultural heritage."
+        "content": "Parallel to the economic growth, the Downtown District is now witnessing a cultural rebirth. Art installations are popping up on every corner, and music fests are drawing crowds. Simmons credits the historical society, Culturama, for this cultural resurgence. In her words, 'Culturama has breathed life into our city's heart.' Elaine, a local artist, has become a symbol of this renaissance. Her vibrant murals are now a part of the city's identity. As the city prospers economically, it's also reclaiming its cultural heritage."
       }
     ]
   },
@@ -262,8 +252,8 @@
         "title": "Unprecedented Economic Boom Hits the City",
         "time_period": ["2023-01-01", "2023-05-02"],
         "themes": ["Economic Boom"],
-        "entity": ["Mayor Lina", "Economic Council", "Downtown District"],
-        "content": "Mayor Lina and the Economic Council announced a remarkable economic boom in the city today. Downtown District, long known for its quiet streets, is now a bustling hub of new businesses and jobs. This sudden growth is creating a vibrant city full of opportunities. Yet, this rapid expansion also brings an unexpected ecological challenge. The city is now faced with finding a sustainable economic solution to balance growth and preserve the environment."
+        "entity": ["Rodriguez", "Economic Council", "Downtown District"],
+        "content": "Rodriguez and the Economic Council announced a remarkable economic boom in the city today. Downtown District, long known for its quiet streets, is now a bustling hub of new businesses and jobs. This sudden growth is creating a vibrant city full of opportunities. Yet, this rapid expansion also brings an unexpected ecological challenge. The city is now faced with finding a sustainable economic solution to balance growth and preserve the environment."
       },
       {
         "id": "B2",
@@ -285,12 +275,12 @@
         "time_period": ["2023-08-31", "2023-12-31"],
         "themes": ["Economic Boom"],
         "entity": [
-          "Mayor Lina",
+          "Rodriguez",
           "Economic Council",
           "GreenLife",
           "Downtown District"
         ],
-        "content": "In a remarkable turn of events, the city, under the leadership of Mayor Lina and the Economic Council, has found a sustainable solution to balance its economic boom and ecological challenges. The solution came to light during the Eco Summit, hosted by GreenLife in the Downtown District. The city plans to invest in green technologies and enforce stricter pollution controls. This decision marks a significant step towards ensuring the city's prosperity without compromising its ecological integrity."
+        "content": "In a remarkable turn of events, the city, under the leadership of Rodriguez and the Economic Council, has found a sustainable solution to balance its economic boom and ecological challenges. The solution came to light during the Eco Summit, hosted by GreenLife in the Downtown District. The city plans to invest in green technologies and enforce stricter pollution controls. This decision marks a significant step towards ensuring the city's prosperity without compromising its ecological integrity."
       }
     ]
   },
@@ -305,8 +295,8 @@
         "title": "Financial Crisis Strikes City's Tech Sector and Local Communities",
         "time_period": ["2023-10-01", "2023-10-31"],
         "themes": ["Economic Downturn"],
-        "entity": ["Martin", "Downtown District", "Central Bank"],
-        "content": "The city is under the grip of a severe financial crisis. The Central Bank has reported an economic downturn affecting various sectors, particularly technology. Martin, a tech company CEO, confirmed that the crisis is causing layoffs and project halts in his firm. The Downtown District, known for its vibrant local businesses, is also feeling the pinch, with many shops closing down. The economic downturn is posing a significant challenge to both the tech sector and local communities."
+        "entity": ["Anderson", "Downtown District", "Central Bank"],
+        "content": "The city is under the grip of a severe financial crisis. The Central Bank has reported an economic downturn affecting various sectors, particularly technology. Anderson, a tech company CEO, confirmed that the crisis is causing layoffs and project halts in his firm. The Downtown District, known for its vibrant local businesses, is also feeling the pinch, with many shops closing down. The economic downturn is posing a significant challenge to both the tech sector and local communities."
       },
       {
         "id": "C2",
@@ -314,20 +304,20 @@
         "time_period": ["2023-11-30", "2024-01-15"],
         "themes": ["Community Resilience"],
         "entity": [
-          "Martin",
+          "Anderson",
           "Downtown District",
           "Central Bank",
           "Community Alliance"
         ],
-        "content": "In the face of the economic crisis, the Downtown District is showing signs of resilience. A group of citizens, including tech CEO Martin, have formed the Community Alliance. They aim to support local businesses and workers affected by the downturn. The Alliance is creating grassroots solutions, such as local trade networks and community support funds. Despite the challenging times, the spirit of the Downtown District remains strong."
+        "content": "In the face of the economic crisis, the Downtown District is showing signs of resilience. A group of citizens, including tech CEO Anderson, have formed the Community Alliance. They aim to support local businesses and workers affected by the downturn. The Alliance is creating grassroots solutions, such as local trade networks and community support funds. Despite the challenging times, the spirit of the Downtown District remains strong."
       },
       {
         "id": "A2",
         "title": "TechPulse Inc. Thrives Amid Economic Crisis",
         "time_period": ["2023-12-31", "2024-03-01"],
         "themes": ["Tech Boom"],
-        "entity": ["Martin", "Silicon Street", "TechPulse Inc."],
-        "content": "Despite the economic crisis, Silicon Street is seeing a tech boom. Martin, CEO of TechPulse Inc., announced a surge in their business. Innovative solutions for the new economy have allowed them to grow. While many companies struggle, TechPulse Inc. is hiring more staff. The tech startup is a bright spot in a gloomy economy. Martin believes this trend will continue. He said, 'We are adapting to the new economy, and it is paying off.'"
+        "entity": ["Anderson", "Silicon Street", "TechPulse Inc."],
+        "content": "Despite the economic crisis, Silicon Street is seeing a tech boom. Anderson, CEO of TechPulse Inc., announced a surge in their business. Innovative solutions for the new economy have allowed them to grow. While many companies struggle, TechPulse Inc. is hiring more staff. The tech startup is a bright spot in a gloomy economy. Anderson believes this trend will continue. He said, 'We are adapting to the new economy, and it is paying off.'"
       }
     ]
   },
@@ -342,8 +332,8 @@
         "title": "Uprising in the City: The Birth of a Rebellion",
         "time_period": ["2023-04-01", "2023-05-22"],
         "themes": ["Revolution"],
-        "entity": ["West End Park", "City Square", "James", "Rebel Group"],
-        "content": "In the heart of the city, a revolution is brewing. At West End Park, a man named James is leading a rebel group. They want independence for the city. The City Square has become their main base. The fight is tough, but they are not giving up. This is the start of their journey."
+        "entity": ["West End Park", "City Square", "Carter", "Rebel Group"],
+        "content": "In the heart of the city, a revolution is brewing. At West End Park, a man named Carter is leading a rebel group. They want independence for the city. The City Square has become their main base. The fight is tough, but they are not giving up. This is the start of their journey."
       },
       {
         "id": "A2",
@@ -353,11 +343,11 @@
         "entity": [
           "City Hall",
           "Freedom Radio",
-          "James",
+          "Carter",
           "Rebel Group",
-          "Governor Mitchell"
+          "Davis"
         ],
-        "content": "From May to July, the fight for independence took a serious turn. James and his rebel group targeted City Hall. Their aim was to take over the city's main power center. They faced strong resistance from Governor Mitchell's forces. Meanwhile, Freedom Radio became the voice of the revolution. It spread news of the rebel group's actions. The city's fight was getting tougher, but the rebels were not backing down."
+        "content": "From May to July, the fight for independence took a serious turn. Carter and his rebel group targeted City Hall. Their aim was to take over the city's main power center. They faced strong resistance from Davis's forces. Meanwhile, Freedom Radio became the voice of the revolution. It spread news of the rebel group's actions. The city's fight was getting tougher, but the rebels were not backing down."
       },
       {
         "id": "A3",
@@ -365,7 +355,7 @@
         "time_period": ["2023-07-12", "2023-09-01"],
         "themes": ["Revolution"],
         "entity": ["City Square", "City Hall", "West End Park", "Rebel Group"],
-        "content": "From mid-July to September, the City Square became a battlefield. The rebel group, led by James, fought fiercely against Governor Mitchell's forces. The rebels held their ground, despite facing heavy losses. They moved their base to West End Park, close to City Hall. The fight for independence was getting tougher, but the spirit of the rebels remained unbroken. Freedom Radio continued to broadcast their brave actions, inspiring the city's residents to join the revolution."
+        "content": "From mid-July to September, the City Square became a battlefield. The rebel group, led by Carter, fought fiercely against Davis's forces. The rebels held their ground, despite facing heavy losses. They moved their base to West End Park, close to City Hall. The fight for independence was getting tougher, but the spirit of the rebels remained unbroken. Freedom Radio continued to broadcast their brave actions, inspiring the city's residents to join the revolution."
       }
     ]
   },
