@@ -4,11 +4,13 @@ interface StorySelectionPanelProps {
   options: { [key: string]: string };
   rightSelection: string;
   onSelection: (key: string) => void;
+  locked?: boolean;
 }
 const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
   options,
   rightSelection,
   onSelection,
+  locked = false,
 }) => {
   const numberOfOptions = Object.keys(options).length;
   return (
@@ -22,13 +24,15 @@ const SketchSelectionPanel: React.FC<StorySelectionPanelProps> = ({
           key={key}
           className={`relative aspect-w-1 aspect-h-1 border ${
             ENABLE_DEBUG && rightSelection === key ? "border-red-500" : ""
-          } transform hover:scale-105 hover:border-blue-500 transition-transform duration-500 ease-in-out rounded`}
+          } transform ${
+            locked ? "" : "cursor-pointer hover:scale-105 hover:border-blue-500"
+          } transition-transform duration-500 ease-in-out rounded`}
         >
           <img
             src={value}
             alt={key}
-            className="absolute inset-0 w-full h-full object-contain cursor-pointer"
-            onClick={() => onSelection(key)}
+            className="absolute inset-0 w-full h-full object-contain "
+            onClick={() => !locked && onSelection(key)}
           />
           <div className="absolute bottom-0 w-full bg-gray-800 bg-opacity-50 text-white text-xs text-center py-1 rounded-b">
             {key}

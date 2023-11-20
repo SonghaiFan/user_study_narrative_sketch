@@ -3,6 +3,7 @@ import { taskOptions } from "../../constants/motifs";
 interface TaskConfigProps {
   isSelectionCorrect: boolean;
   isSubmitConfirmed: boolean;
+  isFeedbackProvided: boolean;
   rightSelection: string;
   selection: string | null;
 }
@@ -48,6 +49,7 @@ export const getTaskMessage = (
 export const getTaskConfig = ({
   isSelectionCorrect,
   isSubmitConfirmed,
+  isFeedbackProvided,
   rightSelection,
   selection,
 }: TaskConfigProps) => {
@@ -78,7 +80,7 @@ export const getTaskConfig = ({
       confirmButtonText: isSubmitConfirmed
         ? "Submit reasoning and proceed"
         : "Yes, Proceed With Current Answer",
-      disableConfirmButton: true,
+      disableConfirmButton: isSubmitConfirmed && !isFeedbackProvided,
       cancelButtonText: "No, Review Again Before Proceeding",
       disableCancelButton: isSubmitConfirmed,
       message: TaskMessage,

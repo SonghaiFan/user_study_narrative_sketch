@@ -41,6 +41,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const currentStory = stories[currentStoryIndex];
   const currentStoryName = currentStory?.name;
   const isSelectionCorrect = rightSelection === selection;
+  const isFeedbackProvided = reason !== "" && confidence !== null;
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {
@@ -124,6 +125,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const taskConfig = getTaskConfig({
     isSubmitConfirmed,
     isSelectionCorrect,
+    isFeedbackProvided,
     rightSelection,
     selection,
   });
@@ -132,8 +134,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     setSelection(key);
     setShowBottomPanel(true);
   };
-
-  const isFeedbackProvided = reason && confidence;
 
   const captionText =
     "Please provide an explanation for your reasoning before submitting. If the dialogue box obstructs any content you wish to revisit, feel free to drag it around.";
@@ -191,6 +191,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
               rightSelection={rightSelection}
               mode={mode}
               onSelection={onSelection}
+              locked={showBottomPanel}
             />
           </div>
         </div>
@@ -200,14 +201,19 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         {showBottomPanel && (
           <div id="confirmation-panel" className="row-span-1 m-auto ">
             <ConfirmationPanel
-              onConfirm={isSubmitConfirmed ? handleConfirm : handleSubmit}
+              onConfirm={
+                mode === "task"
+                  ? isSubmitConfirmed
+                    ? handleConfirm
+                    : handleSubmit
+                  : handleConfirm
+              }
               onCancel={handleCancel}
               showFeedback={mode === "task" && isSubmitConfirmed}
               confirmButtonText={taskConfig[mode].confirmButtonText}
               cancelButtonText={taskConfig[mode].cancelButtonText}
               disableConfirmButton={
-                isConfirmButtonDisabled ||
-                (isSubmitConfirmed && !isFeedbackProvided)
+                isConfirmButtonDisabled || taskConfig[mode].disableConfirmButton
               }
               disableCancelButton={taskConfig[mode].disableCancelButton}
               inputText={reason}
