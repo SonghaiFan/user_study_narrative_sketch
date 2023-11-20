@@ -56,7 +56,7 @@ const MyRoutes: React.FC<MyRoutesProps> = ({ onLogout }) => {
   return (
     <div className="flex flex-col h-screen">
       <NavigationBar
-        className="sticky z-50 bg-blue-500 sm:p-6 py-4 shadow-sm"
+        className="sticky z-50 bg-blue-500 sm:p-6 py-4"
         routes={routes}
         onLogout={onLogout}
       />

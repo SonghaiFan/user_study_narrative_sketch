@@ -9,7 +9,7 @@ export const logUserSelectionData = async (
   rightSelection: string,
   selection: string | null,
   reason: string,
-  decision: string
+  confidence: number | null
 ) => {
   const selectionData = {
     mode,
@@ -18,7 +18,7 @@ export const logUserSelectionData = async (
     rightSelection,
     selection,
     reason,
-    decision,
+    confidence,
     timestamp: serverTimestamp(),
   };
 
@@ -59,5 +59,37 @@ export async function logRoutePathNavigation(
     console.log("Route path navigation recorded with ID: ", dbRef.key);
   } catch (error) {
     console.error("Error recording route path navigation: ", error);
+  }
+}
+
+export async function logUserFeedback(userId: string, feedback: string) {
+  const feedbackData = {
+    feedback,
+    timestamp: serverTimestamp(),
+  };
+
+  const dbRef = push(ref(db, `${userId}/finalFeedback`));
+
+  try {
+    await set(dbRef, feedbackData);
+    console.log("User feedback recorded with ID: ", dbRef.key);
+  } catch (error) {
+    console.error("Error recording user feedback: ", error);
+  }
+}
+
+export async function logUserEmail(userId: string, email: string) {
+  const emailData = {
+    email,
+    timestamp: serverTimestamp(),
+  };
+
+  const dbRef = push(ref(db, `${userId}/finalEmail`));
+
+  try {
+    await set(dbRef, emailData);
+    console.log("User email recorded with ID: ", dbRef.key);
+  } catch (error) {
+    console.error("Error recording user email: ", error);
   }
 }

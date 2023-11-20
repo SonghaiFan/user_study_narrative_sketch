@@ -54,14 +54,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
   const handleSubmit = async () => {
     setIsSubmitConfirmed(true);
-  };
 
-  const handleConfirm = async () => {
-    setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
-
-    const decision = "confirm";
-
-    // Create a document in Firestore to record the user's selection and task details
     if (!ENABLE_DEBUG) {
       await logUserSelectionData(
         userId,
@@ -71,7 +64,31 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         selection,
         reason,
-        decision
+        confidence
+      );
+    }
+
+    if (ENABLE_DEBUG) {
+      console.log(
+        `User ${userId} selected ${selection} for ${currentStoryName}, end of selection.`
+      );
+    }
+  };
+
+  const handleConfirm = async () => {
+    setIsConfirmButtonDisabled(true); // Disable the button to prevent multiple clicks
+
+    // Create a document in Firestore to record the user's selection and task details
+    if (!ENABLE_DEBUG && mode === "task") {
+      await logUserSelectionData(
+        userId,
+        mode,
+        currentStoryIndex,
+        currentStoryName,
+        rightSelection,
+        selection,
+        reason,
+        confidence
       );
     }
 
@@ -79,7 +96,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
     if (ENABLE_DEBUG) {
       // await new Promise((r) => setTimeout(r, 1000));
       console.log(
-        `User ${userId} selected ${selection} for ${currentStoryName} and clicked confirm`
+        `User ${userId} selected ${selection} for ${currentStoryName} and clicked confirm, the selection is ${isSelectionCorrect}, and the reason is ${reason} and the confidence level is ${confidence}.`
       );
     }
 
@@ -91,8 +108,6 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   };
 
   const handleCancel = async () => {
-    const decision = "cancel";
-
     // Create a document in Firestore to record the user's selection and task details
     if (!ENABLE_DEBUG) {
       await logUserSelectionData(
@@ -103,7 +118,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         rightSelection,
         selection,
         reason,
-        decision
+        confidence
       );
     }
 
@@ -129,6 +144,24 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const onSelection = (key: string) => {
     setSelection(key);
     setShowBottomPanel(true);
+
+    if (!ENABLE_DEBUG && mode === "training") {
+      // Create a document in Firestore to record the user's selection and task details
+      logUserSelectionData(
+        userId,
+        mode,
+        currentStoryIndex,
+        currentStoryName,
+        rightSelection,
+        key,
+        reason,
+        confidence
+      );
+    }
+
+    if (ENABLE_DEBUG) {
+      console.log(`User ${userId} selected ${key} for ${currentStoryName}.`);
+    }
   };
 
   if (currentStoryIndex >= stories.length || !currentStory) {

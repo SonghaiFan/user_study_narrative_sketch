@@ -1,6 +1,7 @@
 // Routes configuration
 import _ from "lodash";
 import SelectionTask from "./tasks/SelectionTask";
+import Ending from "./common/Ending";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 
 import train_stories from "./data/stories/combined_stories_train.json";
@@ -62,12 +63,7 @@ export const routes = [
   {
     path: "/end",
     name: "End",
-    component: (
-      <MarkdownRenderer
-        path="/user_study_narrative_sketch/markdown/end.md"
-        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-20"
-      />
-    ),
+    component: <Ending />,
   },
 ];
 

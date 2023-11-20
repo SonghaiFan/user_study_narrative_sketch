@@ -6,26 +6,23 @@ In our research, we use **TT-graphs** to explore the influence of textual and gr
 
 Your task involves:
 
-> **Reading the news chapters** on the right &
+## Training
+
+> **Reading the news chapters** on the right.
 
 > **Selecting the narrative structure** that best aligns with the corresponding **TT-graph** on the left.
 
-## Training 📚
+During the training, after you've selected a narrative structure, you'll see a detailed text that includes a title, key words (`theme` and `entity`), and a brief explanation. This part of the study is to help you get used to the **TT-graphs** and learn how to pick the right narrative structures.
 
-During the training phase, you can click on the small eye icon 👁️ to access the **hint**.
+## Task
 
-The hint offers a title, along with key words (`theme` and `entity`), aiding your grasp of the narrative.
+In the actual task phase, there will be no hints provided. Instead, you will:
 
-This phase requires you to **choose our predefined narrative structure** to familiarize yourself with the **TT-graphs**.
+> **Select the narrative structure** based solely on your interpretation of the text.
 
-## Task 🎯
+> **Write down your reasoning and rate your confidence level** for each selection.
 
-In the actual task phase, you will **NOT** have hints. Instead, you will:
+| ⏱️ Please be mindful of the time. You've only paid for **30 minutes**. **Rushing through and underperforming may affect your pay**. We encourage you to make the "right" choices. "Right" in this context means not exactly the same as our predefined narrative structures. As long as you understand how the TT graphs work and provide sound reasoning, that's considered the right choice. Good luck! 🌟 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
-> **Select based solely on your interpretation** of the text.
-
-> **Write down your reasoning** for each selection.
-
-# Ready to Begin? Proceed to Next to Start Training 🚀
-
-⏱️ Please be mindful of the time. you only paid for 30 min, although we encourage you to make the "right" choices and provide good reasoning, going too fast and underperforming may affect your pay. Good luck! 🌟
+## Ready to Begin? Proceed to Next to Start Training 🚀
