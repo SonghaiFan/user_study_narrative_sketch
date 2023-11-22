@@ -1,4 +1,3 @@
-// src/contexts/UserStatusContext.tsx
 import React, { createContext, useState, useEffect, FC } from "react";
 
 export interface Status {
@@ -22,15 +21,17 @@ interface UserStatusProviderProps {
 }
 
 const UserStatusProvider: FC<UserStatusProviderProps> = ({ children }) => {
+  // Initialize state with data from local storage if available
+  const initialStatus = JSON.parse(localStorage.getItem("userStatus") || "{}");
   const [status, setStatus] = useState<Status>({
-    userId: "",
-    isLoggedIn: false,
-    isConsented: false,
-    isFinished: false,
+    userId: initialStatus.userId || "",
+    isLoggedIn: initialStatus.isLoggedIn || false,
+    isConsented: initialStatus.isConsented || false,
+    isFinished: initialStatus.isFinished || false,
   });
 
   useEffect(() => {
-    console.log("UserStatusProvider: ", status);
+    // Update local storage whenever the status changes
     localStorage.setItem("userStatus", JSON.stringify(status));
   }, [status]);
 
