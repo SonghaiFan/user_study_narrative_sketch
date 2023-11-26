@@ -1,6 +1,6 @@
 # Introduction to Our Study on Narrative Perception in the Digital Age 🌐📚
 
-In this digital era, we're constantly bombarded with information. It's tempting to bypass lengthy texts, leading to the familiar "TL;DR" scenario. Here, language models step in as digital assistants, adept at distilling complex texts. But, summarizing news stories is not just about brevity; it's about retaining the story's essence. We're exploring how people understand these condensed narratives. Do visual aids like graphs enhance comprehension? We're combining human insight with technological efficiency to better understand text narratives.
+In this digital era, we're constantly bombarded with information. It's tempting to bypass lengthy texts, leading to the familiar "TL;DR (Too Long; Didn't Read.)" scenario. Here, language models step in as digital assistants, adept at distilling complex texts. But, summarizing news stories is not just about brevity; it's about retaining the story's essence. We're exploring how people understand these condensed narratives. Do visual aids like graphs enhance comprehension? We're combining human insight with technological efficiency to better understand text narratives.
 
 # Understanding TT-Graphs
 
