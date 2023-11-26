@@ -1,7 +1,7 @@
 // Routes configuration
 import _ from "lodash";
 import SelectionTask from "./tasks/SelectionTask";
-import Ending from "./common/Ending";
+import Final from "./common/Final";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 
 import train_stories from "./data/stories/combined_stories_train.json";
@@ -63,7 +63,7 @@ export const routes = [
   {
     path: "/end",
     name: "End",
-    component: <Ending />,
+    component: <Final />,
   },
 ];
 

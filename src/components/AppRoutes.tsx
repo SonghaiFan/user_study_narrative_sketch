@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useUserStatus } from "../hooks/useUserStatus";
-import Login from "./Login";
+import Login from "./common/Login";
+import Ending from "./common/Ending";
 import MyRoutes from "./MyRoutes";
 
 const AppRoutes: React.FC = () => {
@@ -60,11 +61,7 @@ const AppRoutes: React.FC = () => {
       <Route
         path="/*"
         element={
-          !status.isLoggedIn ? (
-            <Navigate to="/login" />
-          ) : (
-            <MyRoutes onLogout={handleLogout} />
-          )
+          status.isFinished ? <Ending /> : <MyRoutes onLogout={handleLogout} />
         }
       />
     </Routes>

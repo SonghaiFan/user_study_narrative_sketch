@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { modeConfig } from "../utils/modeConfig";
-import { ENABLE_DEBUG } from "../constants/debug";
-import Landing from "./common/Landing";
-import { useUserStatus } from "../hooks/useUserStatus";
-import { createUser, checkUserExists } from "../utils/firebaseUtils";
+import { modeConfig } from "../../utils/modeConfig";
+import { ENABLE_DEBUG } from "../../constants/debug";
+import Landing from "./Landing";
+import { useUserStatus } from "../../hooks/useUserStatus";
+import { createUser, checkUserExists } from "../../utils/firebaseUtils";
 
 interface LoginProps {
   onLogin: (id: string) => void;

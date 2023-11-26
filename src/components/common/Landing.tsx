@@ -62,6 +62,7 @@ export default function Landing({ handleSubmit }: LandingProps) {
           onSubmit={handleSubmit}
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
         >
+          <h2 className="text-2xl font-semibold mb-4"></h2>
           <label className="mb-4 text-gray-600">
             Prolific ID:
             <input
@@ -106,8 +107,8 @@ export default function Landing({ handleSubmit }: LandingProps) {
             Login
           </button>
           <p className="text-sm text-gray-600 mt-4">
-            Please do not refresh the page until you finish the task, otherwise
-            you will lose your progress.
+            ⚠️ Please do not refresh the page until you finish the task,
+            otherwise you will lose your progress.
           </p>
         </form>
         {/* text: please user wide screen and do not refresh the page until you finish the task, otherwise you will lose your pregress */}
