@@ -61,7 +61,13 @@ const AppRoutes: React.FC = () => {
       <Route
         path="/*"
         element={
-          status.isFinished ? <Ending /> : <MyRoutes onLogout={handleLogout} />
+          status.isFinished ? (
+            <Ending />
+          ) : !status.isLoggedIn ? (
+            <Navigate to="/login" />
+          ) : (
+            <MyRoutes onLogout={handleLogout} />
+          )
         }
       />
     </Routes>
