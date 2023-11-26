@@ -57,22 +57,29 @@ export default function Landing({ handleSubmit }: LandingProps) {
         alt="Monash University logo"
         className="top-5 h-14 fixed "
       />
-      <div className="mt-20 p-4">
+      <div className="mt-20 p-8 w-1/3">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
         >
-          <h2 className="text-2xl font-semibold mb-4"></h2>
-          <label className="mb-4 text-gray-600">
-            Prolific ID:
+          <h2 className="text-2xl font-semibold mb-4">
+            Welcome to the Pilot User Study:
+          </h2>
+          <h1 className="text-xl mb-8">{document.title}</h1>
+          <div className="flex items-center mb-4">
+            <label className="text-gray-600 mr-4">Prolific ID:</label>
             <input
               type="text"
               value={inputUserId}
               onChange={handleInputChange}
-              className="block w-64 px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="flex-grow px-4 py-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               readOnly={isIdFromURL} // making it readonly if URL has the param
             />
-          </label>
+          </div>
+          <p className="text-sm text-gray-600 mt-4">
+            The Prolific ID is automatically filled in if you are from Prolific.
+            Please click the button below to read the consent form.
+          </p>
 
           <div className="my-4">
             {status.isConsented ? (

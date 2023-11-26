@@ -110,18 +110,25 @@ const Final: React.FC = () => {
               If you are willing to participate in further phases of the user
               study, please provide your email:
             </p>
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              className="w-1/2 p-2 border border-gray-300 rounded-md mb-4"
-            />
-            <button
-              onClick={handleEmailSubmit}
-              className="flex items-center justify-center px-4 py-2 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-            >
-              <FiMail className="mr-2" /> Submit Email
-            </button>
+            <div className="flex items-center space-x-4 mb-4">
+              {" "}
+              {/* New div with flex layout */}
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                className="flex-grow p-2 border border-gray-300 rounded-md"
+              />
+              <button
+                onClick={handleEmailSubmit}
+                className="flex-shrink-0 px-4 py-2 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              >
+                <div className="flex items-center">
+                  <FiMail className="mr-2" /> Submit Email
+                </div>
+              </button>
+            </div>
+            <hr className="w-full my-4" />
             <button
               onClick={handleSkipEmail}
               className="flex items-center justify-center mt-4 px-4 py-2 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
