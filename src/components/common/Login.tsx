@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       setStatus((prevStatus) => ({
         ...prevStatus,
         userId: "debug",
-        isConsented: true,
+        isConsented: false,
       }));
     }
 
