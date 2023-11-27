@@ -181,7 +181,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
         maxStories={stories.length}
       ></NavigationButtonsTask>
 
-      <div className="text-sm pl-2 text-center text-gray-600">
+      <div className="text-sm pl-2 text-center text-gray-400">
         {Array.from({ length: stories.length }, (_, i) =>
           i <= currentStoryIndex ? "●" : "○"
         ).join(" ")}
