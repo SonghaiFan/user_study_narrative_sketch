@@ -25,17 +25,11 @@ const Final: React.FC = () => {
     setIsFeedbackSubmitted(true);
 
     if (!ENABLE_DEBUG) {
-      logUserFeedback(userId, email, feedback, readingHabit);
+      logUserFeedback(userId, feedback, readingHabit);
     }
 
     if (ENABLE_DEBUG) {
-      console.log(
-        "User feedback submitted: ",
-        userId,
-        email,
-        feedback,
-        readingHabit
-      );
+      console.log("User feedback submitted: ", userId, feedback, readingHabit);
     }
   };
 

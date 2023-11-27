@@ -66,13 +66,11 @@ export async function logRoutePathNavigation(
 
 export async function logUserFeedback(
   userId: string,
-  email: string,
   feedback: string,
   readingHabit: number | null
 ) {
   const feedbackData = {
     feedback,
-    email,
     readingHabit,
     timestamp: serverTimestamp(),
   };
@@ -92,7 +90,7 @@ export async function logUserEmail(userId: string, email: string) {
     timestamp: serverTimestamp(),
   };
 
-  const dbRef = push(ref(db, `${userId}/finalEmail`));
+  const dbRef = push(ref(db, `${userId}/email`));
 
   try {
     await set(dbRef, emailData);
