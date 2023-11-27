@@ -1,14 +1,13 @@
-import React, { useState, ReactNode } from "react";
 import { FiChevronDown } from "react-icons/fi";
 
 interface ConsentFormProps {
   handleSubmit: () => void;
   handleCancel: () => void;
   isSubmitted: boolean;
-  children: ReactNode; // To render any child components or content
-  title?: string; // Optional title for the form
-  submitButtonLabel?: string; // Optional label for the submit button
-  cancelButtonLabel?: string; // Optional label for the cancel button
+  children: React.ReactNode;
+  title?: string;
+  submitButtonLabel?: string;
+  cancelButtonLabel?: string;
 }
 
 const ConsentForm: React.FC<ConsentFormProps> = ({
