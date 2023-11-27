@@ -38,10 +38,7 @@ export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
   ];
 
   return (
-    <div
-      id="confirmationPanel"
-      className="bg-white p-8 rounded-md max-w-[50rem]"
-    >
+    <div id="confirmationPanel" className="bg-white p-8 rounded-md max-w-fit">
       {children}
       {showFeedback && (
         <FeedbackForm
