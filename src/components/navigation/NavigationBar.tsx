@@ -18,7 +18,6 @@ const CenterIndicator: React.FC = () => {
   return (
     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white">
       <h1 className="relative z-10 text-xl font-semibold mb-2 ">User study</h1>
-
       <div className="flex items-center justify-between align-items-center left-1/2 z-20 bg-blue-600 rounded-full p-1">
         <MdTimer size={20} />
         <Timer />
