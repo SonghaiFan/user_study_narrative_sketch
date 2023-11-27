@@ -100,7 +100,7 @@ export const getTaskConfig = ({
     },
     task: {
       confirmButtonText: isSubmitConfirmed
-        ? "Submit reasoning and proceed"
+        ? "Submit and proceed"
         : "Yes, Proceed With Current Answer",
       disableConfirmButton: isSubmitConfirmed && !isFeedbackProvided,
       cancelButtonText: "No, Review Again Before Proceeding",

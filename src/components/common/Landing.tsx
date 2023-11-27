@@ -100,8 +100,7 @@ export default function Landing({ handleSubmit }: LandingProps) {
               </button>
             )}
           </div>
-          {/* horizontal line */}
-          <hr className="w-full my-4" />
+
           <button
             type="submit"
             className={`px-4 py-2 font-semibold text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
@@ -113,9 +112,16 @@ export default function Landing({ handleSubmit }: LandingProps) {
           >
             Login
           </button>
+          {/* horizontal line */}
+          <hr className="w-full my-4" />
           <p className="text-sm text-gray-600 mt-4">
-            ⚠️ Please do not refresh the page until you finish the task,
-            otherwise you will lose your progress.
+            For participating in this user study, we recommend using a wide
+            screen and the Chrome browser.
+            <br />
+            <span className="font-bold">
+              ⚠️ Please do not refresh the page until you finish the task,
+              otherwise you will lose your progress.
+            </span>
           </p>
         </form>
         {/* text: please user wide screen and do not refresh the page until you finish the task, otherwise you will lose your pregress */}

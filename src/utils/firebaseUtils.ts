@@ -64,9 +64,16 @@ export async function logRoutePathNavigation(
   }
 }
 
-export async function logUserFeedback(userId: string, feedback: string) {
+export async function logUserFeedback(
+  userId: string,
+  email: string,
+  feedback: string,
+  readingHabit: number | null
+) {
   const feedbackData = {
     feedback,
+    email,
+    readingHabit,
     timestamp: serverTimestamp(),
   };
 
@@ -79,7 +86,6 @@ export async function logUserFeedback(userId: string, feedback: string) {
     console.error("Error recording user feedback: ", error);
   }
 }
-
 export async function logUserEmail(userId: string, email: string) {
   const emailData = {
     email,

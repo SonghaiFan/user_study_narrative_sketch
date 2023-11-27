@@ -1,52 +1,65 @@
+import React from "react";
+
 interface FeedbackFormProps {
-  showFeedback: boolean;
+  textAreaLabel?: string;
+  textPrompt?: string;
+  textAreaPlaceholder?: string;
   inputText: string;
   setInputText: (text: string) => void;
+  radioLabel?: string;
   inputRate: number | null;
   setInputRate: (rate: number) => void;
-  confidenceLevels: { level: number; label: string }[];
+  radioOptions: { value: number; label: string }[];
 }
 
 const FeedbackForm: React.FC<FeedbackFormProps> = ({
-  showFeedback,
+  textAreaLabel,
+  textPrompt,
+  textAreaPlaceholder = "Provide your feedback...",
   inputText,
   setInputText,
+  radioLabel,
   inputRate,
   setInputRate,
-  confidenceLevels,
+  radioOptions,
 }) => {
-  if (!showFeedback) {
-    return null;
-  }
-
   return (
     <>
+      {/* Text Prompt */}
+      {textPrompt && <h2 className="text-xl mb-4">{textPrompt}</h2>}
+      {textAreaLabel && (
+        <span className="text-sm text-gray-600 block mb-2">
+          {textAreaLabel}
+        </span>
+      )}
+
+      {/* Text Area */}
       <textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="Explain your reasoning..."
+        placeholder={textAreaPlaceholder}
         className="mt-2 w-full p-4 border rounded-md overflow-auto resize-none max-h-[200px]"
       />
 
-      <div className="mt-2">
-        <span className="text-sm text-gray-600 block mb-2">
-          Confidence level:
+      {radioLabel && (
+        <span className="text-sm text-gray-600 block mt-4 mb-2">
+          {radioLabel}
         </span>
-        <div className="flex flex-wrap">
-          {confidenceLevels.map(({ level, label }) => (
-            <label key={level} className="flex items-center mr-4 mb-2">
-              <input
-                type="radio"
-                name="confidenceLevel"
-                value={level}
-                checked={inputRate === level}
-                onChange={() => setInputRate(level)}
-                className="mr-1"
-              />
-              {label}
-            </label>
-          ))}
-        </div>
+      )}
+      <div className="flex flex-wrap">
+        {radioOptions.map(({ value, label }) => (
+          <label key={value} className="flex items-center mr-4 mb-2">
+            <input
+              type="radio"
+              name="radioOption"
+              value={value}
+              checked={inputRate === value}
+              onChange={() => setInputRate(value)}
+              className="mr-1"
+            />
+            {label}
+          </label>
+        ))}
       </div>
     </>
   );

@@ -30,11 +30,11 @@ export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
   setInputRate,
 }) => {
   const confidenceLevels = [
-    { level: 1, label: "Very Low" },
-    { level: 2, label: "Low" },
-    { level: 3, label: "Moderate" },
-    { level: 4, label: "High" },
-    { level: 5, label: "Very High" },
+    { value: 1, label: "Very Low" },
+    { value: 2, label: "Low" },
+    { value: 3, label: "Moderate" },
+    { value: 4, label: "High" },
+    { value: 5, label: "Very High" },
   ];
 
   return (
@@ -45,12 +45,13 @@ export const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
       {children}
       {showFeedback && (
         <FeedbackForm
-          showFeedback={showFeedback}
           inputText={inputText}
           setInputText={setInputText}
           inputRate={inputRate}
+          textAreaPlaceholder="Simply explain your reasoning (required)..."
           setInputRate={setInputRate}
-          confidenceLevels={confidenceLevels}
+          radioLabel="How confident are you about your answer?"
+          radioOptions={confidenceLevels}
         />
       )}
       <div className="flex justify-end mt-4">
