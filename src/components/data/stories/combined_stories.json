@@ -58,7 +58,7 @@
       {
         "id": "B1",
         "title": "Economic Boom in Clean Energy Startups",
-        "time_period": ["2023-02-01", "2023-04-02"],
+        "time_period": ["2023-01-01", "2023-01-30"],
         "themes": ["Economic Boom"],
         "entity": ["GreenInvest", "EcoTech", "Simmons", "Market Street"],
         "content": "Simmons announced today the surge in the city's economy. The reason? Major investments in clean energy startups. GreenInvest and EcoTech, both located on Market Street, have received significant funding. This has led to job growth and a stronger economy. Simmons stated, 'Clean energy is not only good for the environment. It's great for our economy too.'"
@@ -98,7 +98,7 @@
       {
         "id": "B2",
         "title": "Cultural Renaissance Sweeps Downtown District",
-        "time_period": ["2023-12-16", "2024-03-01"],
+        "time_period": ["2023-11-16", "2024-01-01"],
         "themes": ["Cultural Renaissance"],
         "entity": [
           "Culturama",

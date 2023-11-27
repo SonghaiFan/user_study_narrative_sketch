@@ -10,7 +10,13 @@ const Ending = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-blue-500">
       <div className="bg-white p-8 rounded-md shadow-lg w-1/3">
         <h2 className="text-2xl  mb-4">Thank You for Your Participation!</h2>
-        <p className="text-lg mb-4">
+        <p className="text-sm text-gray-600 mt-4">
+          Your valuable contribution is instrumental in delving into the nuances
+          and narratives of news stories. Please note, your results will undergo
+          a manual review for approval. Thank you for your understanding and
+          your time. 🙏
+        </p>
+        <p className="text-lg mt-4">
           Click to obtain{" "}
           <a
             href="https://app.prolific.com/submissions/complete?cc=CAAXOZX6"
@@ -20,12 +26,12 @@ const Ending = () => {
           </a>
         </p>
         <p className="text-lg mt-4">
-          <strong>Now you can now safely close the window or log out.</strong>
+          <strong>Now you can now safely close the window.</strong>
         </p>
+
         <hr className="w-full my-4" />
-        <p className="mt-4">
-          If you have any questions or concerns, please contact the researcher
-          at{" "}
+        <p className="text-sm text-gray-600 mt-4">
+          If you have any questions, please contact the researcher{" "}
           <a
             className="text-green-500 font-bold underline"
             href="mailto:songhai.fan@monash.edu"

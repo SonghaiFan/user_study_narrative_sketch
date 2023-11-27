@@ -12,7 +12,7 @@ Your task involves:
 
 > **Selecting the narrative structure** that best aligns with the corresponding **TT-graph** on the left.
 
-During the training, after you've selected a narrative structure, you'll see a detailed text that includes a title, key words (`theme` and `entity`), and a brief explanation. This part of the study is to help you get used to the **TT-graphs** and learn how to pick the right narrative structures.
+During the training, after you've selected a narrative structure, you'll see a detailed text that includes a title, key words (`theme` and `entity`), and a brief explanation. This part of the study is to help you understand the **TT-graphs** and learn how to sketch the narrative structures.
 
 ## Task
 
@@ -22,7 +22,10 @@ In the actual task phase, there will be no hints provided. Instead, you will:
 
 > **Write down your reasoning and rate your confidence level** for each selection.
 
-| ⏱️ Please be mindful of the time. You've only paid for **30 minutes**. **Rushing through and underperforming may affect your pay**. We encourage you to make the "right" choices. "Right" in this context means not exactly the same as our predefined narrative structures. As long as you understand how the TT graphs work and provide sound reasoning, that's considered the right choice. Good luck! 🌟 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| We encourage you to make the "right" choices. "Right" in this context means not exactly the same as our predefined narrative structures. As long as you understand how the TT graphs work and provide sound reasoning, that's considered the right choice. Good luck! 🌟 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ## Ready to Begin? Proceed to Next to Start Training 🚀
+
+| ⏱️ Please be aware of the time. You've only paid for 30 minutes. Ensure to maintain a balanced pace - not too slow or too fast. Remember, if you take too long, you won't be compensated for the extra time. On the other hand, rushing through and underperforming may negatively impact your pay. |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
