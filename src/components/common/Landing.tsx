@@ -57,7 +57,7 @@ export default function Landing({ handleSubmit }: LandingProps) {
         alt="Monash University logo"
         className="top-5 h-14 fixed "
       />
-      <div className="mt-20 p-8 w-1/3">
+      <div className="mt-20 p-8 min-w-[500px] w-1/3">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center bg-white p-8 rounded-md shadow-lg"
@@ -134,10 +134,12 @@ export default function Landing({ handleSubmit }: LandingProps) {
         >
           <MarkdownRenderer
             path="/user_study_narrative_sketch/markdown/consent.md"
-            className="p-10 px-2 sm:px-20"
+            className="p-10 px-2 sm:px-20 w-min-full"
           />
         </ConsentForm>
       )}
     </div>
   );
 }
+
+// xl:w-1/2 w-full m-auto mt-5 p-10 px-2 sm:px-20

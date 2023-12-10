@@ -66,15 +66,11 @@ const ChaptersToMarkdown: React.FC<ChaptersToMarkdownProps> = ({
               {title}
             </h3>
             <p className="text-xs sm:text-sm text-gray-500">
-              {time_period
-                .map((date) =>
-                  new Date(date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })
-                )
-                .join(" to ")}
+              {new Date(time_period[0]).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              }) + "~"}
             </p>
             <div className={`mt-2 font-bold ${showHint ? "" : "hidden"} `}>
               <RenderTags

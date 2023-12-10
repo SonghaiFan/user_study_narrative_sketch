@@ -6,6 +6,8 @@ import MarkdownRenderer from "./common/MarkdownRenderer";
 
 import train_stories from "./data/stories/combined_stories_train.json";
 import stories from "./data/stories/combined_stories.json";
+import stories_b from "./data/stories/combined_stories_b.json";
+import stories_c from "./data/stories/combined_stories_c.json";
 
 // use loadsash to shuffle the stories
 export const train_stories_shuffle = _.shuffle(train_stories);
@@ -16,30 +18,21 @@ export const routes = [
     path: "/intro",
     name: "Introduction",
     component: (
-      <MarkdownRenderer
-        path="/user_study_narrative_sketch/markdown/intro.md"
-        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
-      />
+      <MarkdownRenderer path="/user_study_narrative_sketch/markdown/intro.md" />
     ),
   },
   {
     path: "/motifs",
     name: "Motifs",
     component: (
-      <MarkdownRenderer
-        path="/user_study_narrative_sketch/markdown/motifs.md"
-        className="xl:w-1/2 w-full m-auto mt-5 p-10 px-2 sm:px-20"
-      />
+      <MarkdownRenderer path="/user_study_narrative_sketch/markdown/motifs.md" />
     ),
   },
   {
     path: "/about",
     name: "About",
     component: (
-      <MarkdownRenderer
-        path="/user_study_narrative_sketch/markdown/about.md"
-        className="xl:w-1/2 lg:w-2/3 m-auto mt-5 p-10 px-2 sm:px-20"
-      />
+      <MarkdownRenderer path="/user_study_narrative_sketch/markdown/about.md" />
     ),
   },
   {
@@ -56,9 +49,17 @@ export const routes = [
   {
     path: "/task",
     name: "Task",
-    component: (
-      <SelectionTask key="task" stories={stories_shuffle} mode="task" />
-    ),
+    component: <SelectionTask key="task" stories={stories} mode="task" />,
+  },
+  {
+    path: "/taskb",
+    name: "Task-B",
+    component: <SelectionTask key="taskb" stories={stories_b} mode="task" />,
+  },
+  {
+    path: "/taskc",
+    name: "Task-C",
+    component: <SelectionTask key="taskc" stories={stories_c} mode="task" />,
   },
   {
     path: "/end",

@@ -16,7 +16,7 @@
       {
         "id": "B2",
         "title": "Economic Disparity Shadows Silicon Park's Tech Boom",
-        "time_period": ["2024-03-31", "2024-04-30"],
+        "time_period": ["2023-11-11", "2024-04-30"],
         "themes": ["Economic Disparity"],
         "entity": [
           "Silicon Park Outskirts",
@@ -29,7 +29,7 @@
       {
         "id": "C3",
         "title": "Outskirts Residents Rally Against Inequalities",
-        "time_period": ["2024-10-11", "2024-12-01"],
+        "time_period": ["2024-04-30", "2024-12-01"],
         "themes": ["Social Revolution"],
         "entity": [
           "Mayor Davidson",
@@ -139,7 +139,7 @@
       {
         "id": "B2",
         "title": "Local Businesses and Infrastructure Department Unite for Relief Efforts",
-        "time_period": ["2023-12-23", "2024-01-15"],
+        "time_period": ["2023-10-31", "2024-01-15"],
         "themes": ["Humanitarian Aid"],
         "entity": [
           "Downtown Markets",
@@ -181,7 +181,7 @@
       {
         "id": "B3",
         "title": "Mayoral Candidate Jane Doe Under Federal Investigation",
-        "time_period": ["2023-10-27", "2023-11-01"],
+        "time_period": ["2023-10-13", "2023-11-01"],
         "themes": ["Scandal"],
         "entity": [
           "Federal Investigators",
@@ -214,7 +214,7 @@
       {
         "id": "B2",
         "title": "Financial Scandal Hits Laura Reynolds' Campaign",
-        "time_period": ["2023-11-22", "2023-11-28"],
+        "time_period": ["2023-10-16", "2023-11-28"],
         "themes": ["Scandal"],
         "entity": [
           "City Gazette",
@@ -258,7 +258,7 @@
       {
         "id": "B2",
         "title": "City Faces Environmental Crisis Amid Economic Boom",
-        "time_period": ["2023-07-01", "2023-07-31"],
+        "time_period": ["2023-05-02", "2023-07-31"],
         "themes": ["Ecological Crisis"],
         "entity": [
           "Riverstone Park",
@@ -272,7 +272,7 @@
       {
         "id": "A3",
         "title": "City Finds Sustainable Solution Amid Economic Boom and Ecological Crisis",
-        "time_period": ["2023-08-31", "2023-12-31"],
+        "time_period": ["2023-07-31", "2023-12-31"],
         "themes": ["Economic Boom"],
         "entity": [
           "Rodriguez",
@@ -301,7 +301,7 @@
       {
         "id": "C2",
         "title": "Community Alliance Fights Economic Crisis",
-        "time_period": ["2023-11-30", "2024-01-15"],
+        "time_period": ["2023-10-31", "2024-01-15"],
         "themes": ["Community Resilience"],
         "entity": [
           "Anderson",
@@ -314,7 +314,7 @@
       {
         "id": "A2",
         "title": "TechPulse Inc. Thrives Amid Economic Crisis",
-        "time_period": ["2023-12-31", "2024-03-01"],
+        "time_period": ["2023-10-31", "2024-01-15"],
         "themes": ["Tech Boom"],
         "entity": ["Anderson", "Silicon Street", "TechPulse Inc."],
         "content": "Despite the economic crisis, Silicon Street is seeing a tech boom. Anderson, CEO of TechPulse Inc., announced a surge in their business. Innovative solutions for the new economy have allowed them to grow. While many companies struggle, TechPulse Inc. is hiring more staff. The tech startup is a bright spot in a gloomy economy. Anderson believes this trend will continue. He said, 'We are adapting to the new economy, and it is paying off.'"
@@ -376,7 +376,7 @@
       {
         "id": "B2",
         "title": "Economic Disparity Shadows Silicon Park's Tech Boom",
-        "time_period": ["2024-03-31", "2024-04-30"],
+        "time_period": ["2023-11-11", "2024-05-30"],
         "themes": ["Economic Disparity"],
         "entity": ["People's Union", "Silicon Park", "Silicon Park Outskirts"],
         "content": "Despite the tech boom in Silicon Park, the outskirts face financial hardships. The People's Union reports an increasing economic disparity. The wealth from the tech boom has not reached these areas. Many startups are unable to survive the high costs. The People's Union calls for action to address this growing issue."
@@ -384,7 +384,7 @@
       {
         "id": "C3",
         "title": "Silicon Park Outskirts Residents Rally for Economic Equality",
-        "time_period": ["2024-10-11", "2024-12-01"],
+        "time_period": ["2024-05-30", "2024-12-01"],
         "themes": ["Social Revolution"],
         "entity": [
           "People's Union",
