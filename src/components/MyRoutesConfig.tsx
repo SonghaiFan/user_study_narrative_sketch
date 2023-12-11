@@ -53,12 +53,12 @@ export const routes = [
   },
   {
     path: "/taskb",
-    name: "Task-B",
+    name: "Task",
     component: <SelectionTask key="taskb" stories={stories_b} mode="task" />,
   },
   {
     path: "/taskc",
-    name: "Task-C",
+    name: "Task",
     component: <SelectionTask key="taskc" stories={stories_c} mode="task" />,
   },
   {
