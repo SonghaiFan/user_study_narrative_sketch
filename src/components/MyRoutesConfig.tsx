@@ -5,9 +5,9 @@ import Final from "./common/Final";
 import MarkdownRenderer from "./common/MarkdownRenderer";
 
 import train_stories from "./data/stories/combined_stories_train.json";
-import stories from "./data/stories/combined_stories.json";
-import stories_b from "./data/stories/combined_stories_b.json";
-import stories_c from "./data/stories/combined_stories_c.json";
+import stories from "./data/stories/combined_stories_b.json";
+// import stories_b from "./data/stories/combined_stories_b.json";
+// import stories_c from "./data/stories/combined_stories_c.json";
 
 // use loadsash to shuffle the stories
 export const train_stories_shuffle = _.shuffle(train_stories);
@@ -46,16 +46,16 @@ export const routes = [
       />
     ),
   },
-  // {
-  //   path: "/task",
-  //   name: "Task",
-  //   component: <SelectionTask key="task" stories={stories} mode="task" />,
-  // },
   {
-    path: "/taskb",
+    path: "/task",
     name: "Task",
-    component: <SelectionTask key="taskb" stories={stories_b} mode="task" />,
+    component: <SelectionTask key="task" stories={stories} mode="task" />,
   },
+  // {
+  //   path: "/taskb",
+  //   name: "Task",
+  //   component: <SelectionTask key="taskb" stories={stories_b} mode="task" />,
+  // },
   // {
   //   path: "/taskc",
   //   name: "Task",
