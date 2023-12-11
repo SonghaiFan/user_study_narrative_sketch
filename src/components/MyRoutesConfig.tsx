@@ -46,21 +46,21 @@ export const routes = [
       />
     ),
   },
-  {
-    path: "/task",
-    name: "Task",
-    component: <SelectionTask key="task" stories={stories} mode="task" />,
-  },
+  // {
+  //   path: "/task",
+  //   name: "Task",
+  //   component: <SelectionTask key="task" stories={stories} mode="task" />,
+  // },
   {
     path: "/taskb",
     name: "Task",
     component: <SelectionTask key="taskb" stories={stories_b} mode="task" />,
   },
-  {
-    path: "/taskc",
-    name: "Task",
-    component: <SelectionTask key="taskc" stories={stories_c} mode="task" />,
-  },
+  // {
+  //   path: "/taskc",
+  //   name: "Task",
+  //   component: <SelectionTask key="taskc" stories={stories_c} mode="task" />,
+  // },
   {
     path: "/end",
     name: "End",
