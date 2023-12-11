@@ -1,10 +1,10 @@
 [
   {
-    "name": "story_Muddle_Puddle_ShortFork_seed942.json",
+    "name": "story_Muddle_Puddle_EarlyTurn_seed942.json",
     "section": "Muddle_Puddle",
-    "structure": "ShortFork",
+    "structure": "EarlyTurn",
     "seed": 942,
-    "description": "This story begins with a singular theme of Innovation, highlighting TechHive's technological ascent from April to early June 2023. It then branches into a second theme of Controversy from June to mid-August 2023, addressing ethical concerns and public debates surrounding TechHive's technology. The ShortFork motif is characterized by an initial single theme that transitions into a different theme for the majority of the time span.",
+    "description": "This story begins with a singular theme of Innovation, highlighting TechHive's technological ascent from April to early June 2023. It then branches into a second theme of Controversy from June to mid-August 2023, addressing ethical concerns and public debates surrounding TechHive's technology. The EarlyTurn motif is characterized by an initial single theme that transitions into a different theme for the majority of the time span.",
     "chapters": [
       {
         "id": "A1",

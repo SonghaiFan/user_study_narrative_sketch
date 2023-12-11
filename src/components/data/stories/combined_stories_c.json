@@ -136,9 +136,9 @@
     ]
   },
   {
-    "name": "story_Set_C_ShortFork_seed526.json",
+    "name": "story_Set_C_EarlyTurn_seed526.json",
     "section": "Set_C",
-    "structure": "ShortFork",
+    "structure": "EarlyTurn",
     "seed": 526,
     "chapters": [
       {
@@ -177,9 +177,9 @@
     ]
   },
   {
-    "name": "story_Set_C_LongFork_seed192.json",
+    "name": "story_Set_C_LateTurn_seed192.json",
     "section": "Set_C",
-    "structure": "LongFork",
+    "structure": "LateTurn",
     "seed": 192,
     "chapters": [
       {

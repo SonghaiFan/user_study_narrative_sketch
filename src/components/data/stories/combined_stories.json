@@ -152,9 +152,9 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_LongFork_seed288.json",
+    "name": "story_Muddle_Puddle_LateTurn_seed288.json",
     "section": "Muddle_Puddle",
-    "structure": "LongFork",
+    "structure": "LateTurn",
     "seed": 288,
     "chapters": [
       {
@@ -194,9 +194,9 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_ShortFork_seed158.json",
+    "name": "story_Muddle_Puddle_EarlyTurn_seed158.json",
     "section": "Muddle_Puddle",
-    "structure": "ShortFork",
+    "structure": "EarlyTurn",
     "seed": 158,
     "chapters": [
       {

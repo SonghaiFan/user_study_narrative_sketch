@@ -79,9 +79,9 @@
     ]
   },
   {
-    "name": "story_Set_A2_LongFork_seed362.json",
+    "name": "story_Set_A2_LateTurn_seed362.json",
     "section": "Set_A2",
-    "structure": "LongFork",
+    "structure": "LateTurn",
     "seed": 362,
     "chapters": [
       {
@@ -281,9 +281,9 @@
     ]
   },
   {
-    "name": "story_Set_A2_ShortFork_seed480.json",
+    "name": "story_Set_A2_EarlyTurn_seed480.json",
     "section": "Set_A2",
-    "structure": "ShortFork",
+    "structure": "EarlyTurn",
     "seed": 480,
     "chapters": [
       {

@@ -134,12 +134,10 @@ export default function Landing({ handleSubmit }: LandingProps) {
         >
           <MarkdownRenderer
             path="/user_study_narrative_sketch/markdown/consent.md"
-            className="p-10 px-2 sm:px-20 w-min-full"
+            className="xl:w-full"
           />
         </ConsentForm>
       )}
     </div>
   );
 }
-
-// xl:w-1/2 w-full m-auto mt-5 p-10 px-2 sm:px-20

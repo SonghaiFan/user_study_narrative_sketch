@@ -38,7 +38,8 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
   const currentStoryName = currentStory?.name;
   const isSelectionCorrect = rightSelection === selection;
   const isFeedbackProvided = reason !== "" && confidence !== null;
-  const showHint = (mode === "training" && isSelectionCorrect) || ENABLE_DEBUG;
+  const showHint = mode === "training" && isSelectionCorrect;
+  // || ENABLE_DEBUG;
 
   useEffect(() => {
     if (currentStoryIndex >= stories.length) {

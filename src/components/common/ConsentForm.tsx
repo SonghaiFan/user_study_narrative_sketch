@@ -20,8 +20,8 @@ const ConsentForm: React.FC<ConsentFormProps> = ({
   cancelButtonLabel = "Cancel",
 }) => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8  w-full lg:w-1/2 rounded-md shadow-lg max-h-screen overflow-y-auto relative">
+    <div className="fixed top-0 left-0 h-full bg-black bg-opacity-50 flex items-center justify-center">
+      <div className="bg-white p-8 w-1/2 rounded-md shadow-lg max-h-screen overflow-y-auto relative">
         {title && <h2 className="text-lg font-semibold mb-4">{title}</h2>}
         {children}
         {/* button to confirm and cancel */}

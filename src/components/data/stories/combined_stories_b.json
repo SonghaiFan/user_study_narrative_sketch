@@ -1,8 +1,8 @@
 [
   {
-    "name": "story_Set_B_LongFork_seed901.json",
+    "name": "story_Set_B_LateTurn_seed901.json",
     "section": "Set_B",
-    "structure": "LongFork",
+    "structure": "LateTurn",
     "seed": 901,
     "chapters": [
       {
@@ -90,9 +90,9 @@
     ]
   },
   {
-    "name": "story_Set_B_ShortFork_seed932.json",
+    "name": "story_Set_B_EarlyTurn_seed932.json",
     "section": "Set_B",
-    "structure": "ShortFork",
+    "structure": "EarlyTurn",
     "seed": 932,
     "chapters": [
       {
