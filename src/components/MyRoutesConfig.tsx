@@ -49,7 +49,9 @@ export const routes = [
   {
     path: "/task",
     name: "Task",
-    component: <SelectionTask key="task" stories={stories} mode="task" />,
+    component: (
+      <SelectionTask key="task" stories={stories_shuffle} mode="task" />
+    ),
   },
   // {
   //   path: "/taskb",
