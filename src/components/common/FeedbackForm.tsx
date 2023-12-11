@@ -33,20 +33,6 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
         </>
       )}
 
-      <ul className="text-sm text-gray-600 block mb-2 list-inside list-disc">
-        <li className="mb-2">
-          Is the narrative structure of the TT-graph easy to understand?
-        </li>
-        <li className="mb-2">
-          Is there a clear narrative structure within the text?
-        </li>
-        <li className="mb-2">Is the task easy to complete?</li>
-        <li className="mb-2">
-          What strategies do you typically employ to interpret the narrative
-          structure?
-        </li>
-      </ul>
-
       {/* Text Area */}
       <textarea
         value={inputText}
