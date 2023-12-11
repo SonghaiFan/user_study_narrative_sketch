@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Monash_Logo from "../../assets/Moansh-white-logo.svg";
 import ConsentForm from "./ConsentForm";
+import WindowSizeIndicator from "./WindowSizeIndicator";
 import MarkdownRenderer from "./MarkdownRenderer";
 import { FaCheck } from "react-icons/fa";
 import { useUserStatus } from "../../hooks/useUserStatus";
@@ -48,15 +49,17 @@ export default function Landing({ handleSubmit }: LandingProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
-      <header className="fixed sm:top-0 sm:left-0 top-20 text-white p-6 py-4">
+      <header className="fixed sm:top-0 sm:left-0 top-10 text-white p-6 py-4">
         <h1 className="sm:text-xl text-3xl font-semibold">Pilot User Study</h1>
       </header>
       <img
         id="monash-logo"
         src={Monash_Logo}
         alt="Monash University logo"
-        className="top-5 h-14 fixed "
+        className="top-5 h-14 fixed hidden sm:block"
       />
+      <WindowSizeIndicator />
+
       <div className="mt-20 p-8 min-w-[500px] w-1/3">
         <form
           onSubmit={handleSubmit}

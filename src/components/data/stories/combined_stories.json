@@ -1,49 +1,7 @@
 [
   {
-    "name": "story_Muddle_Puddle_Ladder_seed241.json",
-    "section": "Muddle_Puddle",
-    "structure": "Ladder",
-    "seed": 241,
-    "chapters": [
-      {
-        "id": "A1",
-        "title": "Silicon Park's Tech Boom: NanoTech Corp. Leads the Way",
-        "time_period": ["2023-10-01", "2023-11-11"],
-        "themes": ["Tech Boom"],
-        "entity": ["NanoTech Corp.", "Silicon Park"],
-        "content": "Silicon Park is experiencing a tech boom. Startups are popping up like mushrooms. Leading the charge is NanoTech Corp. Their new innovations are causing a stir. The economy is growing fast. Silicon Park is now the place for tech."
-      },
-      {
-        "id": "B2",
-        "title": "Economic Disparity Shadows Silicon Park's Tech Boom",
-        "time_period": ["2023-11-11", "2024-04-30"],
-        "themes": ["Economic Disparity"],
-        "entity": [
-          "Silicon Park Outskirts",
-          "Silicon Park",
-          "NanoTech Corp.",
-          "People's Union"
-        ],
-        "content": "Despite the tech boom, Silicon Park Outskirts face financial challenges. While NanoTech Corp. leads the tech revolution, the outskirts struggle. The People's Union raises concerns about the growing economic disparity. Silicon Park's growth has a dark side."
-      },
-      {
-        "id": "C3",
-        "title": "Outskirts Residents Rally Against Inequalities",
-        "time_period": ["2024-04-30", "2024-12-01"],
-        "themes": ["Social Revolution"],
-        "entity": [
-          "Mayor Davidson",
-          "Silicon Park Outskirts",
-          "NanoTech Corp.",
-          "People's Union"
-        ],
-        "content": "Starting October, the People's Union led residents of Silicon Park's outskirts in a rally against economic disparity. They demanded reforms from Mayor Davidson and NanoTech Corp. The tech boom, they argued, should benefit all residents. The rally marked a new phase in the fight against inequality in Silicon Park."
-      }
-    ]
-  },
-  {
-    "name": "story_Muddle_Puddle_SharpMerge_seed632.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_SharpMerge_seed632.json",
+    "section": "Set_A",
     "structure": "SharpMerge",
     "seed": 632,
     "chapters": [
@@ -74,8 +32,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_SharpBranch_seed178.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_SharpBranch_seed178.json",
+    "section": "Set_A",
     "structure": "SharpBranch",
     "seed": 178,
     "chapters": [
@@ -111,8 +69,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_WideMerge_seed854.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_WideMerge_seed854.json",
+    "section": "Set_A",
     "structure": "WideMerge",
     "seed": 854,
     "chapters": [
@@ -152,8 +110,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_LateTurn_seed288.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_LateTurn_seed288.json",
+    "section": "Set_A",
     "structure": "LateTurn",
     "seed": 288,
     "chapters": [
@@ -194,8 +152,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_EarlyTurn_seed158.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_EarlyTurn_seed158.json",
+    "section": "Set_A",
     "structure": "EarlyTurn",
     "seed": 158,
     "chapters": [
@@ -242,8 +200,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_Arch_seed928.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_Arch_seed928.json",
+    "section": "Set_A",
     "structure": "Arch",
     "seed": 928,
     "chapters": [
@@ -285,8 +243,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_WideBranch_seed496.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_WideBranch_seed496.json",
+    "section": "Set_A",
     "structure": "WideBranch",
     "seed": 496,
     "chapters": [
@@ -322,8 +280,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_Linear_seed986.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_Linear_seed986.json",
+    "section": "Set_A",
     "structure": "Linear",
     "seed": 986,
     "chapters": [
@@ -360,8 +318,8 @@
     ]
   },
   {
-    "name": "story_Muddle_Puddle_Ladder_seed565.json",
-    "section": "Muddle_Puddle",
+    "name": "story_Set_A_Ladder_seed565.json",
+    "section": "Set_A",
     "structure": "Ladder",
     "seed": 565,
     "chapters": [
@@ -392,6 +350,48 @@
           "Silicon Park Outskirts"
         ],
         "content": "Following the People's Union's call for action, residents of Silicon Park's outskirts rallied against economic disparities. They demanded reforms to bridge the wealth gap, exacerbated by the tech boom. Mayor Davidson, facing mounting pressure, promised to address the issues. The People's Union urged the city to support struggling startups and distribute tech wealth more evenly."
+      }
+    ]
+  },
+  {
+    "name": "story_Set_A_Ladder_seed241.json",
+    "section": "Set_A",
+    "structure": "Ladder",
+    "seed": 241,
+    "chapters": [
+      {
+        "id": "A1",
+        "title": "Silicon Park's Tech Boom: NanoTech Corp. Leads the Way",
+        "time_period": ["2023-10-01", "2023-11-11"],
+        "themes": ["Tech Boom"],
+        "entity": ["NanoTech Corp.", "Silicon Park"],
+        "content": "Silicon Park is experiencing a tech boom. Startups are popping up like mushrooms. Leading the charge is NanoTech Corp. Their new innovations are causing a stir. The economy is growing fast. Silicon Park is now the place for tech."
+      },
+      {
+        "id": "B2",
+        "title": "Economic Disparity Shadows Silicon Park's Tech Boom",
+        "time_period": ["2023-11-11", "2024-04-30"],
+        "themes": ["Economic Disparity"],
+        "entity": [
+          "Silicon Park Outskirts",
+          "Silicon Park",
+          "NanoTech Corp.",
+          "People's Union"
+        ],
+        "content": "Despite the tech boom, Silicon Park Outskirts face financial challenges. While NanoTech Corp. leads the tech revolution, the outskirts struggle. The People's Union raises concerns about the growing economic disparity. Silicon Park's growth has a dark side."
+      },
+      {
+        "id": "C3",
+        "title": "Outskirts Residents Rally Against Inequalities",
+        "time_period": ["2024-04-30", "2024-12-01"],
+        "themes": ["Social Revolution"],
+        "entity": [
+          "Mayor Davidson",
+          "Silicon Park Outskirts",
+          "NanoTech Corp.",
+          "People's Union"
+        ],
+        "content": "Starting October, the People's Union led residents of Silicon Park's outskirts in a rally against economic disparity. They demanded reforms from Mayor Davidson and NanoTech Corp. The tech boom, they argued, should benefit all residents. The rally marked a new phase in the fight against inequality in Silicon Park."
       }
     ]
   }

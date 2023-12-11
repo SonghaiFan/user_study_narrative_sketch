@@ -21,7 +21,7 @@ const ConsentForm: React.FC<ConsentFormProps> = ({
 }) => {
   return (
     <div className="fixed top-0 left-0 h-full bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 w-1/2 rounded-md shadow-lg max-h-screen overflow-y-auto relative">
+      <div className="bg-white p-8  lg:w-2/3 w-full rounded-md shadow-lg max-h-screen overflow-y-auto relative">
         {title && <h2 className="text-lg font-semibold mb-4">{title}</h2>}
         {children}
         {/* button to confirm and cancel */}
@@ -47,7 +47,6 @@ const ConsentForm: React.FC<ConsentFormProps> = ({
           </button>
         </div>
         {/* scroll down indicator */}
-
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
           <FiChevronDown size={24} className="animate-bounce" />
           <p className="text-sm font-medium text-gray-500 mt-1 animate-fade-out">
