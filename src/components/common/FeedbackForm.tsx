@@ -28,10 +28,24 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
       {/* Text Prompt */}
       {textPrompt && <h2 className="text-xl mb-4">{textPrompt}</h2>}
       {textAreaLabel && (
-        <span className="text-sm text-gray-600 block mb-2">
-          {textAreaLabel}
-        </span>
+        <>
+          <p className="text-sm text-gray-600 block mb-2">{textAreaLabel}</p>
+        </>
       )}
+
+      <ul className="text-sm text-gray-600 block mb-2 list-inside list-disc">
+        <li className="mb-2">
+          Is the narrative structure of the TT-graph easy to understand?
+        </li>
+        <li className="mb-2">
+          Is there a clear narrative structure within the text?
+        </li>
+        <li className="mb-2">Is the task easy to complete?</li>
+        <li className="mb-2">
+          What strategies do you typically employ to interpret the narrative
+          structure?
+        </li>
+      </ul>
 
       {/* Text Area */}
       <textarea

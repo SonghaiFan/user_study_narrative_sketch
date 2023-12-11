@@ -77,9 +77,6 @@ const Final: React.FC = () => {
               </h1>
               <FeedbackForm
                 textPrompt={"Do you have any comments for this user study?"}
-                textAreaLabel={
-                  "Is the narrative structure of the TT-graph easy to understand? Is the task easy to complete? Is there a clear narrative structure within the text? What strategies do you typically employ to interpret the narrative structure? etc."
-                }
                 textAreaPlaceholder={"Provide your feedback(required)..."}
                 inputText={feedback}
                 setInputText={setFeedback}
