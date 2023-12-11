@@ -12,14 +12,14 @@ The `y-coordinate` (vertical axis) represents different themes or topics in the 
 
 ![Concept](/user_study_narrative_sketch/images/concept.png)
 
-This figure shows how different themes have developed over a period. It is split into two parts:
+This figure shows how different themes have developed over a period.
 
-### Upper Part: Single Theme Trend
+### Left Part: Single Theme Trend
 
-The top graph focuses on one theme, "Global Alliances." Each block represents a period when this theme was prominent. The timeline runs from June 2020 to October 2023. The yellow blocks are spaced evenly across the timeline, suggesting that the theme of Global Alliances has been consistent over time.
+The left graph focuses on one theme, "Global Alliances." Each block represents a period when this theme was prominent. The timeline runs from June 2020 to October 2023. The yellow blocks are spaced evenly across the timeline, suggesting that the theme of Global Alliances has been consistent over time.
 
-### Lower Part: Multiple Themes and Connections
+### Right Part: Multiple Themes and Connections
 
-The bottom graph displays three themes: "Populism Rise," "Global Alliances," and "Electoral Reforms," each marked with a different color. This part of the figure shows not only when these themes were relevant (along the timeline at the bottom) but also how they are connected.
+The right graph displays three themes: "Populism Rise," "Global Alliances," and "Electoral Reforms," each marked with a different color. This part of the figure shows not only when these themes were relevant (along the timeline at the bottom) but also how they are connected.
 
 The connections between these blocks (shown as lines) suggest a relationship or a sequence of events where one theme leads to another over time.
