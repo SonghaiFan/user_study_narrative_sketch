@@ -120,11 +120,10 @@ export default function Landing({ handleSubmit }: LandingProps) {
           <p className="text-sm text-gray-600 mt-4">
             For participating in this user study, we recommend using a wide
             screen and the Chrome browser.
-            <br />
-            <span className="font-bold">
-              ⚠️ Please do not refresh the page until you finish the task,
-              otherwise you will lose your progress.
-            </span>
+          </p>
+          <p className="font-bold text-sm text-gray-600 mt-4">
+            ⚠️ Please do not refresh the page until you finish the task,
+            otherwise you will lose your progress.
           </p>
         </form>
         {/* text: please user wide screen and do not refresh the page until you finish the task, otherwise you will lose your pregress */}
