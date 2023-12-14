@@ -191,8 +191,10 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
       <div
         className={`grid ${
-          showBottomPanel ? "grid-rows-[60%_40%]" : "grid-rows-1"
-        } overflow-hidden h-full px-0 sm:px-20 border`}
+          showBottomPanel
+            ? "grid-rows-[70%_30%] sm:grid-rows-[60%_40%]"
+            : "grid-rows-1"
+        } overflow-hidden h-full px-0 sm:px-20 `}
       >
         {/* First Row with Two Panels */}
         <div
@@ -216,7 +218,10 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
 
         {/* Confirmation Panel */}
         {showBottomPanel && (
-          <div id="confirmation-panel" className="row-span-1 m-auto ">
+          <div
+            id="confirmation-panel"
+            className="row-span-1 m-auto w-full h-full overflow-auto"
+          >
             <ConfirmationPanel
               onConfirm={
                 mode === "task"

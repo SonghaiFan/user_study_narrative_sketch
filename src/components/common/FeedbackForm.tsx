@@ -1,7 +1,5 @@
-import React from "react";
-
 interface FeedbackFormProps {
-  textAreaLabel?: string;
+  richTextPrompt?: React.ReactNode;
   textPrompt?: string;
   textAreaPlaceholder?: string;
   inputText: string;
@@ -13,7 +11,7 @@ interface FeedbackFormProps {
 }
 
 const FeedbackForm: React.FC<FeedbackFormProps> = ({
-  textAreaLabel,
+  richTextPrompt,
   textPrompt,
   textAreaPlaceholder = "Provide your feedback...",
   inputText,
@@ -27,10 +25,8 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
     <>
       {/* Text Prompt */}
       {textPrompt && <h2 className="text-xl mb-4">{textPrompt}</h2>}
-      {textAreaLabel && (
-        <>
-          <p className="text-sm text-gray-600 block mb-2">{textAreaLabel}</p>
-        </>
+      {richTextPrompt && (
+        <p className="text-sm text-gray-600 block mb-2">{richTextPrompt}</p>
       )}
 
       {/* Text Area */}

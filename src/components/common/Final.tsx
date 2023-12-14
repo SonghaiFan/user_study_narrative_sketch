@@ -65,6 +65,18 @@ const Final: React.FC = () => {
 
   const isFeedbackAllProvided = feedback !== "" && readingHabit !== null;
 
+  const commentPrompt = (
+    <ul className="text-sm text-gray-600 block mb-2 list-disc list-inside">
+      <li>Is the narrative structure of the TT-graph easy to understand?</li>
+      <li>Is the task easy to complete?</li>
+      <li> Is there a clear narrative structure within the text? </li>
+      <li>
+        What strategies do you typically employ to interpret the narrative
+        structure?
+      </li>
+    </ul>
+  );
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-500 ">
       <div className="p-8 min-w-[500px] w-1/3">
@@ -76,8 +88,8 @@ const Final: React.FC = () => {
                 Well Done! You Have Completed the Task! 🎉
               </h1>
               <FeedbackForm
+                richTextPrompt={commentPrompt}
                 textPrompt={"Do you have any comments for this user study?"}
-                textAreaPlaceholder={"Provide your feedback(required)..."}
                 inputText={feedback}
                 setInputText={setFeedback}
                 inputRate={readingHabit}
