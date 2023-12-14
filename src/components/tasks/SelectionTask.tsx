@@ -192,7 +192,7 @@ const SelectionTask: React.FC<SelectionTaskProps> = ({ stories, mode }) => {
       <div
         className={`grid ${
           showBottomPanel
-            ? "grid-rows-[70%_30%] sm:grid-rows-[60%_40%]"
+            ? "grid-rows-[70%_30%] sm:grid-rows-[55%_45%]"
             : "grid-rows-1"
         } overflow-hidden h-full px-0 sm:px-20 `}
       >
