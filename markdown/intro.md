@@ -16,7 +16,7 @@ This figure shows how different themes have developed over a period.
 
 ### Left Part: Single Theme Trend
 
-The left graph focuses on one theme, "Global Alliances." Each block represents a period when this theme was prominent. The timeline runs from June 2020 to October 2023. The yellow blocks are spaced evenly across the timeline, suggesting that the theme of Global Alliances has been consistent over time.
+The left graph focuses on one theme, "Global Alliances." Each block represents a period when this theme was prominent. The timeline runs from June 2020 to August 2020. The yellow blocks are spaced evenly across the timeline, suggesting that the theme of Global Alliances has been consistent over time.
 
 ### Right Part: Multiple Themes and Connections
 

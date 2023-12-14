@@ -27,10 +27,7 @@ In the actual task phase, there will be no hints provided. Instead, you will:
 | ⏱️ Please be aware of the time. You've only paid for 30 minutes. Ensure to maintain a balanced pace - not too slow or too fast. Remember, if you take too long, you won't be compensated for the extra time. On the other hand, rushing through and underperforming may negatively impact your pay. |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
-| There are toal 10 tasks for 9 motifs, which means that it is possible for a motif to appear more than once. |
-| ----------------------------------------------------------------------------------------------------------- |
-
-| We encourage you to make the "right" choices. "Right" in this context means not exactly the same as our predefined narrative structures. As long as you understand how the TT graphs work and provide sound reasoning, that's considered the right choice. Good luck! 🌟 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| There are toal 10 tasks for 9 motifs, which means that it is possible for a motif to appear more than once. We encourage you to make the "right" choices. "Right" in this context means not exactly the same as our predefined narrative structures. As long as you understand how the TT graphs work and provide sound reasoning, that's considered the right choice. Good luck! 🌟 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ## Proceed to Next to Start Training 🚀
