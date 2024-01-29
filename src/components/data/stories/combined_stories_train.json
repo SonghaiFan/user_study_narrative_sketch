@@ -4,7 +4,7 @@
     "section": "Muddle_Puddle",
     "structure": "EarlyTurn",
     "seed": 942,
-    "description": "This story begins with a singular theme of Innovation, highlighting TechHive's technological ascent from April to early June 2023. It then branches into a second theme of Controversy from June to mid-August 2023, addressing ethical concerns and public debates surrounding TechHive's technology. The EarlyTurn motif is characterized by an initial single theme that transitions into a different theme for the majority of the time span.",
+    "description": "This story begins with a singular theme of Innovation, highlighting TechHive's technological ascent from April to early June 2023. It then branches into a second theme of Controversy from June to July 2023, addressing ethical concerns and public debates surrounding TechHive's technology. The EarlyTurn motif is characterized by an initial single theme that transitions into a different theme for the last two time spans.",
     "chapters": [
       {
         "id": "A1",
@@ -86,7 +86,7 @@
     "section": "Muddle_Puddle",
     "structure": "SharpMerge",
     "seed": 990,
-    "description": "This narrative features two initially parallel themes: Technological Advancement at TechCorp and Corporate Espionage within QuantumTech, starting from December 2023. These themes gradually intertwine, leading to a sharp merge by February 2024, focusing on the espionage scandal and its impact on TechCorp's breakthrough. The SharpMerge motif represents two distinct themes that abruptly converge into a single theme towards the end.",
+    "description": "This narrative features two initially parallel themes: Technological Advancement at TechCorp and Corporate Espionage within QuantumTech, starting from December 2023. These themes gradually intertwine, leading to a merge by Janurary 2024, focusing on the espionage scandal and its impact on TechCorp's breakthrough. The SharpMerge motif represents two parallel themes in same time span that converge into one of the initial themes towards the end.",
     "chapters": [
       {
         "id": "A1",
@@ -119,7 +119,7 @@
     "section": "Muddle_Puddle",
     "structure": "Ladder",
     "seed": 325,
-    "description": "Starting with a Scandal theme involving TechCorp in January 2023, the story climbs to a Trial theme by April 2023, and culminates in a Reform theme by June 2023. Each theme represents a successive step in the narrative's progression, akin to climbing a ladder. The Ladder motif is defined by a sequential progression of distinct themes, each leading to the next.",
+    "description": "Starting with a Scandal theme involving TechCorp in January 2023, the story climbs to a Trial theme by March 2023, and culminates in a Reform theme by June 2023. Each theme represents a successive step in the narrative's progression, akin to climbing a ladder. The Ladder motif is defined by a sequential progression of compartively different themes, each leading to the next.",
     "chapters": [
       {
         "id": "A1",
