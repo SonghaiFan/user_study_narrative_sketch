@@ -6,8 +6,8 @@ import MarkdownRenderer from "./common/MarkdownRenderer";
 
 import train_stories from "./data/stories/combined_stories_train.json";
 // import stories from "./data/stories/combined_stories_a.json";
-// import stories from "./data/stories/combined_stories_b.json";
-import stories from "./data/stories/combined_stories_c.json";
+import stories from "./data/stories/combined_stories_b.json";
+// import stories from "./data/stories/combined_stories_c.json";
 
 // use loadsash to shuffle the stories
 export const train_stories_shuffle = _.shuffle(train_stories);
